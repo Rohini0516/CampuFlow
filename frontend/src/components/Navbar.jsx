@@ -83,7 +83,7 @@ export const Navbar = ({ onMenuToggle }) => {
             <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white font-bold shadow-md shadow-brand-500/20">
               CF
             </div>
-            <span className="font-extrabold text-slate-900 text-lg tracking-tight">CampusFlow</span>
+            <span className="font-extrabold text-slate-900 text-lg tracking-tight">College Management System</span>
           </Link>
 
           <div className="hidden sm:flex items-center relative w-64 md:w-80">

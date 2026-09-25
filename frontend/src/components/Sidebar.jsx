@@ -126,11 +126,11 @@ export const Sidebar = ({ isOpen, onClose }) => {
               CF
             </div>
             <div>
-              <h1 className="font-black text-white text-base tracking-tight leading-none">
-                CampusFlow
+              <h1 className="font-black text-white text-sm tracking-tight leading-snug">
+                College Management System
               </h1>
               <span className="text-[10px] font-semibold text-brand-400 tracking-wider uppercase">
-                College Cloud SaaS
+                Enterprise Platform
               </span>
             </div>
           </div>

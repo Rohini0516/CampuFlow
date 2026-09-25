@@ -76,7 +76,7 @@ export const LoginPage = () => {
     try {
       setLoading(true);
       await login(email, password);
-      toast.success('Welcome back to CampusFlow!');
+      toast.success('Welcome back to College Management System!');
       navigate('/dashboard');
     } catch (err) {
       toast.error(err.response?.data?.message || err.message || 'Invalid credentials');
@@ -95,7 +95,7 @@ export const LoginPage = () => {
     try {
       setLoading(true);
       await register(registerData);
-      toast.success('Account created successfully! Welcome to CampusFlow.');
+      toast.success('Account created successfully! Welcome to College Management System.');
       navigate('/dashboard');
     } catch (err) {
       toast.error(err.response?.data?.message || err.message || 'Registration failed');
@@ -155,7 +155,7 @@ export const LoginPage = () => {
         <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-500 via-indigo-500 to-blue-400 text-white shadow-xl shadow-brand-500/30 mb-3 ring-4 ring-white/10">
           <GraduationCap className="w-8 h-8" />
         </div>
-        <h2 className="text-3xl font-black text-white tracking-tight">CampusFlow</h2>
+        <h2 className="text-3xl font-black text-white tracking-tight">College Management System</h2>
         <p className="mt-1 text-xs sm:text-sm text-slate-400">
           Unified Smart Campus Management & Operations Cloud
         </p>
@@ -235,7 +235,7 @@ export const LoginPage = () => {
                 disabled={loading}
                 className="w-full py-3 px-4 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30 flex items-center justify-center space-x-2 transition-all disabled:opacity-50 group text-xs sm:text-sm"
               >
-                <span>{loading ? 'Authenticating...' : 'Sign In to CampusFlow'}</span>
+                <span>{loading ? 'Authenticating...' : 'Sign In to College Management System'}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </form>
