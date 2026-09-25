@@ -17,10 +17,14 @@ const {
 } = require('../controllers/academicController');
 const { protect, authorize } = require('../middleware/auth');
 
+// Public endpoints (registration dropdown)
+router.get('/departments', getDepartments);
+
+// Protected academic endpoints
 router.use(protect);
 
 // Department endpoints
-router.route('/departments').get(getDepartments).post(authorize('ADMIN'), createDepartment);
+router.route('/departments').post(authorize('ADMIN'), createDepartment);
 router
   .route('/departments/:id')
   .get(getDepartmentById)

@@ -47,11 +47,18 @@ api.interceptors.response.use(
   },
   (error) => {
     if (error.response && error.response.status === 401) {
-      const isAuthEndpoint = error.config.url.includes('/auth/login') || error.config.url.includes('/auth/register');
+      const url = error.config?.url || '';
+      const isAuthEndpoint = url.includes('/auth/login') || url.includes('/auth/register');
       if (!isAuthEndpoint) {
         localStorage.removeItem('campusflow_token');
         localStorage.removeItem('campusflow_user');
-        window.location.href = '/login';
+        if (
+          typeof window !== 'undefined' &&
+          window.location.pathname !== '/login' &&
+          window.location.pathname !== '/register'
+        ) {
+          window.location.href = '/login';
+        }
       }
     }
     return Promise.reject(error);
