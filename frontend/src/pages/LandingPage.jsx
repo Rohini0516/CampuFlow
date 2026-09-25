@@ -168,7 +168,7 @@ export const LandingPage = () => {
               How It Works
             </a>
             <a href="#dashboard-preview" className="hover:text-brand-600 transition-colors">
-              Dashboard
+              Overview
             </a>
             <a href="#about" className="hover:text-brand-600 transition-colors">
               About
@@ -179,32 +179,11 @@ export const LandingPage = () => {
           <div className="hidden md:flex items-center space-x-3">
             <Link
               to="/login"
-              className="px-3.5 py-2 text-slate-700 hover:text-brand-600 font-bold text-sm transition-colors"
-            >
-              Login
-            </Link>
-            <Link
-              to="/register"
-              className="px-3.5 py-2 text-slate-700 hover:text-brand-600 font-bold text-sm transition-colors"
-            >
-              Sign Up
-            </Link>
-            <Link
-              to="/login?tab=register"
-              className="inline-flex items-center space-x-1.5 px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl shadow-md shadow-brand-600/20 transition-all hover:shadow-lg hover:shadow-brand-600/30"
+              className="inline-flex items-center space-x-1.5 px-5 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl shadow-md shadow-brand-600/20 transition-all hover:shadow-lg hover:shadow-brand-600/30"
             >
               <span>Get Started</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
-            {isAuthenticated && (
-              <Link
-                to="/dashboard"
-                className="inline-flex items-center space-x-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-xl shadow-md transition-all hover:shadow-lg"
-              >
-                <LayoutDashboard className="w-4 h-4" />
-                <span>Dashboard</span>
-              </Link>
-            )}
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -262,33 +241,10 @@ export const LandingPage = () => {
               <Link
                 to="/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-2.5 text-center font-bold text-slate-700 border border-slate-200 rounded-xl hover:bg-slate-50"
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-2.5 text-center font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 rounded-xl hover:bg-indigo-100"
-              >
-                Sign Up
-              </Link>
-              <Link
-                to="/login?tab=register"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-2.5 text-center font-bold text-white bg-brand-600 rounded-xl shadow-md"
+                className="w-full py-3 text-center font-bold text-white bg-brand-600 rounded-xl shadow-md"
               >
                 Get Started
               </Link>
-              {isAuthenticated && (
-                <Link
-                  to="/dashboard"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full py-2.5 text-center font-bold text-white bg-emerald-600 rounded-xl shadow-md"
-                >
-                  Go to Dashboard
-                </Link>
-              )}
             </div>
           </div>
         )}
@@ -321,40 +277,14 @@ export const LandingPage = () => {
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
                 <Link
-                  to="/login?tab=register"
-                  className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-extrabold text-base rounded-2xl shadow-xl shadow-brand-600/25 flex items-center justify-center space-x-2 transition-all hover:scale-[1.02]"
+                  to="/login"
+                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-extrabold text-base rounded-2xl shadow-xl shadow-brand-600/25 flex items-center justify-center space-x-2 transition-all hover:scale-[1.02]"
                 >
                   <span>Get Started</span>
                   <ArrowRight className="w-5 h-5" />
                 </Link>
-
-                <Link
-                  to="/login"
-                  className="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-slate-100 text-slate-800 font-bold text-base rounded-2xl border border-slate-200/90 shadow-sm flex items-center justify-center space-x-2 transition-all"
-                >
-                  <GraduationCap className="w-5 h-5 text-brand-600" />
-                  <span>Login</span>
-                </Link>
-
-                <Link
-                  to="/register"
-                  className="w-full sm:w-auto px-6 py-3.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-base rounded-2xl border border-indigo-200 shadow-sm flex items-center justify-center space-x-2 transition-all"
-                >
-                  <UserPlus className="w-5 h-5 text-indigo-600" />
-                  <span>Sign Up</span>
-                </Link>
-
-                {isAuthenticated && (
-                  <Link
-                    to="/dashboard"
-                    className="w-full sm:w-auto px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base rounded-2xl shadow-lg flex items-center justify-center space-x-2 transition-all hover:scale-[1.02]"
-                  >
-                    <LayoutDashboard className="w-5 h-5" />
-                    <span>Open Dashboard</span>
-                  </Link>
-                )}
               </div>
 
               {/* Key Trust Highlights */}
@@ -742,9 +672,6 @@ export const LandingPage = () => {
               <a href="#about" className="hover:text-white transition-colors">
                 About
               </a>
-              <Link to="/login" className="hover:text-white transition-colors">
-                Login
-              </Link>
             </div>
           </div>
 
