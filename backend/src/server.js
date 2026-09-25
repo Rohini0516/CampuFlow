@@ -27,6 +27,15 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+// Root route
+app.get('/', (req, res) => {
+  return res.status(200).json({
+    success: true,
+    message: 'CampusFlow Backend API is running',
+    healthCheck: '/api/health',
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   const dbStatus = getDBStatus();
