@@ -7,6 +7,9 @@ const {
   getAnnouncements,
   createAnnouncement,
   deleteAnnouncement,
+  getCertificateRequests,
+  requestCertificate,
+  updateCertificateStatus,
 } = require('../controllers/communicationController');
 const { protect, authorize } = require('../middleware/auth');
 
@@ -23,5 +26,12 @@ router
   .get(getAnnouncements)
   .post(authorize('ADMIN', 'FACULTY'), createAnnouncement);
 router.delete('/announcements/:id', authorize('ADMIN', 'FACULTY'), deleteAnnouncement);
+
+// Certificates
+router
+  .route('/certificates')
+  .get(getCertificateRequests)
+  .post(authorize('STUDENT'), requestCertificate);
+router.put('/certificates/:id/status', authorize('ADMIN'), updateCertificateStatus);
 
 module.exports = router;

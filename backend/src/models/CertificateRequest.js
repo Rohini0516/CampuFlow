@@ -13,24 +13,24 @@ const certificateRequestSchema = new mongoose.Schema(
     },
     certificateType: {
       type: String,
-      enum: [
-        'Bonafide Certificate',
-        'Study Certificate',
-        'Transfer Certificate',
-        'Course Completion Certificate',
-        'Internship Certificate',
-        'Character Certificate',
-        'Other',
-      ],
       required: true,
+    },
+    type: {
+      type: String,
     },
     reason: {
       type: String,
-      required: true,
+    },
+    purpose: {
+      type: String,
+    },
+    remarks: {
+      type: String,
+      default: '',
     },
     status: {
       type: String,
-      enum: ['PENDING', 'APPROVED', 'REJECTED', 'READY'],
+      enum: ['PENDING', 'APPROVED', 'REJECTED', 'READY', 'ISSUED'],
       default: 'PENDING',
     },
     rejectionReason: {
