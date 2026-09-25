@@ -4,6 +4,7 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import { AppLayout } from './layouts/AppLayout';
 
 // Pages
+import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { DashboardPage } from './pages/DashboardPage';
@@ -30,39 +31,40 @@ import { NotFoundPage } from './pages/NotFoundPage';
 export const App = () => {
   return (
     <Routes>
+      {/* Main Public Landing Page */}
+      <Route path="/" element={<LandingPage />} />
+
       {/* Public Auth Routes */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
 
       {/* Protected App Routes */}
       <Route
-        path="/"
         element={
           <ProtectedRoute>
             <AppLayout />
           </ProtectedRoute>
         }
       >
-        <Route index element={<Navigate to="/dashboard" replace />} />
-        <Route path="dashboard" element={<DashboardPage />} />
-        <Route path="students" element={<StudentsPage />} />
-        <Route path="faculty" element={<FacultyPage />} />
-        <Route path="departments" element={<DepartmentsPage />} />
-        <Route path="subjects" element={<SubjectsPage />} />
-        <Route path="timetable" element={<TimetablePage />} />
-        <Route path="attendance" element={<AttendancePage />} />
-        <Route path="assignments" element={<AssignmentsPage />} />
-        <Route path="exams" element={<ExamsPage />} />
-        <Route path="events" element={<EventsPage />} />
-        <Route path="placements" element={<PlacementsPage />} />
-        <Route path="internships" element={<InternshipsPage />} />
-        <Route path="complaints" element={<GrievancesPage />} />
-        <Route path="certificates" element={<CertificatesPage />} />
-        <Route path="announcements" element={<AnnouncementsPage />} />
-        <Route path="analytics" element={<AnalyticsPage />} />
-        <Route path="companies" element={<CompaniesPage />} />
-        <Route path="notifications" element={<NotificationsPage />} />
-        <Route path="profile" element={<ProfilePage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/students" element={<StudentsPage />} />
+        <Route path="/faculty" element={<FacultyPage />} />
+        <Route path="/departments" element={<DepartmentsPage />} />
+        <Route path="/subjects" element={<SubjectsPage />} />
+        <Route path="/timetable" element={<TimetablePage />} />
+        <Route path="/attendance" element={<AttendancePage />} />
+        <Route path="/assignments" element={<AssignmentsPage />} />
+        <Route path="/exams" element={<ExamsPage />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/placements" element={<PlacementsPage />} />
+        <Route path="/internships" element={<InternshipsPage />} />
+        <Route path="/complaints" element={<GrievancesPage />} />
+        <Route path="/certificates" element={<CertificatesPage />} />
+        <Route path="/announcements" element={<AnnouncementsPage />} />
+        <Route path="/analytics" element={<AnalyticsPage />} />
+        <Route path="/companies" element={<CompaniesPage />} />
+        <Route path="/notifications" element={<NotificationsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Route>
 
       {/* 404 Route */}
