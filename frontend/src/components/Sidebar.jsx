@@ -41,12 +41,14 @@ export const Sidebar = ({ isOpen, onClose }) => {
         { name: 'Departments', path: '/departments', icon: Building2 },
         { name: 'Subjects', path: '/subjects', icon: BookOpen },
         { name: 'Timetable', path: '/timetable', icon: Clock },
+        { name: 'Student Projects', path: '/projects', icon: Layers },
         { section: 'Operations' },
         { name: 'Attendance', path: '/attendance', icon: CalendarCheck },
         { name: 'Examinations', path: '/exams', icon: Award },
         { name: 'Campus Events', path: '/events', icon: Calendar },
         { name: 'Placements', path: '/placements', icon: Briefcase },
         { section: 'Services & Support' },
+        { name: 'Academic Reports', path: '/reports', icon: BarChart3 },
         { name: 'Grievances', path: '/complaints', icon: MessageSquareWarning },
         { name: 'Certificates', path: '/certificates', icon: FileCheck2 },
         { name: 'Announcements', path: '/announcements', icon: Megaphone },
@@ -63,9 +65,11 @@ export const Sidebar = ({ isOpen, onClose }) => {
         { name: 'Examinations & Marks', path: '/exams', icon: Award },
         { name: 'Timetable', path: '/timetable', icon: Clock },
         { name: 'Subjects', path: '/subjects', icon: BookOpen },
+        { name: 'Student Projects', path: '/projects', icon: Layers },
         { section: 'Campus Life' },
         { name: 'Events', path: '/events', icon: Calendar },
         { name: 'Announcements', path: '/announcements', icon: Megaphone },
+        { name: 'Reports', path: '/reports', icon: BarChart3 },
       ];
     }
 
@@ -90,6 +94,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
       { name: 'Timetable', path: '/timetable', icon: Clock },
       { name: 'Assignments', path: '/assignments', icon: FileText },
       { name: 'Exams & Results', path: '/exams', icon: Award },
+      { name: 'My Projects', path: '/projects', icon: Layers },
       { section: 'Career & Opportunities' },
       { name: 'Placements', path: '/placements', icon: Briefcase },
       { name: 'Internships', path: '/internships', icon: Layers },
@@ -98,6 +103,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
       { name: 'Grievances', path: '/complaints', icon: MessageSquareWarning },
       { name: 'Certificates', path: '/certificates', icon: FileCheck2 },
       { name: 'Announcements', path: '/announcements', icon: Megaphone },
+      { name: 'Academic Reports', path: '/reports', icon: BarChart3 },
     ];
   };
 

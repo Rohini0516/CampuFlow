@@ -92,6 +92,7 @@ app.use('/api/internships', require('./routes/internshipRoutes'));
 app.use('/api/grievances', require('./routes/grievanceRoutes'));
 app.use('/api/communication', require('./routes/communicationRoutes'));
 app.use('/api/analytics', require('./routes/analyticsRoutes'));
+app.use('/api/projects', require('./routes/projectRoutes'));
 
 // 404 handler for undefined API routes
 app.use('*', (req, res) => {

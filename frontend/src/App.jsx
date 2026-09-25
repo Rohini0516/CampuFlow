@@ -26,6 +26,8 @@ import { AnalyticsPage } from './pages/AnalyticsPage';
 import { CompaniesPage } from './pages/CompaniesPage';
 import { NotificationsPage } from './pages/NotificationsPage';
 import { ProfilePage } from './pages/ProfilePage';
+import { ProjectsPage } from './pages/ProjectsPage';
+import { ReportsPage } from './pages/ReportsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 export const App = () => {
@@ -55,6 +57,8 @@ export const App = () => {
         <Route path="/attendance" element={<AttendancePage />} />
         <Route path="/assignments" element={<AssignmentsPage />} />
         <Route path="/exams" element={<ExamsPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/placements" element={<PlacementsPage />} />
         <Route path="/internships" element={<InternshipsPage />} />

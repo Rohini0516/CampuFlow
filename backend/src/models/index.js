@@ -20,6 +20,7 @@ const Complaint = require('./Complaint');
 const CertificateRequest = require('./CertificateRequest');
 const Notification = require('./Notification');
 const Announcement = require('./Announcement');
+const Project = require('./Project');
 
 module.exports = {
   User,
@@ -44,4 +45,5 @@ module.exports = {
   CertificateRequest,
   Notification,
   Announcement,
+  Project,
 };

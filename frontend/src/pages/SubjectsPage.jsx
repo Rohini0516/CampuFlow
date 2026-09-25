@@ -12,6 +12,9 @@ import {
   Award,
   Layers,
   Building2,
+  TrendingUp,
+  BarChart3,
+  CheckCircle2,
 } from 'lucide-react';
 
 export const SubjectsPage = () => {
@@ -45,10 +48,10 @@ export const SubjectsPage = () => {
       ]);
 
       if (subjRes.data.success) {
-        setSubjects(subjRes.data.data.subjects || []);
+        setSubjects(subjRes.data.data.subjects || subjRes.data.data || []);
       }
       if (deptsRes.data.success) {
-        const d = deptsRes.data.data.departments || [];
+        const d = deptsRes.data.data.departments || deptsRes.data.data || [];
         setDepartments(d);
         if (d.length > 0) {
           setNewSubject((prev) => ({ ...prev, departmentId: d[0]._id }));
@@ -90,6 +93,15 @@ export const SubjectsPage = () => {
     } catch (err) {
       toast.error(err.response?.data?.message || 'Failed to add subject');
     }
+  };
+
+  const calculateGrade = (total) => {
+    if (total >= 90) return { grade: 'A+', color: 'bg-emerald-100 text-emerald-800 border-emerald-300' };
+    if (total >= 80) return { grade: 'A', color: 'bg-emerald-50 text-emerald-700 border-emerald-200' };
+    if (total >= 70) return { grade: 'B+', color: 'bg-blue-100 text-blue-800 border-blue-300' };
+    if (total >= 60) return { grade: 'B', color: 'bg-blue-50 text-blue-700 border-blue-200' };
+    if (total >= 50) return { grade: 'C', color: 'bg-amber-100 text-amber-800 border-amber-300' };
+    return { grade: 'F', color: 'bg-rose-100 text-rose-800 border-rose-300' };
   };
 
   const filteredSubjects = subjects.filter((s) => {
@@ -146,8 +158,17 @@ export const SubjectsPage = () => {
   ];
 
   if (loading) {
-    return <LoadingSpinner text="Loading curriculum courses..." fullScreen />;
+    return <LoadingSpinner text="Loading curriculum courses & performance breakdown..." fullScreen />;
   }
+
+  // Sample auto-calculated Subject Marks Table Data
+  const samplePerformanceList = [
+    { name: 'Data Structures & Algorithms', code: 'CS301', assgn: 18, mid: 22, sem: 43 },
+    { name: 'Database Management Systems', code: 'CS402', assgn: 19, mid: 25, sem: 45 },
+    { name: 'Operating Systems & Architecture', code: 'CS501', assgn: 17, mid: 21, sem: 44 },
+    { name: 'Computer Networks & Security', code: 'CS502', assgn: 16, mid: 23, sem: 42 },
+    { name: 'Software Engineering Principles', code: 'CS503', assgn: 19, mid: 27, sem: 46 },
+  ];
 
   return (
     <div className="space-y-6">
@@ -156,10 +177,10 @@ export const SubjectsPage = () => {
         <div>
           <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
             <BookOpen className="w-7 h-7 text-brand-600" />
-            Curriculum & Subject Catalog
+            Subject Management & Auto-Calculated Mark Schemes
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-            Accredited course syllabus, academic credit weights, and course types
+            Department-specific subjects, credit weights, Assignment (20) + Mid (30) + Semester (50) = Total (100)
           </p>
         </div>
 
@@ -172,6 +193,64 @@ export const SubjectsPage = () => {
             <span>Add Subject</span>
           </button>
         )}
+      </div>
+
+      {/* Subject Performance Breakdown Table */}
+      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-base font-bold text-slate-900 flex items-center">
+              <TrendingUp className="w-5 h-5 text-brand-600 mr-2" />
+              Automated Subject Performance Scheme (Assgn 20 + Mid 30 + Sem 50 = Total 100)
+            </h3>
+            <p className="text-xs text-slate-500 font-medium">
+              Calculates subject totals, percentage %, and letter grades automatically.
+            </p>
+          </div>
+        </div>
+
+        <div className="overflow-x-auto border border-slate-200 rounded-2xl">
+          <table className="w-full text-left text-xs sm:text-sm">
+            <thead className="bg-slate-50 text-slate-700 font-bold uppercase tracking-wider text-[11px] border-b border-slate-200">
+              <tr>
+                <th className="py-3 px-4">Subject</th>
+                <th className="py-3 px-4">Assignment (20)</th>
+                <th className="py-3 px-4">Mid Exam (30)</th>
+                <th className="py-3 px-4">Semester Exam (50)</th>
+                <th className="py-3 px-4">Total (100)</th>
+                <th className="py-3 px-4">Percentage</th>
+                <th className="py-3 px-4">Grade</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 font-medium text-slate-800">
+              {samplePerformanceList.map((sub, idx) => {
+                const total = sub.assgn + sub.mid + sub.sem;
+                const pct = ((total / 100) * 100).toFixed(0);
+                const g = calculateGrade(total);
+                return (
+                  <tr key={idx} className="hover:bg-slate-50/80">
+                    <td className="py-3 px-4 font-bold text-slate-900">
+                      <span className="font-mono text-xs text-brand-700 bg-brand-50 px-2 py-0.5 rounded border border-brand-200 mr-2">
+                        {sub.code}
+                      </span>
+                      {sub.name}
+                    </td>
+                    <td className="py-3 px-4">{sub.assgn} / 20</td>
+                    <td className="py-3 px-4">{sub.mid} / 30</td>
+                    <td className="py-3 px-4">{sub.sem} / 50</td>
+                    <td className="py-3 px-4 font-black text-slate-900 text-sm">{total} / 100</td>
+                    <td className="py-3 px-4 font-extrabold text-brand-700 text-sm">{pct}%</td>
+                    <td className="py-3 px-4">
+                      <span className={`px-2.5 py-1 rounded-full font-bold text-xs border ${g.color}`}>
+                        {g.grade}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Filter */}
@@ -190,7 +269,7 @@ export const SubjectsPage = () => {
         <select
           value={selectedDept}
           onChange={(e) => setSelectedDept(e.target.value)}
-          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none w-full sm:w-56"
+          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none w-full sm:w-56 font-semibold"
         >
           <option value="">All Departments</option>
           {departments.map((d) => (
@@ -203,7 +282,7 @@ export const SubjectsPage = () => {
         <select
           value={selectedSem}
           onChange={(e) => setSelectedSem(e.target.value)}
-          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none w-full sm:w-36"
+          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none w-full sm:w-36 font-semibold"
         >
           <option value="">All Semesters</option>
           {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
@@ -332,3 +411,5 @@ export const SubjectsPage = () => {
     </div>
   );
 };
+
+export default SubjectsPage;
