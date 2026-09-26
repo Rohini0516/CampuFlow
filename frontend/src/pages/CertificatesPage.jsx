@@ -105,11 +105,11 @@ export const CertificatesPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <FileCheck2 className="w-7 h-7 text-indigo-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <FileCheck2 className="w-7 h-7 text-[#E27B88]" />
             E-Certificate & Document Verification Desk
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5 font-medium">
             Request, approve, and download digitally signed university bonafide certificates and transcripts
           </p>
         </div>
@@ -117,7 +117,7 @@ export const CertificatesPage = () => {
         {role === 'STUDENT' && (
           <button
             onClick={() => setRequestModalOpen(true)}
-            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-indigo-600/30 transition-all"
+            className="peach-button-primary text-xs sm:text-sm flex items-center space-x-2 self-start sm:self-auto"
           >
             <Plus className="w-4 h-4" />
             <span>Request Certificate</span>
@@ -140,11 +140,11 @@ export const CertificatesPage = () => {
             return (
               <div
                 key={item._id}
-                className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group"
+                className="bg-white rounded-3xl border border-[#F0D9D5] p-6 shadow-sm hover:shadow-xl hover:border-[#EFA7B5] transition-all flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-3">
-                    <div className="p-3 rounded-2xl bg-indigo-50 text-indigo-600">
+                    <div className="p-3 rounded-2xl bg-[#FFF5F1] text-[#A95763] border border-[#F0D9D5]">
                       <FileText className="w-6 h-6" />
                     </div>
                     <Badge
@@ -153,7 +153,7 @@ export const CertificatesPage = () => {
                           ? 'success'
                           : item.status === 'REJECTED'
                           ? 'danger'
-                          : 'warning'
+                          : 'peach'
                       }
                       size="sm"
                     >
@@ -161,21 +161,21 @@ export const CertificatesPage = () => {
                     </Badge>
                   </div>
 
-                  <h3 className="font-bold text-slate-900 text-base mb-1">
+                  <h3 className="font-bold text-[#2D2526] text-base mb-1">
                     {certificateTypes[item.type] || item.type}
                   </h3>
-                  <p className="text-xs text-slate-600 mb-3">Purpose: {item.purpose}</p>
+                  <p className="text-xs text-[#6F6264] mb-3 font-medium">Purpose: {item.purpose}</p>
 
-                  <div className="text-[11px] text-slate-400 font-medium">
+                  <div className="text-[11px] text-[#A95763] font-medium">
                     Requested on: {new Date(item.createdAt).toLocaleDateString()}
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 space-y-2">
+                <div className="pt-4 border-t border-[#F0D9D5] space-y-2">
                   {isApproved ? (
                     <button
                       onClick={() => setViewCertificateModal(item)}
-                      className="w-full py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-xs transition-colors flex items-center justify-center space-x-1.5"
+                      className="w-full py-2.5 rounded-xl bg-[#FFF5F1] hover:bg-[#E27B88] hover:text-white text-[#A95763] font-bold text-xs border border-[#F0D9D5] transition-all flex items-center justify-center space-x-1.5"
                     >
                       <Download className="w-4 h-4" />
                       <span>View & Download Certificate</span>
@@ -184,19 +184,19 @@ export const CertificatesPage = () => {
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => handleUpdateStatus(item._id, 'APPROVED')}
-                        className="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors"
+                        className="flex-1 py-2 rounded-xl peach-button-primary text-xs"
                       >
                         Approve & Issue
                       </button>
                       <button
                         onClick={() => handleUpdateStatus(item._id, 'REJECTED')}
-                        className="flex-1 py-2 rounded-xl bg-slate-100 hover:bg-rose-50 hover:text-rose-700 text-slate-700 font-bold text-xs transition-colors"
+                        className="flex-1 py-2 rounded-xl peach-button-secondary text-xs"
                       >
                         Reject
                       </button>
                     </div>
                   ) : (
-                    <div className="p-2.5 rounded-xl bg-amber-50 text-amber-800 text-xs font-semibold flex items-center justify-center space-x-1.5">
+                    <div className="p-2.5 rounded-xl bg-[#FFF5F1] border border-[#F0D9D5] text-[#A95763] text-xs font-semibold flex items-center justify-center space-x-1.5">
                       <Clock className="w-3.5 h-3.5" />
                       <span>Under Registrar Verification</span>
                     </div>
@@ -217,11 +217,11 @@ export const CertificatesPage = () => {
       >
         <form onSubmit={handleCreateRequest} className="space-y-4 text-xs sm:text-sm">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Certificate Type *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Certificate Type *</label>
             <select
               value={newRequest.type}
               onChange={(e) => setNewRequest({ ...newRequest, type: e.target.value })}
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-medium text-slate-800"
+              className="w-full peach-input font-medium text-[#2D2526]"
             >
               <option value="BONAFIDE">Bonafide Student Certificate</option>
               <option value="TRANSCRIPT">Official Academic Transcript</option>
@@ -232,7 +232,7 @@ export const CertificatesPage = () => {
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">
+            <label className="block font-bold text-[#2D2526] mb-1">
               Purpose & Organization Requiring It *
             </label>
             <input
@@ -241,18 +241,18 @@ export const CertificatesPage = () => {
               value={newRequest.purpose}
               onChange={(e) => setNewRequest({ ...newRequest, purpose: e.target.value })}
               placeholder="e.g. Higher Education Application / Bank Education Loan"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Additional Remarks</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Additional Remarks</label>
             <textarea
               rows={3}
               value={newRequest.remarks}
               onChange={(e) => setNewRequest({ ...newRequest, remarks: e.target.value })}
               placeholder="Any specific reference numbers or urgent dispatch notes..."
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
@@ -260,13 +260,13 @@ export const CertificatesPage = () => {
             <button
               type="button"
               onClick={() => setRequestModalOpen(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/30"
+              className="peach-button-primary"
             >
               Submit Request
             </button>
@@ -285,41 +285,41 @@ export const CertificatesPage = () => {
         {viewCertificateModal && (
           <div className="space-y-6">
             {/* Certificate Canvas */}
-            <div className="p-8 rounded-2xl border-4 border-double border-brand-900 bg-gradient-to-b from-amber-50/40 via-white to-amber-50/30 text-center relative overflow-hidden shadow-inner">
-              <div className="w-16 h-16 mx-auto rounded-full bg-brand-900 text-white flex items-center justify-center font-black text-xl mb-3 shadow-md">
+            <div className="p-8 rounded-2xl border-4 border-double border-[#A95763] bg-gradient-to-b from-[#FFF5F1] via-white to-[#FFF5F1] text-center relative overflow-hidden shadow-inner">
+              <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-[#E27B88] to-[#A95763] text-white flex items-center justify-center font-black text-xl mb-3 shadow-md">
                 CF
               </div>
 
-              <h2 className="text-xl font-serif font-black tracking-widest text-slate-900 uppercase mb-1">
+              <h2 className="text-xl font-serif font-black tracking-widest text-[#2D2526] uppercase mb-1">
                 CampusFlow Institute of Technology
               </h2>
-              <p className="text-[11px] font-mono text-slate-500 uppercase tracking-wider mb-6">
+              <p className="text-[11px] font-mono text-[#A95763] uppercase tracking-wider mb-6 font-semibold">
                 Accredited University • Office of the Registrar
               </p>
 
-              <div className="inline-block px-4 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-800 font-bold text-xs uppercase tracking-wider mb-6">
+              <div className="inline-block px-4 py-1 rounded-full bg-[#FFF5F1] border border-[#F0D9D5] text-[#A95763] font-bold text-xs uppercase tracking-wider mb-6">
                 {certificateTypes[viewCertificateModal.type] || viewCertificateModal.type}
               </div>
 
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed max-w-lg mx-auto mb-6">
+              <p className="text-xs sm:text-sm text-[#2D2526] leading-relaxed max-w-lg mx-auto mb-6">
                 This is to certify that <strong>{user?.name || 'Alex Rivera'}</strong> is a bona fide
                 student of this institution, currently enrolled in the{' '}
                 <strong>Bachelor of Technology (Computer Science)</strong> program for the Academic
                 Year 2025-2026.
               </p>
 
-              <p className="text-xs text-slate-500 italic max-w-md mx-auto mb-8">
+              <p className="text-xs text-[#6F6264] italic max-w-md mx-auto mb-8 font-medium">
                 Issued for the purpose of: {viewCertificateModal.purpose}
               </p>
 
-              <div className="flex items-center justify-between pt-6 border-t border-slate-200/80 text-xs">
+              <div className="flex items-center justify-between pt-6 border-t border-[#F0D9D5] text-xs">
                 <div className="text-left">
-                  <p className="font-mono text-[10px] text-slate-400">Date: {new Date().toLocaleDateString()}</p>
-                  <p className="font-mono text-[10px] text-slate-400">Ref: CF-CERT-{viewCertificateModal._id?.substring(0, 8).toUpperCase()}</p>
+                  <p className="font-mono text-[10px] text-[#A95763]">Date: {new Date().toLocaleDateString()}</p>
+                  <p className="font-mono text-[10px] text-[#A95763]">Ref: CF-CERT-{viewCertificateModal._id?.substring(0, 8).toUpperCase()}</p>
                 </div>
                 <div className="text-right">
-                  <div className="font-serif font-bold text-slate-800 italic">Dr. Arthur Vance</div>
-                  <div className="text-[10px] text-slate-500 font-semibold">Dean & Registrar</div>
+                  <div className="font-serif font-bold text-[#2D2526] italic">Dr. Arthur Vance</div>
+                  <div className="text-[10px] text-[#6F6264] font-semibold">Dean & Registrar</div>
                 </div>
               </div>
             </div>
@@ -327,7 +327,7 @@ export const CertificatesPage = () => {
             <div className="flex justify-end space-x-2">
               <button
                 onClick={() => window.print()}
-                className="inline-flex items-center space-x-1.5 px-4 py-2 bg-slate-900 text-white font-bold text-xs rounded-xl hover:bg-slate-800 transition-all"
+                className="peach-button-primary text-xs flex items-center space-x-1.5"
               >
                 <Printer className="w-4 h-4" />
                 <span>Print Document</span>

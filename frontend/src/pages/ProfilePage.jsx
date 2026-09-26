@@ -81,44 +81,44 @@ export const ProfilePage = () => {
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
       {/* Header Banner */}
-      <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-6">
+      <div className="bg-white rounded-3xl border border-[#F0D9D5] p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-6">
         <img
           src={
             user?.avatar ||
-            `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=3b62f6&color=fff`
+            `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=F4A6A6&color=fff`
           }
           alt={user?.name}
-          className="w-24 h-24 rounded-3xl object-cover ring-4 ring-slate-100 shadow-md flex-shrink-0"
+          className="w-24 h-24 rounded-3xl object-cover ring-4 ring-[#FFD6C9] shadow-md flex-shrink-0"
         />
 
         <div className="text-center sm:text-left space-y-2 flex-1">
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-            <h1 className="text-2xl font-black text-slate-900">{user?.name}</h1>
-            <Badge variant="indigo" size="sm">
+            <h1 className="text-2xl font-black text-[#2D2526]">{user?.name}</h1>
+            <Badge variant="peach" size="sm">
               {user?.role?.replace('_', ' ')}
             </Badge>
           </div>
 
-          <p className="text-xs sm:text-sm text-slate-500 font-medium">{user?.email}</p>
+          <p className="text-xs sm:text-sm text-[#6F6264] font-medium">{user?.email}</p>
 
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-2 text-xs text-slate-600">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-2 text-xs text-[#6F6264]">
             {profile?.rollNumber && (
-              <span className="font-mono bg-slate-100 px-2.5 py-1 rounded-lg font-bold text-slate-700">
+              <span className="font-mono bg-[#FFF5F1] px-2.5 py-1 rounded-lg font-bold text-[#A95763] border border-[#F0D9D5]">
                 Roll No: {profile.rollNumber}
               </span>
             )}
             {profile?.employeeId && (
-              <span className="font-mono bg-slate-100 px-2.5 py-1 rounded-lg font-bold text-slate-700">
+              <span className="font-mono bg-[#FFF5F1] px-2.5 py-1 rounded-lg font-bold text-[#A95763] border border-[#F0D9D5]">
                 Emp ID: {profile.employeeId}
               </span>
             )}
             {profile?.cgpa && (
-              <span className="bg-brand-50 text-brand-700 px-2.5 py-1 rounded-lg font-bold border border-brand-200">
+              <span className="bg-[#FFF5F1] text-[#A95763] px-2.5 py-1 rounded-lg font-bold border border-[#F0D9D5]">
                 CGPA: {Number(profile.cgpa).toFixed(2)}
               </span>
             )}
             {profile?.designation && (
-              <span className="bg-purple-50 text-purple-700 px-2.5 py-1 rounded-lg font-bold border border-purple-200">
+              <span className="bg-[#FFF5F1] text-[#A95763] px-2.5 py-1 rounded-lg font-bold border border-[#F0D9D5]">
                 {profile.designation}
               </span>
             )}
@@ -132,48 +132,48 @@ export const ProfilePage = () => {
         <DashboardCard title="Personal Information" subtitle="Update your contact details and avatar">
           <form onSubmit={handleUpdateProfile} className="space-y-4 text-xs sm:text-sm">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Full Name</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Full Name</label>
               <div className="relative">
-                <User className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <User className="w-4 h-4 text-[#A95763]/60 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   required
                   value={profileData.name}
                   onChange={(e) => setProfileData({ ...profileData, name: e.target.value })}
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none"
+                  className="peach-input pl-9"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Contact Phone</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Contact Phone</label>
               <div className="relative">
-                <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Phone className="w-4 h-4 text-[#A95763]/60 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="tel"
                   value={profileData.phone}
                   onChange={(e) => setProfileData({ ...profileData, phone: e.target.value })}
                   placeholder="+1 (555) 019-2831"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none"
+                  className="peach-input pl-9"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Profile Avatar URL</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Profile Avatar URL</label>
               <input
                 type="url"
                 value={profileData.avatar}
                 onChange={(e) => setProfileData({ ...profileData, avatar: e.target.value })}
                 placeholder="https://images.unsplash.com/..."
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none"
+                className="peach-input"
               />
             </div>
 
             <button
               type="submit"
               disabled={profileLoading}
-              className="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-md shadow-brand-600/30 transition-all flex items-center justify-center space-x-1.5 disabled:opacity-50"
+              className="peach-button-primary w-full space-x-1.5"
             >
               <Save className="w-4 h-4" />
               <span>{profileLoading ? 'Saving...' : 'Save Profile Changes'}</span>
@@ -185,9 +185,9 @@ export const ProfilePage = () => {
         <DashboardCard title="Security & Authentication" subtitle="Change your account login password">
           <form onSubmit={handleChangePassword} className="space-y-4 text-xs sm:text-sm">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Current Password</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Current Password</label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-[#A95763]/60 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="password"
                   required
@@ -196,15 +196,15 @@ export const ProfilePage = () => {
                     setPasswords({ ...passwords, currentPassword: e.target.value })
                   }
                   placeholder="••••••••"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none"
+                  className="peach-input pl-9"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block font-bold text-slate-700 mb-1">New Password</label>
+              <label className="block font-bold text-[#2D2526] mb-1">New Password</label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-[#A95763]/60 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="password"
                   required
@@ -213,15 +213,15 @@ export const ProfilePage = () => {
                     setPasswords({ ...passwords, newPassword: e.target.value })
                   }
                   placeholder="••••••••"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none"
+                  className="peach-input pl-9"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Confirm New Password</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Confirm New Password</label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-[#A95763]/60 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="password"
                   required
@@ -230,7 +230,7 @@ export const ProfilePage = () => {
                     setPasswords({ ...passwords, confirmPassword: e.target.value })
                   }
                   placeholder="••••••••"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none"
+                  className="peach-input pl-9"
                 />
               </div>
             </div>
@@ -238,7 +238,7 @@ export const ProfilePage = () => {
             <button
               type="submit"
               disabled={passwordLoading}
-              className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center space-x-1.5 disabled:opacity-50"
+              className="peach-button-secondary w-full space-x-1.5"
             >
               <ShieldCheck className="w-4 h-4" />
               <span>{passwordLoading ? 'Updating...' : 'Update Password'}</span>

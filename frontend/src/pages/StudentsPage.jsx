@@ -262,11 +262,11 @@ export const StudentsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <Users className="w-7 h-7 text-brand-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <Users className="w-7 h-7 text-[#A95763]" />
             Student Directory & Section Allocation (60 / Sec)
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5">
             Student allocations, 6-tab academic profiles, subject performance, attendance & exam dossiers
           </p>
         </div>
@@ -279,7 +279,7 @@ export const StudentsPage = () => {
               }
               setIsAddModalOpen(true);
             }}
-            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-600/30 transition-all"
+            className="peach-button-primary space-x-2"
           >
             <UserPlus className="w-4 h-4" />
             <span>Add New Student</span>
@@ -288,15 +288,15 @@ export const StudentsPage = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row items-center gap-3">
+      <div className="bg-white p-4 rounded-2xl border border-[#F0D9D5] shadow-sm flex flex-col md:flex-row items-center gap-3">
         <div className="relative flex-1 w-full">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-[#A95763]/60 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by student name, roll ID (e.g. CSE001), or email..."
-            className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none"
+            className="peach-input pl-9"
           />
         </div>
 
@@ -304,7 +304,7 @@ export const StudentsPage = () => {
           <select
             value={selectedDept}
             onChange={(e) => setSelectedDept(e.target.value)}
-            className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-700 w-full md:w-48 font-semibold"
+            className="peach-input w-full md:w-48 font-semibold"
           >
             <option value="">All Departments</option>
             {departments.map((d) => (
@@ -317,7 +317,7 @@ export const StudentsPage = () => {
           <select
             value={selectedSemester}
             onChange={(e) => setSelectedSemester(e.target.value)}
-            className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-700 w-full md:w-36 font-semibold"
+            className="peach-input w-full md:w-36 font-semibold"
           >
             <option value="">All Semesters</option>
             {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
@@ -348,25 +348,25 @@ export const StudentsPage = () => {
         {viewStudent && (
           <div className="space-y-6 text-xs sm:text-sm">
             {/* Top Student Banner Card */}
-            <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+            <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 p-4 rounded-2xl bg-[#FFF5F1] border border-[#F0D9D5]">
               <img
                 src={
                   viewStudent.userId?.avatar ||
-                  `https://ui-avatars.com/api/?name=${encodeURIComponent(viewStudent.userId?.name || 'Student')}&background=3b62f6&color=fff`
+                  `https://ui-avatars.com/api/?name=${encodeURIComponent(viewStudent.userId?.name || 'Student')}&background=F4A6A6&color=fff`
                 }
                 alt={viewStudent.userId?.name}
-                className="w-16 h-16 rounded-2xl object-cover ring-2 ring-brand-500/20"
+                className="w-16 h-16 rounded-2xl object-cover ring-2 ring-[#FFD6C9]"
               />
               <div className="text-center sm:text-left flex-1">
-                <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                <h3 className="text-base sm:text-lg font-bold text-[#2D2526]">
                   {viewStudent.userId?.name}
                 </h3>
-                <p className="text-xs text-slate-500">{viewStudent.userId?.email}</p>
+                <p className="text-xs text-[#6F6264]">{viewStudent.userId?.email}</p>
                 <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-2">
-                  <span className="font-mono text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-0.5 rounded border border-brand-200">
+                  <span className="font-mono text-xs font-bold text-[#A95763] bg-white px-2.5 py-0.5 rounded border border-[#F0D9D5]">
                     {viewStudent.rollNumber}
                   </span>
-                  <Badge variant="indigo" size="sm">
+                  <Badge variant="peach" size="sm">
                     {viewStudent.departmentId?.name || 'Computer Science Engineering'}
                   </Badge>
                   <Badge variant="success" size="sm">
@@ -377,7 +377,7 @@ export const StudentsPage = () => {
             </div>
 
             {/* 6 Profile Dossier Navigation Tabs */}
-            <div className="flex rounded-2xl bg-slate-100 p-1.5 overflow-x-auto text-xs font-bold">
+            <div className="flex rounded-2xl bg-[#FFF5F1] p-1.5 overflow-x-auto text-xs font-bold border border-[#F0D9D5]">
               {[
                 { id: 'OVERVIEW', label: 'Overview' },
                 { id: 'ATTENDANCE', label: 'Attendance' },
@@ -391,8 +391,8 @@ export const StudentsPage = () => {
                   onClick={() => setProfileActiveTab(tab.id)}
                   className={`flex-1 py-2 px-3 rounded-xl transition-all whitespace-nowrap ${
                     profileActiveTab === tab.id
-                      ? 'bg-white text-brand-700 shadow-sm'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-gradient-to-r from-[#E27B88] to-[#A95763] text-white shadow-sm font-extrabold'
+                      : 'text-[#6F6264] hover:text-[#2D2526]'
                   }`}
                 >
                   {tab.label}
@@ -404,31 +404,31 @@ export const StudentsPage = () => {
             {profileActiveTab === 'OVERVIEW' && (
               <div className="space-y-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
-                    <span className="text-slate-400 font-semibold block mb-1">Overall Attendance</span>
+                  <div className="p-3.5 rounded-2xl bg-[#FFF5F1]/80 border border-[#F0D9D5]">
+                    <span className="text-[#6F6264] font-semibold block mb-1">Overall Attendance</span>
                     <span className="font-black text-emerald-700 text-base">
                       {viewStudent.attendancePercentage ?? 89}%
                     </span>
                   </div>
-                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
-                    <span className="text-slate-400 font-semibold block mb-1">CGPA Score</span>
-                    <span className="font-black text-brand-700 text-base">
+                  <div className="p-3.5 rounded-2xl bg-[#FFF5F1]/80 border border-[#F0D9D5]">
+                    <span className="text-[#6F6264] font-semibold block mb-1">CGPA Score</span>
+                    <span className="font-black text-[#A95763] text-base">
                       {viewStudent.cgpa ? Number(viewStudent.cgpa).toFixed(2) : '8.65'} / 10.0
                     </span>
                   </div>
-                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
-                    <span className="text-slate-400 font-semibold block mb-1">Total Subjects</span>
-                    <span className="font-black text-slate-800 text-base">6 Courses</span>
+                  <div className="p-3.5 rounded-2xl bg-[#FFF5F1]/80 border border-[#F0D9D5]">
+                    <span className="text-[#6F6264] font-semibold block mb-1">Total Subjects</span>
+                    <span className="font-black text-[#2D2526] text-base">6 Courses</span>
                   </div>
-                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
-                    <span className="text-slate-400 font-semibold block mb-1">Section Code</span>
-                    <span className="font-black text-slate-800 text-base">Section A</span>
+                  <div className="p-3.5 rounded-2xl bg-[#FFF5F1]/80 border border-[#F0D9D5]">
+                    <span className="text-[#6F6264] font-semibold block mb-1">Section Code</span>
+                    <span className="font-black text-[#2D2526] text-base">Section A</span>
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-gradient-to-r from-brand-600 to-indigo-600 text-white flex items-center justify-between">
+                <div className="p-4 rounded-2xl bg-gradient-to-r from-[#E27B88] to-[#A95763] text-white flex items-center justify-between shadow-md">
                   <div>
-                    <span className="text-[11px] font-bold text-brand-200 uppercase tracking-widest block">
+                    <span className="text-[11px] font-bold text-[#FFD6C9] uppercase tracking-widest block">
                       Highest Scoring Subject
                     </span>
                     <h4 className="text-base font-black">Database Management Systems — 91%</h4>
@@ -449,9 +449,9 @@ export const StudentsPage = () => {
                   <span className="text-2xl font-black text-emerald-700">90.28%</span>
                 </div>
 
-                <div className="overflow-x-auto border border-slate-200 rounded-2xl">
+                <div className="overflow-x-auto border border-[#F0D9D5] rounded-2xl">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-slate-50 text-slate-700 font-bold uppercase text-[11px] border-b border-slate-200">
+                    <thead className="bg-[#FFF5F1] text-[#A95763] font-bold uppercase text-[11px] border-b border-[#F0D9D5]">
                       <tr>
                         <th className="py-2.5 px-3">Subject Name</th>
                         <th className="py-2.5 px-3">Total Classes</th>
@@ -460,23 +460,23 @@ export const StudentsPage = () => {
                         <th className="py-2.5 px-3">Attendance %</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100 font-medium text-slate-800">
+                    <tbody className="divide-y divide-[#F0D9D5]/60 font-medium text-[#2D2526]">
                       <tr>
-                        <td className="py-2 px-3 font-bold text-slate-900">Database Management Systems</td>
+                        <td className="py-2 px-3 font-bold text-[#2D2526]">Database Management Systems</td>
                         <td className="py-2 px-3">40</td>
                         <td className="py-2 px-3">37</td>
                         <td className="py-2 px-3 text-rose-600">3</td>
                         <td className="py-2 px-3 font-extrabold text-emerald-700">92.5%</td>
                       </tr>
                       <tr>
-                        <td className="py-2 px-3 font-bold text-slate-900">Operating Systems & Architecture</td>
+                        <td className="py-2 px-3 font-bold text-[#2D2526]">Operating Systems & Architecture</td>
                         <td className="py-2 px-3">38</td>
                         <td className="py-2 px-3">34</td>
                         <td className="py-2 px-3 text-rose-600">4</td>
                         <td className="py-2 px-3 font-extrabold text-emerald-700">89.4%</td>
                       </tr>
                       <tr>
-                        <td className="py-2 px-3 font-bold text-slate-900">Design & Analysis of Algorithms</td>
+                        <td className="py-2 px-3 font-bold text-[#2D2526]">Design & Analysis of Algorithms</td>
                         <td className="py-2 px-3">36</td>
                         <td className="py-2 px-3">34</td>
                         <td className="py-2 px-3 text-rose-600">2</td>
@@ -491,9 +491,9 @@ export const StudentsPage = () => {
             {/* TAB 3: MARKS */}
             {profileActiveTab === 'MARKS' && (
               <div className="space-y-4">
-                <div className="overflow-x-auto border border-slate-200 rounded-2xl">
+                <div className="overflow-x-auto border border-[#F0D9D5] rounded-2xl">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-slate-50 text-slate-700 font-bold uppercase text-[11px] border-b border-slate-200">
+                    <thead className="bg-[#FFF5F1] text-[#A95763] font-bold uppercase text-[11px] border-b border-[#F0D9D5]">
                       <tr>
                         <th className="py-2.5 px-3">Subject</th>
                         <th className="py-2.5 px-3">Assignment (20)</th>
@@ -504,27 +504,27 @@ export const StudentsPage = () => {
                         <th className="py-2.5 px-3">Grade</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100 font-medium text-slate-800">
+                    <tbody className="divide-y divide-[#F0D9D5]/60 font-medium text-[#2D2526]">
                       <tr>
-                        <td className="py-2.5 px-3 font-bold text-slate-900">Database Management Systems</td>
+                        <td className="py-2.5 px-3 font-bold text-[#2D2526]">Database Management Systems</td>
                         <td className="py-2.5 px-3">18 / 20</td>
                         <td className="py-2.5 px-3">24 / 30</td>
                         <td className="py-2.5 px-3">43 / 50</td>
                         <td className="py-2.5 px-3 font-bold">85</td>
-                        <td className="py-2.5 px-3 font-extrabold text-brand-700">85%</td>
+                        <td className="py-2.5 px-3 font-extrabold text-[#A95763]">85%</td>
                         <td className="py-2.5 px-3"><span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-bold text-[11px]">A</span></td>
                       </tr>
                       <tr>
-                        <td className="py-2.5 px-3 font-bold text-slate-900">Operating Systems & Architecture</td>
+                        <td className="py-2.5 px-3 font-bold text-[#2D2526]">Operating Systems & Architecture</td>
                         <td className="py-2.5 px-3">17 / 20</td>
                         <td className="py-2.5 px-3">21 / 30</td>
                         <td className="py-2.5 px-3">44 / 50</td>
                         <td className="py-2.5 px-3 font-bold">82</td>
-                        <td className="py-2.5 px-3 font-extrabold text-brand-700">82%</td>
+                        <td className="py-2.5 px-3 font-extrabold text-[#A95763]">82%</td>
                         <td className="py-2.5 px-3"><span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-bold text-[11px]">A</span></td>
                       </tr>
                       <tr>
-                        <td className="py-2.5 px-3 font-bold text-slate-900">Advanced Java & Web Services</td>
+                        <td className="py-2.5 px-3 font-bold text-[#2D2526]">Advanced Java & Web Services</td>
                         <td className="py-2.5 px-3">19 / 20</td>
                         <td className="py-2.5 px-3">26 / 30</td>
                         <td className="py-2.5 px-3">46 / 50</td>
@@ -541,17 +541,17 @@ export const StudentsPage = () => {
             {/* TAB 4: ASSIGNMENTS */}
             {profileActiveTab === 'ASSIGNMENTS' && (
               <div className="space-y-3">
-                <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
+                <div className="p-3 bg-[#FFF5F1] rounded-2xl border border-[#F0D9D5] flex items-center justify-between">
                   <div>
-                    <h5 className="font-bold text-slate-900">DBMS Schema Normalization Project</h5>
-                    <p className="text-xs text-slate-500">Subject: DBMS • Score: 18/20</p>
+                    <h5 className="font-bold text-[#2D2526]">DBMS Schema Normalization Project</h5>
+                    <p className="text-xs text-[#6F6264]">Subject: DBMS • Score: 18/20</p>
                   </div>
                   <Badge variant="success" size="sm">Submitted</Badge>
                 </div>
-                <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
+                <div className="p-3 bg-[#FFF5F1] rounded-2xl border border-[#F0D9D5] flex items-center justify-between">
                   <div>
-                    <h5 className="font-bold text-slate-900">OS Process Scheduling Simulation</h5>
-                    <p className="text-xs text-slate-500">Subject: OS • Score: 17/20</p>
+                    <h5 className="font-bold text-[#2D2526]">OS Process Scheduling Simulation</h5>
+                    <p className="text-xs text-[#6F6264]">Subject: OS • Score: 17/20</p>
                   </div>
                   <Badge variant="success" size="sm">Submitted</Badge>
                 </div>
@@ -561,24 +561,24 @@ export const StudentsPage = () => {
             {/* TAB 5: EXAMS */}
             {profileActiveTab === 'EXAMS' && (
               <div className="space-y-3">
-                <div className="p-3.5 rounded-2xl border border-slate-200 bg-slate-50 flex items-center justify-between">
+                <div className="p-3.5 rounded-2xl border border-[#F0D9D5] bg-[#FFF5F1] flex items-center justify-between">
                   <div>
-                    <h5 className="font-bold text-slate-900">Mid-Semester Examination</h5>
-                    <p className="text-xs text-slate-500">Date: 15 Oct 2026 • Status: Present</p>
+                    <h5 className="font-bold text-[#2D2526]">Mid-Semester Examination</h5>
+                    <p className="text-xs text-[#6F6264]">Date: 15 Oct 2026 • Status: Present</p>
                   </div>
-                  <span className="font-extrabold text-brand-700 text-sm">85% Aggregate</span>
+                  <span className="font-extrabold text-[#A95763] text-sm">85% Aggregate</span>
                 </div>
               </div>
             )}
 
             {/* TAB 6: PROJECTS */}
             {profileActiveTab === 'PROJECTS' && (
-              <div className="p-4 rounded-2xl border border-slate-200 bg-slate-50 space-y-2">
+              <div className="p-4 rounded-2xl border border-[#F0D9D5] bg-[#FFF5F1] space-y-2">
                 <div className="flex items-center justify-between">
-                  <h4 className="font-bold text-slate-900 text-sm">Autonomous Campus Navigation Platform</h4>
+                  <h4 className="font-bold text-[#2D2526] text-sm">Autonomous Campus Navigation Platform</h4>
                   <Badge variant="success" size="sm">Completed</Badge>
                 </div>
-                <p className="text-xs text-slate-600">Faculty Mentor: Dr. Arthur Vance • Progress: 100% • Score: 92/100</p>
+                <p className="text-xs text-[#6F6264]">Faculty Mentor: Dr. Arthur Vance • Progress: 100% • Score: 92/100</p>
               </div>
             )}
           </div>
@@ -595,48 +595,48 @@ export const StudentsPage = () => {
         <form onSubmit={handleCreateStudent} className="space-y-4 text-xs sm:text-sm">
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Full Name *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Full Name *</label>
               <input
                 type="text"
                 required
                 value={newStudent.name}
                 onChange={(e) => setNewStudent({ ...newStudent, name: e.target.value })}
                 placeholder="Alex Morgan"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Email Address *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Email Address *</label>
               <input
                 type="email"
                 required
                 value={newStudent.email}
                 onChange={(e) => setNewStudent({ ...newStudent, email: e.target.value })}
                 placeholder="alex@campusflow.edu"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Roll / Reg Number *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Roll / Reg Number *</label>
               <input
                 type="text"
                 required
                 value={newStudent.rollNumber}
                 onChange={(e) => setNewStudent({ ...newStudent, rollNumber: e.target.value })}
                 placeholder="CSE001"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl uppercase font-mono"
+                className="peach-input uppercase font-mono"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Department *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Department *</label>
               <select
                 required
                 value={newStudent.departmentId}
                 onChange={(e) => setNewStudent({ ...newStudent, departmentId: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               >
                 {departments.map((d) => (
                   <option key={d._id} value={d._id}>
@@ -649,11 +649,11 @@ export const StudentsPage = () => {
 
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Semester</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Semester</label>
               <select
                 value={newStudent.semester}
                 onChange={(e) => setNewStudent({ ...newStudent, semester: Number(e.target.value) })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               >
                 {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
                   <option key={s} value={s}>
@@ -663,7 +663,7 @@ export const StudentsPage = () => {
               </select>
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Initial CGPA</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Initial CGPA</label>
               <input
                 type="number"
                 step="0.01"
@@ -671,17 +671,17 @@ export const StudentsPage = () => {
                 max="10"
                 value={newStudent.cgpa}
                 onChange={(e) => setNewStudent({ ...newStudent, cgpa: Number(e.target.value) })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Phone</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Phone</label>
               <input
                 type="text"
                 value={newStudent.phone}
                 onChange={(e) => setNewStudent({ ...newStudent, phone: e.target.value })}
                 placeholder="+1 555-0199"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               />
             </div>
           </div>
@@ -690,14 +690,14 @@ export const StudentsPage = () => {
             <button
               type="button"
               onClick={() => setIsAddModalOpen(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30"
+              className="peach-button-primary"
             >
               {submitting ? 'Creating...' : 'Enroll Student'}
             </button>
@@ -709,3 +709,4 @@ export const StudentsPage = () => {
 };
 
 export default StudentsPage;
+

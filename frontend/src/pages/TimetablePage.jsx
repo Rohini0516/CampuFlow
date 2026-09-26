@@ -109,11 +109,11 @@ export const TimetablePage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <Clock className="w-7 h-7 text-brand-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <Clock className="w-7 h-7 text-[#A95763]" />
             Weekly Academic Timetable
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5">
             Class lecture periods, lab sessions, faculty allocations, and venue locations
           </p>
         </div>
@@ -121,7 +121,7 @@ export const TimetablePage = () => {
         {role === 'ADMIN' && (
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-600/30 transition-all"
+            className="peach-button-primary space-x-2"
           >
             <Plus className="w-4 h-4" />
             <span>Add Class Period</span>
@@ -130,16 +130,16 @@ export const TimetablePage = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
+      <div className="bg-white p-4 rounded-2xl border border-[#F0D9D5] shadow-sm flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-3">
           <div className="flex items-center space-x-2">
-            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+            <span className="text-xs font-bold text-[#A95763] uppercase tracking-wider">
               Department:
             </span>
             <select
               value={selectedDept}
               onChange={(e) => setSelectedDept(e.target.value)}
-              className="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-semibold text-slate-800"
+              className="peach-input !py-1.5 w-auto font-semibold"
             >
               {departments.map((d) => (
                 <option key={d._id} value={d._id}>
@@ -150,13 +150,13 @@ export const TimetablePage = () => {
           </div>
 
           <div className="flex items-center space-x-2">
-            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+            <span className="text-xs font-bold text-[#A95763] uppercase tracking-wider">
               Semester:
             </span>
             <select
               value={selectedSem}
               onChange={(e) => setSelectedSem(Number(e.target.value))}
-              className="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-semibold text-slate-800"
+              className="peach-input !py-1.5 w-auto font-semibold"
             >
               {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
                 <option key={s} value={s}>
@@ -167,31 +167,31 @@ export const TimetablePage = () => {
           </div>
         </div>
 
-        <span className="text-xs text-slate-500 font-medium">
-          Academic Term: <strong>Spring 2026</strong>
+        <span className="text-xs text-[#6F6264] font-medium">
+          Academic Term: <strong className="text-[#2D2526]">Spring 2026</strong>
         </span>
       </div>
 
       {/* Weekly Grid */}
-      <div className="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-3xl border border-[#F0D9D5] shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[800px]">
             <thead>
-              <tr className="bg-slate-900 text-white text-xs font-bold uppercase tracking-wider">
+              <tr className="bg-gradient-to-r from-[#E27B88] to-[#A95763] text-white text-xs font-bold uppercase tracking-wider">
                 <th className="py-4 px-4 w-32">Day</th>
                 {timeSlots.map((slot, idx) => (
-                  <th key={idx} className="py-4 px-4 text-center border-l border-slate-800">
+                  <th key={idx} className="py-4 px-4 text-center border-l border-white/20">
                     {slot}
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-xs">
+            <tbody className="divide-y divide-[#F0D9D5]/60 text-xs">
               {daysOfWeek.map((day) => {
                 const daySlots = timetable.filter((t) => t.day === day);
                 return (
-                  <tr key={day} className="hover:bg-slate-50/50 transition-colors">
-                    <td className="py-4 px-4 font-bold text-slate-900 bg-slate-50/80 border-r border-slate-100">
+                  <tr key={day} className="hover:bg-[#FFF5F1]/50 transition-colors">
+                    <td className="py-4 px-4 font-extrabold text-[#2D2526] bg-[#FFF5F1]/80 border-r border-[#F0D9D5]">
                       {day}
                     </td>
                     {timeSlots.map((time, idx) => {
@@ -212,7 +212,7 @@ export const TimetablePage = () => {
                         return (
                           <td
                             key={idx}
-                            className="p-2 text-center bg-slate-100/60 border-l border-slate-100 text-slate-400 font-bold uppercase tracking-widest text-[10px]"
+                            className="p-2 text-center bg-[#FFD6C9]/40 border-l border-[#F0D9D5] text-[#A95763] font-bold uppercase tracking-widest text-[10px]"
                           >
                             Lunch Break
                           </td>
@@ -220,24 +220,24 @@ export const TimetablePage = () => {
                       }
 
                       return (
-                        <td key={idx} className="p-2.5 border-l border-slate-100 align-top">
+                        <td key={idx} className="p-2.5 border-l border-[#F0D9D5] align-top">
                           {matched?.subjectId ? (
-                            <div className="p-2.5 rounded-2xl bg-brand-50/70 border border-brand-200/60 hover:shadow-sm transition-all">
-                              <span className="font-mono text-[10px] font-bold text-brand-700 block">
+                            <div className="p-2.5 rounded-2xl bg-[#FFF5F1] border border-[#F0D9D5] hover:border-[#EFA7B5] hover:shadow-peach-sm transition-all">
+                              <span className="font-mono text-[10px] font-bold text-[#A95763] block">
                                 {matched.subjectId?.code || 'CS-301'}
                               </span>
-                              <p className="font-bold text-slate-900 text-xs line-clamp-1 mt-0.5">
+                              <p className="font-bold text-[#2D2526] text-xs line-clamp-1 mt-0.5">
                                 {matched.subjectId?.name || 'Algorithms'}
                               </p>
-                              <div className="mt-2 flex items-center justify-between text-[10px] text-slate-500 font-medium">
+                              <div className="mt-2 flex items-center justify-between text-[10px] text-[#6F6264] font-medium">
                                 <span className="flex items-center space-x-1">
-                                  <MapPin className="w-3 h-3 text-slate-400" />
+                                  <MapPin className="w-3 h-3 text-[#A95763]" />
                                   <span>{matched.room || 'Hall 201'}</span>
                                 </span>
                               </div>
                             </div>
                           ) : (
-                            <div className="p-2 rounded-xl text-center text-slate-300 font-medium">
+                            <div className="p-2 rounded-xl text-center text-[#6F6264]/40 font-medium">
                               —
                             </div>
                           )}
@@ -262,11 +262,11 @@ export const TimetablePage = () => {
         <form onSubmit={handleAddSlot} className="space-y-4 text-xs sm:text-sm">
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Day of Week *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Day of Week *</label>
               <select
                 value={newSlot.day}
                 onChange={(e) => setNewSlot({ ...newSlot, day: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               >
                 {daysOfWeek.map((d) => (
                   <option key={d} value={d}>
@@ -276,11 +276,11 @@ export const TimetablePage = () => {
               </select>
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Subject *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Subject *</label>
               <select
                 value={newSlot.subjectId}
                 onChange={(e) => setNewSlot({ ...newSlot, subjectId: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               >
                 {subjects.map((sub) => (
                   <option key={sub._id} value={sub._id}>
@@ -293,31 +293,31 @@ export const TimetablePage = () => {
 
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Start Time</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Start Time</label>
               <input
                 type="time"
                 value={newSlot.startTime}
                 onChange={(e) => setNewSlot({ ...newSlot, startTime: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">End Time</label>
+              <label className="block font-bold text-[#2D2526] mb-1">End Time</label>
               <input
                 type="time"
                 value={newSlot.endTime}
                 onChange={(e) => setNewSlot({ ...newSlot, endTime: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Room / Lab</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Room / Lab</label>
               <input
                 type="text"
                 value={newSlot.room}
                 onChange={(e) => setNewSlot({ ...newSlot, room: e.target.value })}
                 placeholder="Lab 204"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               />
             </div>
           </div>
@@ -326,13 +326,13 @@ export const TimetablePage = () => {
             <button
               type="button"
               onClick={() => setIsAddModalOpen(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30"
+              className="peach-button-primary"
             >
               Add to Timetable
             </button>

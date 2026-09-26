@@ -169,11 +169,11 @@ export const ProjectsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <Layers className="w-7 h-7 text-brand-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <Layers className="w-7 h-7 text-[#E27B88]" />
             Student Project Tracking & Evaluation
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5 font-medium">
             Monitor capstone, mini-projects, progress indicators, evaluation scores, and completion certificates
           </p>
         </div>
@@ -181,7 +181,7 @@ export const ProjectsPage = () => {
         {(role === 'ADMIN' || role === 'FACULTY' || role === 'STUDENT') && (
           <button
             onClick={() => setCreateModalOpen(true)}
-            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-600/30 transition-all"
+            className="peach-button-primary text-xs sm:text-sm flex items-center space-x-2 self-start sm:self-auto"
           >
             <Plus className="w-4 h-4" />
             <span>Create New Project</span>
@@ -190,17 +190,17 @@ export const ProjectsPage = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-sm space-y-3">
+      <div className="bg-white rounded-2xl border border-[#F0D9D5] p-4 shadow-sm space-y-3">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
           {/* Search */}
           <div className="relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[#A95763] absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search project title or ID..."
-              className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none"
+              className="w-full pl-9 pr-3 py-2 peach-input text-xs sm:text-sm"
             />
           </div>
 
@@ -208,7 +208,7 @@ export const ProjectsPage = () => {
           <select
             value={selectedDept}
             onChange={(e) => setSelectedDept(e.target.value)}
-            className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-medium text-slate-700"
+            className="w-full peach-input text-xs sm:text-sm font-medium text-[#2D2526]"
           >
             <option value="">All Departments</option>
             {departments.map((d) => (
@@ -222,7 +222,7 @@ export const ProjectsPage = () => {
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-medium text-slate-700"
+            className="w-full peach-input text-xs sm:text-sm font-medium text-[#2D2526]"
           >
             <option value="">All Statuses</option>
             <option value="Planning">Planning</option>
@@ -236,7 +236,7 @@ export const ProjectsPage = () => {
           <select
             value={selectedSemester}
             onChange={(e) => setSelectedSemester(e.target.value)}
-            className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-medium text-slate-700"
+            className="w-full peach-input text-xs sm:text-sm font-medium text-[#2D2526]"
           >
             <option value="">All Semesters</option>
             {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
@@ -264,8 +264,8 @@ export const ProjectsPage = () => {
               <div
                 key={item._id}
                 className={`bg-white rounded-3xl border ${
-                  isCompleted ? 'border-emerald-200 shadow-emerald-50' : 'border-slate-200/80'
-                } p-6 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden`}
+                  isCompleted ? 'border-emerald-300 shadow-emerald-50' : 'border-[#F0D9D5]'
+                } p-6 shadow-sm hover:shadow-xl hover:border-[#EFA7B5] transition-all flex flex-col justify-between group relative overflow-hidden`}
               >
                 {/* Completed Banner if 100% */}
                 {isCompleted && (
@@ -277,7 +277,7 @@ export const ProjectsPage = () => {
 
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-3">
-                    <span className="text-[11px] font-mono text-brand-600 font-bold bg-brand-50 px-2.5 py-1 rounded-lg border border-brand-200/60">
+                    <span className="text-[11px] font-mono text-[#A95763] font-bold bg-[#FFF5F1] px-2.5 py-1 rounded-xl border border-[#F0D9D5]">
                       {item.projectId || 'PRJ-101'}
                     </span>
                     <Badge variant={getStatusBadgeVariant(item.status)} size="sm">
@@ -285,42 +285,42 @@ export const ProjectsPage = () => {
                     </Badge>
                   </div>
 
-                  <h3 className="font-bold text-slate-900 text-base mb-1 group-hover:text-brand-600 transition-colors">
+                  <h3 className="font-bold text-[#2D2526] text-base mb-1 group-hover:text-[#E27B88] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-500 line-clamp-2 mb-4">
+                  <p className="text-xs text-[#6F6264] line-clamp-2 mb-4 font-medium">
                     {item.description || 'Capstone project under academic faculty supervision.'}
                   </p>
 
                   {/* Student & Department Details */}
-                  <div className="space-y-2 text-xs text-slate-600 mb-4 bg-slate-50 p-3 rounded-2xl border border-slate-100">
+                  <div className="space-y-2 text-xs text-[#6F6264] mb-4 bg-[#FFF5F1]/70 p-3 rounded-2xl border border-[#F0D9D5]">
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-slate-500 flex items-center">
-                        <User className="w-3.5 h-3.5 mr-1.5 text-brand-500" />
+                      <span className="font-semibold text-[#A95763] flex items-center">
+                        <User className="w-3.5 h-3.5 mr-1.5 text-[#E27B88]" />
                         Student Lead
                       </span>
-                      <span className="font-bold text-slate-800">
+                      <span className="font-bold text-[#2D2526]">
                         {item.student?.user?.name || 'Student'}
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-slate-500 flex items-center">
-                        <Building2 className="w-3.5 h-3.5 mr-1.5 text-indigo-500" />
+                      <span className="font-semibold text-[#A95763] flex items-center">
+                        <Building2 className="w-3.5 h-3.5 mr-1.5 text-[#E27B88]" />
                         Department
                       </span>
-                      <span className="font-bold text-slate-800">
+                      <span className="font-bold text-[#2D2526]">
                         {item.department?.code || 'CSE'} • Sem {item.semester}
                       </span>
                     </div>
 
                     {item.facultyMentor && (
                       <div className="flex items-center justify-between">
-                        <span className="font-semibold text-slate-500 flex items-center">
-                          <User className="w-3.5 h-3.5 mr-1.5 text-emerald-500" />
+                        <span className="font-semibold text-[#A95763] flex items-center">
+                          <User className="w-3.5 h-3.5 mr-1.5 text-emerald-600" />
                           Faculty Mentor
                         </span>
-                        <span className="font-bold text-slate-800">
+                        <span className="font-bold text-[#2D2526]">
                           {item.facultyMentor?.user?.name || 'Prof. Faculty'}
                         </span>
                       </div>
@@ -330,27 +330,27 @@ export const ProjectsPage = () => {
                   {/* Progress Bar Indicator */}
                   <div className="space-y-1.5 mb-4">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-slate-700 flex items-center">
-                        <TrendingUp className="w-3.5 h-3.5 text-brand-600 mr-1" />
+                      <span className="font-bold text-[#2D2526] flex items-center">
+                        <TrendingUp className="w-3.5 h-3.5 text-[#E27B88] mr-1" />
                         Progress Indicator
                       </span>
-                      <span className="font-extrabold text-brand-600">{item.progress}%</span>
+                      <span className="font-extrabold text-[#E27B88]">{item.progress}%</span>
                     </div>
 
-                    <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200/60">
+                    <div className="w-full h-2.5 bg-[#F0D9D5]/60 rounded-full overflow-hidden p-0.5 border border-[#F0D9D5]">
                       <div
                         className={`h-full rounded-full transition-all duration-500 ${
                           isCompleted
                             ? 'bg-emerald-500'
                             : item.progress > 50
-                            ? 'bg-brand-600'
+                            ? 'bg-[#E27B88]'
                             : 'bg-amber-500'
                         }`}
                         style={{ width: `${item.progress}%` }}
                       />
                     </div>
 
-                    <div className="flex justify-between text-[10px] font-mono text-slate-400 pt-0.5">
+                    <div className="flex justify-between text-[10px] font-mono text-[#A95763] pt-0.5">
                       <span>0%</span>
                       <span>25%</span>
                       <span>50%</span>
@@ -361,15 +361,15 @@ export const ProjectsPage = () => {
                 </div>
 
                 {/* Footer Action */}
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[11px] text-slate-400 font-medium">
+                <div className="pt-3 border-t border-[#F0D9D5] flex items-center justify-between">
+                  <span className="text-[11px] text-[#6F6264] font-medium">
                     Updated: {new Date(item.updatedAt).toLocaleDateString()}
                   </span>
 
                   {(role === 'ADMIN' || role === 'FACULTY') && (
                     <button
                       onClick={() => openUpdateModal(item)}
-                      className="px-3 py-1.5 rounded-xl bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold text-xs transition-colors"
+                      className="px-3 py-1.5 rounded-xl bg-[#FFF5F1] hover:bg-[#E27B88] hover:text-white text-[#A95763] font-bold text-xs border border-[#F0D9D5] transition-all"
                     >
                       Update Progress
                     </button>
@@ -390,35 +390,35 @@ export const ProjectsPage = () => {
       >
         <form onSubmit={handleCreateProject} className="space-y-4 text-xs sm:text-sm">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Project Title *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Project Title *</label>
             <input
               type="text"
               required
               value={newProject.title}
               onChange={(e) => setNewProject({ ...newProject, title: e.target.value })}
               placeholder="e.g. AI-Powered Autonomous Smart Campus Navigation"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Project Description</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Project Description</label>
             <textarea
               rows={2}
               value={newProject.description}
               onChange={(e) => setNewProject({ ...newProject, description: e.target.value })}
               placeholder="Brief overview of project scope and objectives..."
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Department</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Department</label>
               <select
                 value={newProject.department}
                 onChange={(e) => setNewProject({ ...newProject, department: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-medium"
+                className="w-full peach-input font-medium"
               >
                 <option value="">Select Dept</option>
                 {departments.map((d) => (
@@ -430,13 +430,13 @@ export const ProjectsPage = () => {
             </div>
 
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Semester</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Semester</label>
               <select
                 value={newProject.semester}
                 onChange={(e) =>
                   setNewProject({ ...newProject, semester: Number(e.target.value) })
                 }
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-medium"
+                className="w-full peach-input font-medium"
               >
                 {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
                   <option key={s} value={s}>
@@ -451,13 +451,13 @@ export const ProjectsPage = () => {
             <button
               type="button"
               onClick={() => setCreateModalOpen(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-md"
+              className="peach-button-primary"
             >
               Create Project
             </button>
@@ -474,11 +474,11 @@ export const ProjectsPage = () => {
       >
         <form onSubmit={handleUpdateProject} className="space-y-4 text-xs sm:text-sm">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Project Status</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Project Status</label>
             <select
               value={updateData.status}
               onChange={(e) => setUpdateData({ ...updateData, status: e.target.value })}
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold"
+              className="w-full peach-input font-semibold"
             >
               <option value="Planning">Planning</option>
               <option value="Development">Development</option>
@@ -490,7 +490,7 @@ export const ProjectsPage = () => {
 
           <div>
             <div className="flex justify-between mb-1">
-              <label className="font-bold text-slate-700">Progress Percentage ({updateData.progress}%)</label>
+              <label className="font-bold text-[#2D2526]">Progress Percentage ({updateData.progress}%)</label>
             </div>
             <input
               type="range"
@@ -499,30 +499,30 @@ export const ProjectsPage = () => {
               step="5"
               value={updateData.progress}
               onChange={(e) => setUpdateData({ ...updateData, progress: Number(e.target.value) })}
-              className="w-full accent-brand-600"
+              className="w-full accent-[#E27B88]"
             />
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Evaluation Score (Max 100)</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Evaluation Score (Max 100)</label>
             <input
               type="number"
               min="0"
               max="100"
               value={updateData.score}
               onChange={(e) => setUpdateData({ ...updateData, score: Number(e.target.value) })}
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold"
+              className="w-full peach-input font-bold"
             />
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Mentor Remarks & Feedback</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Mentor Remarks & Feedback</label>
             <textarea
               rows={2}
               value={updateData.remarks}
               onChange={(e) => setUpdateData({ ...updateData, remarks: e.target.value })}
               placeholder="Add mentor feedback or review comments..."
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
@@ -530,13 +530,13 @@ export const ProjectsPage = () => {
             <button
               type="button"
               onClick={() => setUpdateModalOpen(null)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-md"
+              className="peach-button-primary"
             >
               Save Evaluation
             </button>

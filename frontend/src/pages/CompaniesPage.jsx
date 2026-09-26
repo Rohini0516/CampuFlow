@@ -87,11 +87,11 @@ export const CompaniesPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <Building className="w-7 h-7 text-brand-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <Building className="w-7 h-7 text-[#E27B88]" />
             Corporate Recruitment Partners
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5 font-medium">
             Partner tech companies, enterprise recruiters, and industry hiring partners
           </p>
         </div>
@@ -99,7 +99,7 @@ export const CompaniesPage = () => {
         {(role === 'ADMIN' || role === 'PLACEMENT_OFFICER') && (
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-600/30 transition-all"
+            className="peach-button-primary text-xs sm:text-sm flex items-center space-x-2 self-start sm:self-auto"
           >
             <Plus className="w-4 h-4" />
             <span>Add Partner Company</span>
@@ -120,39 +120,39 @@ export const CompaniesPage = () => {
           companies.map((comp) => (
             <div
               key={comp._id}
-              className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group"
+              className="bg-white rounded-3xl border border-[#F0D9D5] p-6 shadow-sm hover:shadow-xl hover:border-[#EFA7B5] transition-all flex flex-col justify-between group"
             >
               <div>
                 <div className="flex items-start justify-between gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-2xl bg-brand-50 border border-brand-200/60 p-2 flex items-center justify-center font-bold text-brand-700 text-lg">
+                  <div className="w-12 h-12 rounded-2xl bg-[#FFF5F1] border border-[#F0D9D5] p-2 flex items-center justify-center font-bold text-[#A95763] text-lg">
                     {comp.name.substring(0, 2).toUpperCase()}
                   </div>
-                  <Badge variant="indigo" size="sm">
+                  <Badge variant="peach" size="sm">
                     Tier-1 Partner
                   </Badge>
                 </div>
 
-                <h3 className="font-bold text-slate-900 text-lg mb-1">{comp.name}</h3>
-                <p className="text-xs font-semibold text-brand-600 mb-2">{comp.industry}</p>
-                <p className="text-xs text-slate-600 line-clamp-3 mb-4">
+                <h3 className="font-bold text-[#2D2526] text-lg mb-1">{comp.name}</h3>
+                <p className="text-xs font-semibold text-[#E27B88] mb-2">{comp.industry}</p>
+                <p className="text-xs text-[#6F6264] line-clamp-3 mb-4 font-medium">
                   {comp.description ||
                     'Global technology enterprise specializing in scalable cloud software, AI, and developer tools.'}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 space-y-2 text-xs text-slate-500">
+              <div className="pt-4 border-t border-[#F0D9D5] space-y-2 text-xs text-[#6F6264]">
                 <div className="flex items-center space-x-2">
-                  <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                  <MapPin className="w-3.5 h-3.5 text-[#A95763]" />
                   <span>{comp.location || 'Global Headquarters'}</span>
                 </div>
                 {comp.website && (
                   <div className="flex items-center space-x-2">
-                    <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#A95763]" />
                     <a
                       href={comp.website}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-brand-600 hover:underline"
+                      className="text-[#E27B88] hover:underline font-semibold"
                     >
                       {comp.website}
                     </a>
@@ -173,53 +173,53 @@ export const CompaniesPage = () => {
       >
         <form onSubmit={handleCreate} className="space-y-4 text-xs sm:text-sm">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Company Name *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Company Name *</label>
             <input
               type="text"
               required
               value={newCompany.name}
               onChange={(e) => setNewCompany({ ...newCompany, name: e.target.value })}
               placeholder="e.g. Microsoft Corporation"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Industry Sector</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Industry Sector</label>
               <input
                 type="text"
                 value={newCompany.industry}
                 onChange={(e) => setNewCompany({ ...newCompany, industry: e.target.value })}
                 placeholder="Cloud & AI Infrastructure"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Headquarters Location</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Headquarters Location</label>
               <input
                 type="text"
                 value={newCompany.location}
                 onChange={(e) => setNewCompany({ ...newCompany, location: e.target.value })}
                 placeholder="Redmond, WA"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Official Website</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Official Website</label>
               <input
                 type="url"
                 value={newCompany.website}
                 onChange={(e) => setNewCompany({ ...newCompany, website: e.target.value })}
                 placeholder="https://microsoft.com"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">HR / Recruiter Email</label>
+              <label className="block font-bold text-[#2D2526] mb-1">HR / Recruiter Email</label>
               <input
                 type="email"
                 value={newCompany.contactEmail}
@@ -227,19 +227,19 @@ export const CompaniesPage = () => {
                   setNewCompany({ ...newCompany, contactEmail: e.target.value })
                 }
                 placeholder="university-recruiting@company.com"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               />
             </div>
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Company Overview</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Company Overview</label>
             <textarea
               rows={3}
               value={newCompany.description}
               onChange={(e) => setNewCompany({ ...newCompany, description: e.target.value })}
               placeholder="Summary of enterprise domains, hiring practices, and internship partnerships..."
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
@@ -247,13 +247,13 @@ export const CompaniesPage = () => {
             <button
               type="button"
               onClick={() => setIsAddModalOpen(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30"
+              className="peach-button-primary"
             >
               Register Company
             </button>

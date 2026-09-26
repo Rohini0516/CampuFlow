@@ -91,16 +91,16 @@ export const AnalyticsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <BarChart3 className="w-7 h-7 text-brand-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <BarChart3 className="w-7 h-7 text-[#E27B88]" />
             Institutional Analytics & Intelligence
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5 font-medium">
             Key operational metrics, academic performance trends, placement records, and campus KPIs
           </p>
         </div>
 
-        <span className="px-3 py-1 bg-brand-50 border border-brand-200 text-brand-700 font-bold text-xs rounded-xl self-start sm:self-auto">
+        <span className="px-3.5 py-1.5 bg-[#FFF5F1] border border-[#F0D9D5] text-[#A95763] font-bold text-xs rounded-xl self-start sm:self-auto">
           Academic Year 2025-2026
         </span>
       </div>
@@ -112,7 +112,7 @@ export const AnalyticsPage = () => {
           value="89.6%"
           subtitle="244 / 272 eligible placed"
           icon={Briefcase}
-          color="brand"
+          color="peach"
           trend="+8.2% YoY"
         />
         <StatCard
@@ -120,7 +120,7 @@ export const AnalyticsPage = () => {
           value="8.42"
           subtitle="Across all active engineering batches"
           icon={Award}
-          color="emerald"
+          color="rose"
           trend="+0.3 pts"
         />
         <StatCard
@@ -128,7 +128,7 @@ export const AnalyticsPage = () => {
           value="15 : 1"
           subtitle="Accreditation tier-1 standard"
           icon={Users}
-          color="purple"
+          color="emerald"
         />
         <StatCard
           title="Grievance Resolution Rate"
@@ -149,19 +149,19 @@ export const AnalyticsPage = () => {
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={placementSalaryData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="range" tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 11 }} />
-                <YAxis tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F0D9D5" />
+                <XAxis dataKey="range" tickLine={false} axisLine={false} tick={{ fill: '#A95763', fontSize: 11, fontWeight: 600 }} />
+                <YAxis tickLine={false} axisLine={false} tick={{ fill: '#A95763', fontSize: 12, fontWeight: 600 }} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: '#1e293b',
+                    backgroundColor: '#2D2526',
                     borderRadius: '12px',
                     color: '#fff',
                     border: 'none',
                     fontSize: '12px',
                   }}
                 />
-                <Bar dataKey="count" name="Placed Students" fill="#3b82f6" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="count" name="Placed Students" fill="#E27B88" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -177,16 +177,16 @@ export const AnalyticsPage = () => {
               <AreaChart data={attendanceData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="rateColor" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.4} />
-                    <stop offset="95%" stopColor="#10b981" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor="#F4A6A6" stopOpacity={0.4} />
+                    <stop offset="95%" stopColor="#F4A6A6" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
-                <YAxis domain={[80, 100]} tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F0D9D5" />
+                <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fill: '#A95763', fontSize: 12, fontWeight: 600 }} />
+                <YAxis domain={[80, 100]} tickLine={false} axisLine={false} tick={{ fill: '#A95763', fontSize: 12, fontWeight: 600 }} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: '#1e293b',
+                    backgroundColor: '#2D2526',
                     borderRadius: '12px',
                     color: '#fff',
                     border: 'none',
@@ -197,7 +197,7 @@ export const AnalyticsPage = () => {
                   type="monotone"
                   dataKey="rate"
                   name="Attendance %"
-                  stroke="#10b981"
+                  stroke="#E27B88"
                   strokeWidth={3}
                   fillOpacity={1}
                   fill="url(#rateColor)"
@@ -215,19 +215,19 @@ export const AnalyticsPage = () => {
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={deptPerformanceData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="dept" tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
-                <YAxis domain={[0, 10]} tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F0D9D5" />
+                <XAxis dataKey="dept" tickLine={false} axisLine={false} tick={{ fill: '#A95763', fontSize: 12, fontWeight: 600 }} />
+                <YAxis domain={[0, 10]} tickLine={false} axisLine={false} tick={{ fill: '#A95763', fontSize: 12, fontWeight: 600 }} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: '#1e293b',
+                    backgroundColor: '#2D2526',
                     borderRadius: '12px',
                     color: '#fff',
                     border: 'none',
                     fontSize: '12px',
                   }}
                 />
-                <Bar dataKey="avgCgpa" name="Avg CGPA (/10)" fill="#8b5cf6" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="avgCgpa" name="Avg CGPA (/10)" fill="#D9828B" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -242,7 +242,11 @@ export const AnalyticsPage = () => {
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
-                  data={grievancePieData}
+                  data={[
+                    { name: 'Resolved', value: 78, color: '#10b981' },
+                    { name: 'In Review', value: 16, color: '#E27B88' },
+                    { name: 'Pending', value: 6, color: '#f59e0b' },
+                  ]}
                   cx="50%"
                   cy="50%"
                   innerRadius={60}
@@ -250,13 +254,17 @@ export const AnalyticsPage = () => {
                   paddingAngle={5}
                   dataKey="value"
                 >
-                  {grievancePieData.map((entry, index) => (
+                  {[
+                    { name: 'Resolved', value: 78, color: '#10b981' },
+                    { name: 'In Review', value: 16, color: '#E27B88' },
+                    { name: 'Pending', value: 6, color: '#f59e0b' },
+                  ].map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: '#1e293b',
+                    backgroundColor: '#2D2526',
                     borderRadius: '12px',
                     color: '#fff',
                     border: 'none',

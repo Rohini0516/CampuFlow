@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import api from '../services/api';
@@ -8,12 +8,10 @@ import {
   Lock,
   Mail,
   User,
-  Phone,
   ArrowRight,
   ShieldCheck,
   UserCheck,
   Briefcase,
-  Users,
   Sparkles,
   UserPlus,
   LogIn,
@@ -117,7 +115,7 @@ export const LoginPage = () => {
       email: 'admin@campusflow.edu',
       pass: 'Admin@123',
       icon: ShieldCheck,
-      color: 'from-purple-600 to-indigo-600',
+      color: 'from-[#A95763] to-[#7E3B46]',
     },
     {
       role: 'Faculty / Professor',
@@ -125,7 +123,7 @@ export const LoginPage = () => {
       email: 'faculty@campusflow.edu',
       pass: 'Faculty@123',
       icon: UserCheck,
-      color: 'from-blue-600 to-cyan-600',
+      color: 'from-[#E27B88] to-[#A95763]',
     },
     {
       role: 'Student',
@@ -133,7 +131,7 @@ export const LoginPage = () => {
       email: 'student@campusflow.edu',
       pass: 'Student@123',
       icon: GraduationCap,
-      color: 'from-emerald-600 to-teal-600',
+      color: 'from-[#D9828B] to-[#EFA7B5]',
     },
     {
       role: 'Placement Officer',
@@ -141,37 +139,37 @@ export const LoginPage = () => {
       email: 'placement@campusflow.edu',
       pass: 'Placement@123',
       icon: Briefcase,
-      color: 'from-amber-600 to-orange-600',
+      color: 'from-[#A95763] to-[#52222A]',
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 flex flex-col justify-center py-10 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background glowing orbs */}
-      <div className="absolute top-0 -left-40 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 -right-40 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
+    <div className="min-h-screen bg-gradient-to-br from-[#FFF5F1] via-[#F0D9D5]/40 to-[#FFD6C9]/50 flex flex-col justify-center py-10 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Background glowing peach orbs */}
+      <div className="absolute top-0 -left-40 w-96 h-96 bg-[#F4A6A6]/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 -right-40 w-96 h-96 bg-[#EFA7B5]/25 rounded-full blur-3xl pointer-events-none" />
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center z-10">
-        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-500 via-indigo-500 to-blue-400 text-white shadow-xl shadow-brand-500/30 mb-3 ring-4 ring-white/10">
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#E27B88] via-[#F4A6A6] to-[#D9828B] text-white shadow-lg shadow-[#F4A6A6]/30 mb-3 ring-4 ring-white/60">
           <GraduationCap className="w-8 h-8" />
         </div>
-        <h2 className="text-3xl font-black text-white tracking-tight">College Management System</h2>
-        <p className="mt-1 text-xs sm:text-sm text-slate-400">
-          Unified Smart Campus Management & Operations Cloud
+        <h2 className="text-3xl font-black text-[#2D2526] tracking-tight">College Management System</h2>
+        <p className="mt-1 text-xs sm:text-sm font-semibold text-[#A95763]">
+          Unified Smart Campus Portal • Peach Pink Edition
         </p>
       </div>
 
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-xl z-10 px-4 sm:px-0">
-        <div className="bg-white/95 backdrop-blur-xl py-7 px-6 sm:px-10 shadow-2xl rounded-3xl border border-white/20">
+        <div className="bg-white/95 backdrop-blur-xl py-7 px-6 sm:px-10 shadow-xl rounded-3xl border border-[#F0D9D5]">
           {/* Top Interactive Tabs: Sign In / Create Account */}
-          <div className="flex rounded-2xl bg-slate-100/90 p-1.5 mb-6">
+          <div className="flex rounded-2xl bg-[#FFF5F1] p-1.5 mb-6 border border-[#F0D9D5]">
             <button
               type="button"
               onClick={() => setActiveTab('login')}
-              className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center space-x-2 ${
+              className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center justify-center space-x-2 ${
                 activeTab === 'login'
-                  ? 'bg-white text-brand-700 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-900'
+                  ? 'bg-gradient-to-r from-[#E27B88] to-[#A95763] text-white shadow-md shadow-[#F4A6A6]/30'
+                  : 'text-[#6F6264] hover:text-[#2D2526]'
               }`}
             >
               <LogIn className="w-4 h-4" />
@@ -180,10 +178,10 @@ export const LoginPage = () => {
             <button
               type="button"
               onClick={() => setActiveTab('register')}
-              className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center space-x-2 ${
+              className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center justify-center space-x-2 ${
                 activeTab === 'register'
-                  ? 'bg-brand-600 text-white shadow-md shadow-brand-600/20'
-                  : 'text-slate-500 hover:text-slate-900'
+                  ? 'bg-gradient-to-r from-[#E27B88] to-[#A95763] text-white shadow-md shadow-[#F4A6A6]/30'
+                  : 'text-[#6F6264] hover:text-[#2D2526]'
               }`}
             >
               <UserPlus className="w-4 h-4" />
@@ -195,37 +193,37 @@ export const LoginPage = () => {
           {activeTab === 'login' && (
             <form onSubmit={handleLoginSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#A95763] mb-1">
                   Campus Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Mail className="w-4 h-4 text-[#A95763]/60 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@campusflow.edu"
-                    className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 text-slate-900"
+                    className="w-full pl-10 pr-4 py-2.5 bg-[#FFF5F1]/50 border border-[#F0D9D5] rounded-xl text-xs sm:text-sm text-[#2D2526] focus:bg-white focus:border-[#E27B88] focus:ring-2 focus:ring-[#F4A6A6]/20 transition-all outline-none"
                   />
                 </div>
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-[#A95763]">
                     Password
                   </label>
                 </div>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Lock className="w-4 h-4 text-[#A95763]/60 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="password"
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 text-slate-900"
+                    className="w-full pl-10 pr-4 py-2.5 bg-[#FFF5F1]/50 border border-[#F0D9D5] rounded-xl text-xs sm:text-sm text-[#2D2526] focus:bg-white focus:border-[#E27B88] focus:ring-2 focus:ring-[#F4A6A6]/20 transition-all outline-none"
                   />
                 </div>
               </div>
@@ -233,7 +231,7 @@ export const LoginPage = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 px-4 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30 flex items-center justify-center space-x-2 transition-all disabled:opacity-50 group text-xs sm:text-sm"
+                className="w-full py-3 px-4 bg-gradient-to-r from-[#E27B88] via-[#F4A6A6] to-[#A95763] hover:from-[#A95763] hover:to-[#7E3B46] text-white font-extrabold rounded-xl shadow-lg shadow-[#F4A6A6]/30 flex items-center justify-center space-x-2 transition-all disabled:opacity-50 group text-xs sm:text-sm"
               >
                 <span>{loading ? 'Authenticating...' : 'Sign In to College Management System'}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -246,35 +244,35 @@ export const LoginPage = () => {
             <form onSubmit={handleRegisterSubmit} className="space-y-3.5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-[#A95763] mb-1">
                     Full Name *
                   </label>
                   <div className="relative">
-                    <User className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <User className="w-4 h-4 text-[#A95763]/60 absolute left-3 top-1/2 -translate-y-1/2" />
                     <input
                       type="text"
                       required
                       value={registerData.name}
                       onChange={(e) => setRegisterData({ ...registerData, name: e.target.value })}
                       placeholder="Jane Doe"
-                      className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none text-slate-900"
+                      className="w-full pl-9 pr-3 py-2 bg-[#FFF5F1]/50 border border-[#F0D9D5] rounded-xl text-xs sm:text-sm text-[#2D2526] focus:bg-white focus:border-[#E27B88] focus:ring-2 focus:ring-[#F4A6A6]/20 outline-none"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-[#A95763] mb-1">
                     Email Address *
                   </label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <Mail className="w-4 h-4 text-[#A95763]/60 absolute left-3 top-1/2 -translate-y-1/2" />
                     <input
                       type="email"
                       required
                       value={registerData.email}
                       onChange={(e) => setRegisterData({ ...registerData, email: e.target.value })}
                       placeholder="jane@campusflow.edu"
-                      className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none text-slate-900"
+                      className="w-full pl-9 pr-3 py-2 bg-[#FFF5F1]/50 border border-[#F0D9D5] rounded-xl text-xs sm:text-sm text-[#2D2526] focus:bg-white focus:border-[#E27B88] focus:ring-2 focus:ring-[#F4A6A6]/20 outline-none"
                     />
                   </div>
                 </div>
@@ -282,11 +280,11 @@ export const LoginPage = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-[#A95763] mb-1">
                     Password *
                   </label>
                   <div className="relative">
-                    <Lock className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <Lock className="w-4 h-4 text-[#A95763]/60 absolute left-3 top-1/2 -translate-y-1/2" />
                     <input
                       type="password"
                       required
@@ -295,19 +293,19 @@ export const LoginPage = () => {
                         setRegisterData({ ...registerData, password: e.target.value })
                       }
                       placeholder="••••••••"
-                      className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none text-slate-900"
+                      className="w-full pl-9 pr-3 py-2 bg-[#FFF5F1]/50 border border-[#F0D9D5] rounded-xl text-xs sm:text-sm text-[#2D2526] focus:bg-white focus:border-[#E27B88] focus:ring-2 focus:ring-[#F4A6A6]/20 outline-none"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-[#A95763] mb-1">
                     Role *
                   </label>
                   <select
                     value={registerData.role}
                     onChange={(e) => setRegisterData({ ...registerData, role: e.target.value })}
-                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none text-slate-900 font-semibold"
+                    className="w-full px-3 py-2 bg-[#FFF5F1]/50 border border-[#F0D9D5] rounded-xl text-xs sm:text-sm text-[#2D2526] font-bold outline-none"
                   >
                     <option value="STUDENT">Student</option>
                     <option value="FACULTY">Faculty</option>
@@ -318,7 +316,7 @@ export const LoginPage = () => {
 
               {departments.length > 0 && (
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-[#A95763] mb-1">
                     Department *
                   </label>
                   <select
@@ -326,7 +324,7 @@ export const LoginPage = () => {
                     onChange={(e) =>
                       setRegisterData({ ...registerData, departmentId: e.target.value })
                     }
-                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none text-slate-900"
+                    className="w-full px-3 py-2 bg-[#FFF5F1]/50 border border-[#F0D9D5] rounded-xl text-xs sm:text-sm text-[#2D2526] outline-none"
                   >
                     {departments.map((dept) => (
                       <option key={dept._id} value={dept._id}>
@@ -340,7 +338,7 @@ export const LoginPage = () => {
               {registerData.role === 'STUDENT' && (
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[#A95763] mb-1">
                       Roll Number
                     </label>
                     <input
@@ -350,11 +348,11 @@ export const LoginPage = () => {
                         setRegisterData({ ...registerData, rollNumber: e.target.value })
                       }
                       placeholder="CS2026045"
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none"
+                      className="w-full px-3 py-2 bg-[#FFF5F1]/50 border border-[#F0D9D5] rounded-xl text-xs sm:text-sm text-[#2D2526] outline-none"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[#A95763] mb-1">
                       Semester
                     </label>
                     <select
@@ -362,7 +360,7 @@ export const LoginPage = () => {
                       onChange={(e) =>
                         setRegisterData({ ...registerData, semester: Number(e.target.value) })
                       }
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none"
+                      className="w-full px-3 py-2 bg-[#FFF5F1]/50 border border-[#F0D9D5] rounded-xl text-xs sm:text-sm text-[#2D2526] outline-none"
                     >
                       {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
                         <option key={s} value={s}>
@@ -377,7 +375,7 @@ export const LoginPage = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30 flex items-center justify-center space-x-2 transition-all disabled:opacity-50 text-xs sm:text-sm"
+                className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-[#E27B88] via-[#F4A6A6] to-[#A95763] hover:from-[#A95763] hover:to-[#7E3B46] text-white font-extrabold rounded-xl shadow-lg shadow-[#F4A6A6]/30 flex items-center justify-center space-x-2 transition-all disabled:opacity-50 text-xs sm:text-sm"
               >
                 <span>{loading ? 'Creating Account...' : 'Complete & Register Account'}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -385,14 +383,14 @@ export const LoginPage = () => {
             </form>
           )}
 
-          {/* Quick Demo Profiles (Always available for convenience) */}
-          <div className="mt-6 pt-5 border-t border-slate-200/80">
+          {/* Quick Demo Profiles */}
+          <div className="mt-6 pt-5 border-t border-[#F0D9D5]">
             <div className="flex items-center justify-between mb-2.5">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center">
-                <Sparkles className="w-3.5 h-3.5 text-amber-500 mr-1.5" />
+              <span className="text-xs font-extrabold text-[#A95763] uppercase tracking-wider flex items-center">
+                <Sparkles className="w-3.5 h-3.5 text-[#E27B88] mr-1.5" />
                 1-Click Quick Demo Profiles
               </span>
-              <span className="text-[11px] text-slate-400">Click to autofill</span>
+              <span className="text-[11px] font-semibold text-[#6F6264]">Click to autofill</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -406,8 +404,8 @@ export const LoginPage = () => {
                     onClick={() => fillQuickLogin(demo.email, demo.pass)}
                     className={`p-2.5 rounded-2xl border text-left flex items-start space-x-2.5 transition-all ${
                       isSelected
-                        ? 'border-brand-500 bg-brand-50/70 ring-2 ring-brand-500/20 shadow-sm'
-                        : 'border-slate-200 bg-slate-50/80 hover:bg-slate-100/90'
+                        ? 'border-[#E27B88] bg-[#FFF5F1] ring-2 ring-[#F4A6A6]/30 shadow-sm'
+                        : 'border-[#F0D9D5] bg-white hover:bg-[#FFF5F1]'
                     }`}
                   >
                     <div
@@ -416,8 +414,8 @@ export const LoginPage = () => {
                       <Icon className="w-3.5 h-3.5" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs font-bold text-slate-800 truncate">{demo.role}</p>
-                      <p className="text-[11px] text-slate-500 truncate">{demo.name}</p>
+                      <p className="text-xs font-bold text-[#2D2526] truncate">{demo.role}</p>
+                      <p className="text-[11px] text-[#6F6264] truncate">{demo.name}</p>
                     </div>
                   </button>
                 );

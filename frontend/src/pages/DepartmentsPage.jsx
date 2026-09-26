@@ -107,11 +107,11 @@ export const DepartmentsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <Building2 className="w-7 h-7 text-brand-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <Building2 className="w-7 h-7 text-[#A95763]" />
             Academic Departments & 60-Student Section Directory
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5">
             11 Core academic divisions, section quotas, attendance averages, subject metrics, and department dashboards
           </p>
         </div>
@@ -122,11 +122,11 @@ export const DepartmentsPage = () => {
         {departments.map((dept) => (
           <div
             key={dept.code || dept._id}
-            className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group card-hover"
+            className="bg-white rounded-3xl border border-[#F0D9D5] p-6 shadow-sm hover:shadow-peach-md transition-all flex flex-col justify-between group card-hover hover:border-[#EFA7B5]"
           >
             <div>
               <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="font-mono text-xs font-black text-brand-700 bg-brand-50 px-3 py-1 rounded-xl border border-brand-200">
+                <span className="font-mono text-xs font-black text-[#A95763] bg-[#FFF5F1] px-3 py-1 rounded-xl border border-[#F0D9D5]">
                   {dept.code}
                 </span>
                 <Badge variant="success" size="sm">
@@ -134,47 +134,47 @@ export const DepartmentsPage = () => {
                 </Badge>
               </div>
 
-              <h3 className="text-lg font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">
+              <h3 className="text-lg font-black text-[#2D2526] mb-1 group-hover:text-[#A95763] transition-colors">
                 {dept.name}
               </h3>
-              <p className="text-xs text-slate-500 font-medium mb-4">
+              <p className="text-xs text-[#6F6264] font-medium mb-4">
                 HOD: {dept.hodName || dept.hod || 'Dr. Arthur Vance'}
               </p>
 
               {/* Attendance & Performance Grid */}
               <div className="grid grid-cols-2 gap-3 mb-4 text-xs">
-                <div className="p-3 bg-slate-50 rounded-2xl border border-slate-100">
-                  <span className="text-slate-400 font-semibold block text-[11px]">Attendance</span>
-                  <span className="font-black text-brand-700 text-sm">
+                <div className="p-3 bg-[#FFF5F1] rounded-2xl border border-[#F0D9D5]">
+                  <span className="text-[#6F6264] font-semibold block text-[11px]">Attendance</span>
+                  <span className="font-black text-[#A95763] text-sm">
                     {dept.avgAttendance || '91.6%'}
                   </span>
-                  <div className="text-[10px] text-slate-500 font-medium mt-0.5">
+                  <div className="text-[10px] text-[#6F6264] font-medium mt-0.5">
                     P: {dept.present || 55} | A: {dept.absent || 5}
                   </div>
                 </div>
 
-                <div className="p-3 bg-slate-50 rounded-2xl border border-slate-100">
-                  <span className="text-slate-400 font-semibold block text-[11px]">Avg Marks</span>
+                <div className="p-3 bg-[#FFF5F1] rounded-2xl border border-[#F0D9D5]">
+                  <span className="text-[#6F6264] font-semibold block text-[11px]">Avg Marks</span>
                   <span className="font-black text-emerald-700 text-sm">
                     {dept.avgMarks || '84.2%'}
                   </span>
-                  <div className="text-[10px] text-slate-500 font-medium mt-0.5">
+                  <div className="text-[10px] text-[#6F6264] font-medium mt-0.5">
                     Exams: {dept.upcomingExams || 2} Pending
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-              <div className="text-xs text-slate-500 font-semibold">
-                Faculty: <span className="text-slate-900 font-bold">{dept.faculty || 10}</span> | Subjects: <span className="text-slate-900 font-bold">{dept.subjects || 7}</span>
+            <div className="pt-4 border-t border-[#F0D9D5] flex items-center justify-between">
+              <div className="text-xs text-[#6F6264] font-semibold">
+                Faculty: <span className="text-[#2D2526] font-bold">{dept.faculty || 10}</span> | Subjects: <span className="text-[#2D2526] font-bold">{dept.subjects || 7}</span>
               </div>
 
               <button
                 onClick={() => setSelectedDeptDashboard(dept)}
-                className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs shadow-md shadow-brand-600/20 transition-all"
+                className="peach-button-primary !px-3 !py-1.5 space-x-1"
               >
-                <span>Department Dashboard</span>
+                <span>Dashboard</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -193,30 +193,30 @@ export const DepartmentsPage = () => {
         {selectedDeptDashboard && (
           <div className="space-y-6 text-xs sm:text-sm">
             {/* Department Summary Header Card */}
-            <div className="p-5 rounded-2xl bg-gradient-to-r from-brand-700 via-indigo-700 to-blue-700 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-lg">
+            <div className="p-5 rounded-2xl bg-gradient-to-r from-[#E27B88] via-[#F4A6A6] to-[#A95763] text-white flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-lg">
               <div>
-                <span className="text-[11px] font-bold text-brand-200 uppercase tracking-widest">
+                <span className="text-[11px] font-bold text-white/90 uppercase tracking-widest">
                   Department Operational Overview
                 </span>
                 <h3 className="text-xl font-black text-white">
                   {selectedDeptDashboard.name}
                 </h3>
-                <p className="text-xs text-brand-100 font-medium mt-0.5">
+                <p className="text-xs text-white/90 font-medium mt-0.5">
                   Section Code: {selectedDeptDashboard.code} • Section Capacity: 60 Enrolled Students
                 </p>
               </div>
 
               <div className="grid grid-cols-3 gap-3 text-center text-xs">
-                <div className="p-2.5 rounded-xl bg-white/10">
-                  <span className="text-[10px] text-brand-200 uppercase block">Present</span>
+                <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30">
+                  <span className="text-[10px] text-white/90 uppercase block">Present</span>
                   <span className="text-lg font-black">{selectedDeptDashboard.present || 55}</span>
                 </div>
-                <div className="p-2.5 rounded-xl bg-white/10">
-                  <span className="text-[10px] text-brand-200 uppercase block">Absent</span>
+                <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30">
+                  <span className="text-[10px] text-white/90 uppercase block">Absent</span>
                   <span className="text-lg font-black">{selectedDeptDashboard.absent || 5}</span>
                 </div>
-                <div className="p-2.5 rounded-xl bg-white/10">
-                  <span className="text-[10px] text-brand-200 uppercase block">Avg Score</span>
+                <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30">
+                  <span className="text-[10px] text-white/90 uppercase block">Avg Score</span>
                   <span className="text-lg font-black">{selectedDeptDashboard.avgMarks || '84.2%'}</span>
                 </div>
               </div>
@@ -225,25 +225,25 @@ export const DepartmentsPage = () => {
             {/* Section Roster Controls */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
               <div className="relative w-full sm:w-64">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Search className="w-4 h-4 text-[#A95763]/60 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   value={studentSearch}
                   onChange={(e) => setStudentSearch(e.target.value)}
                   placeholder="Filter student ID (e.g. CSE001)..."
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs"
+                  className="peach-input pl-9"
                 />
               </div>
 
-              <span className="text-xs font-bold text-slate-500">
+              <span className="text-xs font-bold text-[#6F6264]">
                 Displaying 60 Allocated Section Students
               </span>
             </div>
 
             {/* 60 Student Roster Table */}
-            <div className="overflow-x-auto border border-slate-200 rounded-2xl max-h-96 overflow-y-auto">
+            <div className="overflow-x-auto border border-[#F0D9D5] rounded-2xl max-h-96 overflow-y-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-slate-50 text-slate-700 font-bold uppercase tracking-wider text-[11px] sticky top-0 border-b border-slate-200">
+                <thead className="bg-[#FFF5F1] text-[#A95763] font-bold uppercase tracking-wider text-[11px] sticky top-0 border-b border-[#F0D9D5]">
                   <tr>
                     <th className="py-3 px-4">Student ID / Roll</th>
                     <th className="py-3 px-4">Student Name</th>
@@ -253,7 +253,7 @@ export const DepartmentsPage = () => {
                     <th className="py-3 px-4">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 font-medium text-slate-800">
+                <tbody className="divide-y divide-[#F0D9D5]/60 font-medium text-[#2D2526]">
                   {get60StudentsRoster(selectedDeptDashboard.code)
                     .filter(
                       (s) =>
@@ -261,10 +261,10 @@ export const DepartmentsPage = () => {
                         s.name.toLowerCase().includes(studentSearch.toLowerCase())
                     )
                     .map((st) => (
-                      <tr key={st.id} className="hover:bg-slate-50/80">
-                        <td className="py-2.5 px-4 font-mono font-bold text-brand-700">{st.id}</td>
-                        <td className="py-2.5 px-4 font-bold text-slate-900">{st.name}</td>
-                        <td className="py-2.5 px-4 font-extrabold text-slate-900">{st.attendance}</td>
+                      <tr key={st.id} className="hover:bg-[#FFF5F1]/50">
+                        <td className="py-2.5 px-4 font-mono font-bold text-[#A95763]">{st.id}</td>
+                        <td className="py-2.5 px-4 font-bold text-[#2D2526]">{st.name}</td>
+                        <td className="py-2.5 px-4 font-extrabold text-[#2D2526]">{st.attendance}</td>
                         <td className="py-2.5 px-4 font-extrabold text-emerald-700">{st.marks}</td>
                         <td className="py-2.5 px-4">{st.projectStatus}</td>
                         <td className="py-2.5 px-4">
@@ -288,3 +288,4 @@ export const DepartmentsPage = () => {
 };
 
 export default DepartmentsPage;
+

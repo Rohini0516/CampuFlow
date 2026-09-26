@@ -104,11 +104,11 @@ export const AnnouncementsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <Megaphone className="w-7 h-7 text-brand-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <Megaphone className="w-7 h-7 text-[#E27B88]" />
             University Broadcast & Notice Board
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5 font-medium">
             Official circulars, holiday schedules, examination notices, and administrative announcements
           </p>
         </div>
@@ -116,7 +116,7 @@ export const AnnouncementsPage = () => {
         {role !== 'STUDENT' && (
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-600/30 transition-all"
+            className="peach-button-primary text-xs sm:text-sm flex items-center space-x-2 self-start sm:self-auto"
           >
             <Plus className="w-4 h-4" />
             <span>Publish Notice</span>
@@ -125,15 +125,15 @@ export const AnnouncementsPage = () => {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row items-center justify-between gap-3">
+      <div className="bg-white p-4 rounded-2xl border border-[#F0D9D5] shadow-sm flex flex-col md:flex-row items-center justify-between gap-3">
         <div className="relative flex-1 w-full">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-[#A95763] absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search circulars, circular IDs, or keywords..."
-            className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+            className="w-full pl-9 pr-4 py-2 peach-input text-xs sm:text-sm"
           />
         </div>
 
@@ -142,10 +142,10 @@ export const AnnouncementsPage = () => {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex-shrink-0 ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex-shrink-0 ${
                 selectedCategory === cat
-                  ? 'bg-brand-600 text-white shadow-sm'
-                  : 'bg-slate-50 text-slate-600 hover:bg-slate-100'
+                  ? 'bg-gradient-to-r from-[#E27B88] to-[#D9828B] text-white shadow-sm'
+                  : 'bg-[#FFF5F1] text-[#6F6264] hover:bg-[#FFD6C9]/40 border border-[#F0D9D5]'
               }`}
             >
               {cat}
@@ -165,15 +165,15 @@ export const AnnouncementsPage = () => {
           filteredNotices.map((n) => (
             <div
               key={n._id}
-              className={`bg-white rounded-3xl border p-6 shadow-sm transition-all relative overflow-hidden ${
+              className={`bg-white rounded-3xl border p-6 shadow-sm hover:shadow-md transition-all relative overflow-hidden ${
                 n.priority === 'URGENT'
-                  ? 'border-rose-300 bg-gradient-to-r from-rose-50/40 via-white to-white'
-                  : 'border-slate-200/80'
+                  ? 'border-[#E27B88] bg-gradient-to-r from-[#FFF5F1]/80 via-white to-white'
+                  : 'border-[#F0D9D5]'
               }`}
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                 <div className="flex items-center space-x-2">
-                  <Badge variant={categoryBadges[n.category] || 'default'} size="sm">
+                  <Badge variant={n.category === 'ACADEMIC' ? 'peach' : 'default'} size="sm">
                     {n.category}
                   </Badge>
                   {n.priority === 'URGENT' && (
@@ -182,15 +182,15 @@ export const AnnouncementsPage = () => {
                     </Badge>
                   )}
                   {n.isPinned && (
-                    <span className="inline-flex items-center space-x-1 text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                    <span className="inline-flex items-center space-x-1 text-xs font-bold text-[#A95763] bg-[#FFF5F1] px-2.5 py-1 rounded-xl border border-[#F0D9D5]">
                       <Pin className="w-3 h-3" />
                       <span>Pinned</span>
                     </span>
                   )}
                 </div>
 
-                <div className="flex items-center space-x-2 text-xs text-slate-400">
-                  <Calendar className="w-3.5 h-3.5" />
+                <div className="flex items-center space-x-2 text-xs text-[#6F6264]">
+                  <Calendar className="w-3.5 h-3.5 text-[#A95763]" />
                   <span>
                     Published:{' '}
                     {new Date(n.createdAt).toLocaleDateString('en-US', {
@@ -202,8 +202,8 @@ export const AnnouncementsPage = () => {
                 </div>
               </div>
 
-              <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2">{n.title}</h3>
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed whitespace-pre-line">
+              <h3 className="text-base sm:text-lg font-black text-[#2D2526] mb-2">{n.title}</h3>
+              <p className="text-xs sm:text-sm text-[#6F6264] leading-relaxed whitespace-pre-line font-medium">
                 {n.content}
               </p>
             </div>
@@ -220,24 +220,24 @@ export const AnnouncementsPage = () => {
       >
         <form onSubmit={handleCreateNotice} className="space-y-4 text-xs sm:text-sm">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Notice Title *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Notice Title *</label>
             <input
               type="text"
               required
               value={newNotice.title}
               onChange={(e) => setNewNotice({ ...newNotice, title: e.target.value })}
               placeholder="e.g. End-Semester Examination Schedule & Guidelines"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Category</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Category</label>
               <select
                 value={newNotice.category}
                 onChange={(e) => setNewNotice({ ...newNotice, category: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               >
                 <option value="GENERAL">General Notice</option>
                 <option value="ACADEMIC">Academic Circular</option>
@@ -247,11 +247,11 @@ export const AnnouncementsPage = () => {
               </select>
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Priority</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Priority</label>
               <select
                 value={newNotice.priority}
                 onChange={(e) => setNewNotice({ ...newNotice, priority: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               >
                 <option value="NORMAL">Standard Notice</option>
                 <option value="URGENT">Urgent / High Alert</option>
@@ -260,14 +260,14 @@ export const AnnouncementsPage = () => {
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Notice Content *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Notice Content *</label>
             <textarea
               rows={5}
               required
               value={newNotice.content}
               onChange={(e) => setNewNotice({ ...newNotice, content: e.target.value })}
               placeholder="Write the complete announcement text, instructions, and dates..."
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
@@ -277,9 +277,9 @@ export const AnnouncementsPage = () => {
               id="pinNotice"
               checked={newNotice.isPinned}
               onChange={(e) => setNewNotice({ ...newNotice, isPinned: e.target.checked })}
-              className="rounded text-brand-600 focus:ring-brand-500"
+              className="rounded text-[#E27B88] focus:ring-[#F4A6A6]"
             />
-            <label htmlFor="pinNotice" className="text-xs text-slate-700 font-medium">
+            <label htmlFor="pinNotice" className="text-xs text-[#6F6264] font-medium">
               Pin to top of student notice board
             </label>
           </div>
@@ -288,13 +288,13 @@ export const AnnouncementsPage = () => {
             <button
               type="button"
               onClick={() => setIsCreateModalOpen(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30"
+              className="peach-button-primary"
             >
               Broadcast Notice
             </button>

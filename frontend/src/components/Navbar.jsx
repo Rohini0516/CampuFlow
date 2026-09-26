@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 import {
   Bell,
   Search,
   Menu,
-  X,
   LogOut,
   User,
   CheckCheck,
-  Calendar,
-  GraduationCap,
-  Briefcase,
-  Layers,
 } from 'lucide-react';
 import { Badge } from './UIStates';
 
@@ -33,7 +28,7 @@ export const Navbar = ({ onMenuToggle }) => {
         setUnreadCount(res.data.data.unreadCount || 0);
       }
     } catch (err) {
-      // silent catch for unauth
+      // silent catch
     }
   };
 
@@ -53,45 +48,32 @@ export const Navbar = ({ onMenuToggle }) => {
     }
   };
 
-  const getRoleBadgeVariant = (role) => {
-    switch (role) {
-      case 'ADMIN':
-        return 'purple';
-      case 'FACULTY':
-        return 'indigo';
-      case 'PLACEMENT_OFFICER':
-        return 'warning';
-      default:
-        return 'primary';
-    }
-  };
-
   return (
-    <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200/80 px-4 sm:px-6 py-2.5">
+    <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-[#F0D9D5] px-4 sm:px-6 py-2.5 shadow-sm">
       <div className="flex items-center justify-between">
         {/* Left: Mobile hamburger & Logo/Search */}
         <div className="flex items-center space-x-3">
           <button
             onClick={onMenuToggle}
-            className="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 transition-colors"
+            className="lg:hidden p-2 rounded-xl text-[#A95763] hover:bg-[#FFF5F1] transition-colors"
             aria-label="Toggle navigation"
           >
             <Menu className="w-5 h-5" />
           </button>
 
           <Link to="/dashboard" className="flex items-center space-x-2.5 lg:hidden">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white font-bold shadow-md shadow-brand-500/20">
-              CF
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#E27B88] to-[#A95763] flex items-center justify-center text-white font-bold shadow-sm">
+              CMS
             </div>
-            <span className="font-extrabold text-slate-900 text-lg tracking-tight">College Management System</span>
+            <span className="font-extrabold text-[#2D2526] text-lg tracking-tight">College Management</span>
           </Link>
 
           <div className="hidden sm:flex items-center relative w-64 md:w-80">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[#A95763]/60 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search subjects, events, students..."
-              className="w-full pl-9 pr-4 py-1.5 bg-slate-100/80 border border-transparent rounded-xl text-xs sm:text-sm focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all outline-none"
+              className="w-full pl-9 pr-4 py-2 bg-[#FFF5F1]/80 border border-[#F0D9D5] rounded-xl text-xs sm:text-sm text-[#2D2526] placeholder-[#6F6264]/60 focus:bg-white focus:border-[#E27B88] focus:ring-2 focus:ring-[#F4A6A6]/20 transition-all outline-none"
             />
           </div>
         </div>
@@ -105,24 +87,24 @@ export const Navbar = ({ onMenuToggle }) => {
                 setShowNotifDropdown(!showNotifDropdown);
                 setShowUserDropdown(false);
               }}
-              className="relative p-2 rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors"
+              className="relative p-2 rounded-xl text-[#A95763] hover:bg-[#FFF5F1] transition-colors"
               aria-label="Notifications"
             >
               <Bell className="w-5 h-5" />
               {unreadCount > 0 && (
-                <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-rose-500 text-white rounded-full text-[10px] font-bold flex items-center justify-center ring-2 ring-white animate-pulse">
+                <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-[#E27B88] text-white rounded-full text-[10px] font-bold flex items-center justify-center ring-2 ring-white animate-pulse">
                   {unreadCount > 9 ? '9+' : unreadCount}
                 </span>
               )}
             </button>
 
             {showNotifDropdown && (
-              <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-xl border border-slate-200/80 overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-150">
-                <div className="px-4 py-3 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+              <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-xl border border-[#F0D9D5] overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-150">
+                <div className="px-4 py-3 border-b border-[#F0D9D5] flex items-center justify-between bg-[#FFF5F1]/60">
                   <div className="flex items-center space-x-2">
-                    <h4 className="font-bold text-slate-900 text-sm">Notifications</h4>
+                    <h4 className="font-bold text-[#2D2526] text-sm">Notifications</h4>
                     {unreadCount > 0 && (
-                      <Badge variant="danger" size="sm">
+                      <Badge variant="rose" size="sm">
                         {unreadCount} new
                       </Badge>
                     )}
@@ -130,7 +112,7 @@ export const Navbar = ({ onMenuToggle }) => {
                   {unreadCount > 0 && (
                     <button
                       onClick={handleMarkAllRead}
-                      className="text-xs font-semibold text-brand-600 hover:text-brand-700 flex items-center space-x-1"
+                      className="text-xs font-bold text-[#A95763] hover:text-[#7E3B46] flex items-center space-x-1"
                     >
                       <CheckCheck className="w-3.5 h-3.5" />
                       <span>Mark all read</span>
@@ -138,9 +120,9 @@ export const Navbar = ({ onMenuToggle }) => {
                   )}
                 </div>
 
-                <div className="max-h-80 overflow-y-auto divide-y divide-slate-100">
+                <div className="max-h-80 overflow-y-auto divide-y divide-[#F0D9D5]">
                   {notifications.length === 0 ? (
-                    <div className="p-6 text-center text-xs text-slate-400">
+                    <div className="p-6 text-center text-xs text-[#6F6264]">
                       No notifications yet. You're all caught up!
                     </div>
                   ) : (
@@ -151,18 +133,18 @@ export const Navbar = ({ onMenuToggle }) => {
                           setShowNotifDropdown(false);
                           if (notif.link) navigate(notif.link);
                         }}
-                        className={`p-3.5 hover:bg-slate-50 transition-colors cursor-pointer text-left ${
-                          !notif.isRead ? 'bg-brand-50/40' : ''
+                        className={`p-3.5 hover:bg-[#FFF5F1]/50 transition-colors cursor-pointer text-left ${
+                          !notif.isRead ? 'bg-[#FFF5F1]' : ''
                         }`}
                       >
                         <div className="flex items-start justify-between">
-                          <p className="text-xs font-bold text-slate-900">{notif.title}</p>
+                          <p className="text-xs font-bold text-[#2D2526]">{notif.title}</p>
                           {!notif.isRead && (
-                            <span className="w-2 h-2 rounded-full bg-brand-600 flex-shrink-0 mt-1"></span>
+                            <span className="w-2 h-2 rounded-full bg-[#E27B88] flex-shrink-0 mt-1"></span>
                           )}
                         </div>
-                        <p className="text-xs text-slate-600 mt-1 line-clamp-2">{notif.message}</p>
-                        <span className="text-[10px] text-slate-400 mt-1.5 block">
+                        <p className="text-xs text-[#6F6264] mt-1 line-clamp-2">{notif.message}</p>
+                        <span className="text-[10px] text-[#A95763]/80 mt-1.5 block">
                           {new Date(notif.createdAt).toLocaleDateString()} • {new Date(notif.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </span>
                       </div>
@@ -170,11 +152,11 @@ export const Navbar = ({ onMenuToggle }) => {
                   )}
                 </div>
 
-                <div className="p-2 border-t border-slate-100 bg-slate-50 text-center">
+                <div className="p-2.5 border-t border-[#F0D9D5] bg-[#FFF5F1]/60 text-center">
                   <Link
                     to="/notifications"
                     onClick={() => setShowNotifDropdown(false)}
-                    className="text-xs font-semibold text-brand-600 hover:text-brand-700"
+                    className="text-xs font-bold text-[#A95763] hover:text-[#7E3B46]"
                   >
                     View all notifications
                   </Link>
@@ -190,20 +172,20 @@ export const Navbar = ({ onMenuToggle }) => {
                 setShowUserDropdown(!showUserDropdown);
                 setShowNotifDropdown(false);
               }}
-              className="flex items-center space-x-2.5 p-1 sm:px-2.5 sm:py-1.5 rounded-xl hover:bg-slate-100 transition-colors"
+              className="flex items-center space-x-2.5 p-1 sm:px-2.5 sm:py-1.5 rounded-xl hover:bg-[#FFF5F1] transition-colors border border-transparent hover:border-[#F0D9D5]"
             >
               <img
                 src={
                   user?.avatar ||
-                  `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=3b62f6&color=fff`
+                  `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=F4A6A6&color=fff`
                 }
                 alt={user?.name}
-                className="w-8 h-8 rounded-xl object-cover ring-1 ring-slate-200"
+                className="w-8 h-8 rounded-xl object-cover ring-2 ring-[#FFD6C9]"
               />
               <div className="hidden md:block text-left">
-                <p className="text-xs font-bold text-slate-900 line-clamp-1 leading-tight">{user?.name}</p>
+                <p className="text-xs font-bold text-[#2D2526] line-clamp-1 leading-tight">{user?.name}</p>
                 <div className="mt-0.5">
-                  <Badge variant={getRoleBadgeVariant(user?.role)} size="sm">
+                  <Badge variant="peach" size="sm">
                     {user?.role?.replace('_', ' ')}
                   </Badge>
                 </div>
@@ -211,12 +193,12 @@ export const Navbar = ({ onMenuToggle }) => {
             </button>
 
             {showUserDropdown && (
-              <div className="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-200/80 overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-150">
-                <div className="p-4 border-b border-slate-100 bg-slate-50/50">
-                  <p className="text-sm font-bold text-slate-900">{user?.name}</p>
-                  <p className="text-xs text-slate-500 truncate">{user?.email}</p>
+              <div className="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-[#F0D9D5] overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-150">
+                <div className="p-4 border-b border-[#F0D9D5] bg-[#FFF5F1]">
+                  <p className="text-sm font-bold text-[#2D2526]">{user?.name}</p>
+                  <p className="text-xs text-[#6F6264] truncate">{user?.email}</p>
                   <div className="mt-2">
-                    <Badge variant={getRoleBadgeVariant(user?.role)} size="sm">
+                    <Badge variant="peach" size="sm">
                       {user?.role?.replace('_', ' ')}
                     </Badge>
                   </div>
@@ -226,9 +208,9 @@ export const Navbar = ({ onMenuToggle }) => {
                   <Link
                     to="/profile"
                     onClick={() => setShowUserDropdown(false)}
-                    className="flex items-center space-x-2.5 px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-100 rounded-xl transition-colors"
+                    className="flex items-center space-x-2.5 px-3 py-2 text-xs font-bold text-[#2D2526] hover:bg-[#FFF5F1] rounded-xl transition-colors"
                   >
-                    <User className="w-4 h-4 text-slate-400" />
+                    <User className="w-4 h-4 text-[#A95763]" />
                     <span>My Profile & Settings</span>
                   </Link>
 
@@ -238,7 +220,7 @@ export const Navbar = ({ onMenuToggle }) => {
                       logout();
                       navigate('/login');
                     }}
-                    className="w-full flex items-center space-x-2.5 px-3 py-2 text-xs font-medium text-rose-600 hover:bg-rose-50 rounded-xl transition-colors text-left"
+                    className="w-full flex items-center space-x-2.5 px-3 py-2 text-xs font-bold text-rose-600 hover:bg-rose-50 rounded-xl transition-colors text-left"
                   >
                     <LogOut className="w-4 h-4 text-rose-500" />
                     <span>Sign Out</span>

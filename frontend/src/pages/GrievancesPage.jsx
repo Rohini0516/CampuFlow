@@ -121,18 +121,18 @@ export const GrievancesPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <MessageSquareWarning className="w-7 h-7 text-amber-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <MessageSquareWarning className="w-7 h-7 text-[#E27B88]" />
             Grievance Redressal & Student Support
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5 font-medium">
             Submit confidential complaints, track investigation status, and receive administrative resolution
           </p>
         </div>
 
         <button
           onClick={() => setRaiseModalOpen(true)}
-          className="inline-flex items-center space-x-2 px-4 py-2.5 bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-amber-600/30 transition-all"
+          className="peach-button-primary text-xs sm:text-sm flex items-center space-x-2 self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
           <span>Raise Grievance Ticket</span>
@@ -150,26 +150,26 @@ export const GrievancesPage = () => {
           complaints.map((c) => (
             <div
               key={c._id}
-              className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-4"
+              className="bg-white rounded-3xl border border-[#F0D9D5] p-6 shadow-sm hover:shadow-md hover:border-[#EFA7B5] transition-all flex flex-col md:flex-row md:items-center justify-between gap-4"
             >
               <div className="space-y-2 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge variant={statusBadges[c.status] || 'default'} size="sm">
                     {c.status}
                   </Badge>
-                  <Badge variant={priorityBadges[c.priority] || 'default'} size="sm">
+                  <Badge variant={priorityBadges[c.priority] || 'peach'} size="sm">
                     {c.priority} Priority
                   </Badge>
-                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider bg-slate-100 px-2 py-0.5 rounded">
+                  <span className="text-[11px] font-bold text-[#A95763] uppercase tracking-wider bg-[#FFF5F1] px-2.5 py-1 rounded-xl border border-[#F0D9D5]">
                     {c.category}
                   </span>
-                  <span className="text-xs text-slate-400">
+                  <span className="text-xs text-[#6F6264]">
                     Logged: {new Date(c.createdAt).toLocaleDateString()}
                   </span>
                 </div>
 
-                <h3 className="font-bold text-slate-900 text-base">{c.title}</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">{c.description}</p>
+                <h3 className="font-bold text-[#2D2526] text-base">{c.title}</h3>
+                <p className="text-xs text-[#6F6264] leading-relaxed font-medium">{c.description}</p>
 
                 {c.resolutionComments && (
                   <div className="mt-3 p-3.5 rounded-2xl bg-emerald-50 border border-emerald-100 text-xs">
@@ -192,7 +192,7 @@ export const GrievancesPage = () => {
                         resolutionComments: c.resolutionComments || '',
                       });
                     }}
-                    className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-sm transition-all"
+                    className="px-4 py-2 rounded-xl bg-[#2D2526] hover:bg-[#A95763] text-white font-bold text-xs shadow-sm transition-all"
                   >
                     Action / Resolve
                   </button>
@@ -212,24 +212,24 @@ export const GrievancesPage = () => {
       >
         <form onSubmit={handleRaiseGrievance} className="space-y-4 text-xs sm:text-sm">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Issue Title *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Issue Title *</label>
             <input
               type="text"
               required
               value={newComplaint.title}
               onChange={(e) => setNewComplaint({ ...newComplaint, title: e.target.value })}
               placeholder="e.g. Broken projector in Room 302 / Library air conditioner issue"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Category</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Category</label>
               <select
                 value={newComplaint.category}
                 onChange={(e) => setNewComplaint({ ...newComplaint, category: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               >
                 <option value="ACADEMIC">Academic / Teaching</option>
                 <option value="INFRASTRUCTURE">Campus Infrastructure</option>
@@ -241,11 +241,11 @@ export const GrievancesPage = () => {
               </select>
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Urgency Priority</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Urgency Priority</label>
               <select
                 value={newComplaint.priority}
                 onChange={(e) => setNewComplaint({ ...newComplaint, priority: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               >
                 <option value="LOW">Low</option>
                 <option value="MEDIUM">Medium</option>
@@ -256,14 +256,14 @@ export const GrievancesPage = () => {
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Detailed Description *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Detailed Description *</label>
             <textarea
               rows={4}
               required
               value={newComplaint.description}
               onChange={(e) => setNewComplaint({ ...newComplaint, description: e.target.value })}
               placeholder="Provide exact location, timeline, and specifics to help the committee investigate..."
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
@@ -275,9 +275,9 @@ export const GrievancesPage = () => {
               onChange={(e) =>
                 setNewComplaint({ ...newComplaint, isAnonymous: e.target.checked })
               }
-              className="rounded text-brand-600 focus:ring-brand-500"
+              className="rounded text-[#E27B88] focus:ring-[#F4A6A6]"
             />
-            <label htmlFor="anonCheck" className="text-xs text-slate-600 font-medium">
+            <label htmlFor="anonCheck" className="text-xs text-[#6F6264] font-medium">
               Submit anonymously (hide your name from department public list)
             </label>
           </div>
@@ -286,13 +286,13 @@ export const GrievancesPage = () => {
             <button
               type="button"
               onClick={() => setRaiseModalOpen(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl shadow-lg shadow-amber-600/30"
+              className="peach-button-primary"
             >
               Submit Grievance
             </button>
@@ -309,13 +309,13 @@ export const GrievancesPage = () => {
       >
         <form onSubmit={handleResolveGrievance} className="space-y-4 text-xs sm:text-sm">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Update Status</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Update Status</label>
             <select
               value={resolutionInput.status}
               onChange={(e) =>
                 setResolutionInput({ ...resolutionInput, status: e.target.value })
               }
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             >
               <option value="IN_REVIEW">Under Active Investigation</option>
               <option value="RESOLVED">Resolved / Remedied</option>
@@ -324,7 +324,7 @@ export const GrievancesPage = () => {
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Administrative Remarks *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Administrative Remarks *</label>
             <textarea
               rows={4}
               required
@@ -333,7 +333,7 @@ export const GrievancesPage = () => {
                 setResolutionInput({ ...resolutionInput, resolutionComments: e.target.value })
               }
               placeholder="Explain the corrective actions taken (e.g. Technician dispatched, projector replaced)..."
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
@@ -341,13 +341,13 @@ export const GrievancesPage = () => {
             <button
               type="button"
               onClick={() => setResolveModalData(null)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl"
+              className="peach-button-primary"
             >
               Save Resolution
             </button>

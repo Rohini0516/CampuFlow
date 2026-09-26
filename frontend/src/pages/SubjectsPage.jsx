@@ -175,11 +175,11 @@ export const SubjectsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <BookOpen className="w-7 h-7 text-brand-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <BookOpen className="w-7 h-7 text-[#A95763]" />
             Subject Management & Auto-Calculated Mark Schemes
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5">
             Department-specific subjects, credit weights, Assignment (20) + Mid (30) + Semester (50) = Total (100)
           </p>
         </div>
@@ -187,7 +187,7 @@ export const SubjectsPage = () => {
         {role === 'ADMIN' && (
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-600/30 transition-all"
+            className="peach-button-primary space-x-2"
           >
             <Plus className="w-4 h-4" />
             <span>Add Subject</span>
@@ -196,22 +196,22 @@ export const SubjectsPage = () => {
       </div>
 
       {/* Subject Performance Breakdown Table */}
-      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 space-y-4">
+      <div className="bg-white rounded-3xl border border-[#F0D9D5] shadow-sm p-6 space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-base font-bold text-slate-900 flex items-center">
-              <TrendingUp className="w-5 h-5 text-brand-600 mr-2" />
+            <h3 className="text-base font-bold text-[#2D2526] flex items-center">
+              <TrendingUp className="w-5 h-5 text-[#A95763] mr-2" />
               Automated Subject Performance Scheme (Assgn 20 + Mid 30 + Sem 50 = Total 100)
             </h3>
-            <p className="text-xs text-slate-500 font-medium">
+            <p className="text-xs text-[#6F6264] font-medium">
               Calculates subject totals, percentage %, and letter grades automatically.
             </p>
           </div>
         </div>
 
-        <div className="overflow-x-auto border border-slate-200 rounded-2xl">
+        <div className="overflow-x-auto border border-[#F0D9D5] rounded-2xl">
           <table className="w-full text-left text-xs sm:text-sm">
-            <thead className="bg-slate-50 text-slate-700 font-bold uppercase tracking-wider text-[11px] border-b border-slate-200">
+            <thead className="bg-[#FFF5F1] text-[#A95763] font-bold uppercase tracking-wider text-[11px] border-b border-[#F0D9D5]">
               <tr>
                 <th className="py-3 px-4">Subject</th>
                 <th className="py-3 px-4">Assignment (20)</th>
@@ -222,15 +222,15 @@ export const SubjectsPage = () => {
                 <th className="py-3 px-4">Grade</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 font-medium text-slate-800">
+            <tbody className="divide-y divide-[#F0D9D5]/60 font-medium text-[#2D2526]">
               {samplePerformanceList.map((sub, idx) => {
                 const total = sub.assgn + sub.mid + sub.sem;
                 const pct = ((total / 100) * 100).toFixed(0);
                 const g = calculateGrade(total);
                 return (
-                  <tr key={idx} className="hover:bg-slate-50/80">
-                    <td className="py-3 px-4 font-bold text-slate-900">
-                      <span className="font-mono text-xs text-brand-700 bg-brand-50 px-2 py-0.5 rounded border border-brand-200 mr-2">
+                  <tr key={idx} className="hover:bg-[#FFF5F1]/50">
+                    <td className="py-3 px-4 font-bold text-[#2D2526]">
+                      <span className="font-mono text-xs text-[#A95763] bg-[#FFF5F1] px-2 py-0.5 rounded border border-[#F0D9D5] mr-2">
                         {sub.code}
                       </span>
                       {sub.name}
@@ -238,8 +238,8 @@ export const SubjectsPage = () => {
                     <td className="py-3 px-4">{sub.assgn} / 20</td>
                     <td className="py-3 px-4">{sub.mid} / 30</td>
                     <td className="py-3 px-4">{sub.sem} / 50</td>
-                    <td className="py-3 px-4 font-black text-slate-900 text-sm">{total} / 100</td>
-                    <td className="py-3 px-4 font-extrabold text-brand-700 text-sm">{pct}%</td>
+                    <td className="py-3 px-4 font-black text-[#2D2526] text-sm">{total} / 100</td>
+                    <td className="py-3 px-4 font-extrabold text-[#A95763] text-sm">{pct}%</td>
                     <td className="py-3 px-4">
                       <span className={`px-2.5 py-1 rounded-full font-bold text-xs border ${g.color}`}>
                         {g.grade}
@@ -254,22 +254,22 @@ export const SubjectsPage = () => {
       </div>
 
       {/* Filter */}
-      <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center gap-3">
+      <div className="bg-white p-4 rounded-2xl border border-[#F0D9D5] shadow-sm flex flex-col sm:flex-row items-center gap-3">
         <div className="relative flex-1 w-full">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-[#A95763]/60 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search subjects by name or code..."
-            className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none"
+            className="peach-input pl-9"
           />
         </div>
 
         <select
           value={selectedDept}
           onChange={(e) => setSelectedDept(e.target.value)}
-          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none w-full sm:w-56 font-semibold"
+          className="peach-input w-full sm:w-56 font-semibold"
         >
           <option value="">All Departments</option>
           {departments.map((d) => (
@@ -282,7 +282,7 @@ export const SubjectsPage = () => {
         <select
           value={selectedSem}
           onChange={(e) => setSelectedSem(e.target.value)}
-          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none w-full sm:w-36 font-semibold"
+          className="peach-input w-full sm:w-36 font-semibold"
         >
           <option value="">All Semesters</option>
           {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
@@ -310,35 +310,35 @@ export const SubjectsPage = () => {
       >
         <form onSubmit={handleCreate} className="space-y-4 text-xs sm:text-sm">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Subject Name *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Subject Name *</label>
             <input
               type="text"
               required
               value={newSubject.name}
               onChange={(e) => setNewSubject({ ...newSubject, name: e.target.value })}
               placeholder="e.g. Design and Analysis of Algorithms"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="peach-input"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Subject Code *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Subject Code *</label>
               <input
                 type="text"
                 required
                 value={newSubject.code}
                 onChange={(e) => setNewSubject({ ...newSubject, code: e.target.value })}
                 placeholder="CS-301"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl uppercase font-mono"
+                className="peach-input uppercase font-mono"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Department *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Department *</label>
               <select
                 value={newSubject.departmentId}
                 onChange={(e) => setNewSubject({ ...newSubject, departmentId: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               >
                 {departments.map((d) => (
                   <option key={d._id} value={d._id}>
@@ -351,13 +351,13 @@ export const SubjectsPage = () => {
 
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Semester</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Semester</label>
               <select
                 value={newSubject.semester}
                 onChange={(e) =>
                   setNewSubject({ ...newSubject, semester: Number(e.target.value) })
                 }
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               >
                 {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
                   <option key={s} value={s}>
@@ -367,22 +367,22 @@ export const SubjectsPage = () => {
               </select>
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Credits</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Credits</label>
               <input
                 type="number"
                 value={newSubject.credits}
                 onChange={(e) =>
                   setNewSubject({ ...newSubject, credits: Number(e.target.value) })
                 }
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Course Type</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Course Type</label>
               <select
                 value={newSubject.type}
                 onChange={(e) => setNewSubject({ ...newSubject, type: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               >
                 <option value="THEORY">Theory</option>
                 <option value="PRACTICAL">Practical / Lab</option>
@@ -395,15 +395,15 @@ export const SubjectsPage = () => {
             <button
               type="button"
               onClick={() => setIsAddModalOpen(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30"
+              className="peach-button-primary"
             >
-              Add Subject
+              Create Subject
             </button>
           </div>
         </form>
@@ -413,3 +413,4 @@ export const SubjectsPage = () => {
 };
 
 export default SubjectsPage;
+

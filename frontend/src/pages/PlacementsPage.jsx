@@ -144,11 +144,11 @@ export const PlacementsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <Briefcase className="w-7 h-7 text-brand-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <Briefcase className="w-7 h-7 text-[#E27B88]" />
             Corporate Placements & Campus Recruitment
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5 font-medium">
             On-campus recruitment drives, hiring partners, CTC packages, and interview shortlists
           </p>
         </div>
@@ -156,7 +156,7 @@ export const PlacementsPage = () => {
         {(role === 'ADMIN' || role === 'PLACEMENT_OFFICER') && (
           <button
             onClick={() => setCreateDriveModal(true)}
-            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-600/30 transition-all"
+            className="peach-button-primary text-xs sm:text-sm flex items-center space-x-2 self-start sm:self-auto"
           >
             <Plus className="w-4 h-4" />
             <span>Launch Placement Drive</span>
@@ -175,16 +175,15 @@ export const PlacementsPage = () => {
           </div>
         ) : (
           drives.map((drive) => {
-            const isDeadlinePassed = new Date(drive.applicationDeadline) < new Date();
             return (
               <div
                 key={drive._id}
-                className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group"
+                className="bg-white rounded-3xl border border-[#F0D9D5] p-6 shadow-sm hover:shadow-xl hover:border-[#EFA7B5] transition-all flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-start justify-between gap-3 mb-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200/80 p-2 flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 rounded-2xl bg-[#FFF5F1] border border-[#F0D9D5] p-2 flex items-center justify-center flex-shrink-0">
                         {drive.companyId?.logo ? (
                           <img
                             src={drive.companyId.logo}
@@ -192,14 +191,14 @@ export const PlacementsPage = () => {
                             className="max-h-full max-w-full object-contain"
                           />
                         ) : (
-                          <Building className="w-6 h-6 text-slate-600" />
+                          <Building className="w-6 h-6 text-[#A95763]" />
                         )}
                       </div>
                       <div>
-                        <h3 className="font-bold text-slate-900 text-base line-clamp-1">
+                        <h3 className="font-bold text-[#2D2526] text-base line-clamp-1">
                           {drive.companyId?.name || 'Partner Company'}
                         </h3>
-                        <p className="text-xs font-semibold text-brand-600">{drive.role}</p>
+                        <p className="text-xs font-semibold text-[#E27B88]">{drive.role}</p>
                       </div>
                     </div>
 
@@ -209,37 +208,37 @@ export const PlacementsPage = () => {
                   </div>
 
                   <div className="space-y-2 mb-4 text-xs">
-                    <div className="p-3 rounded-2xl bg-emerald-50/60 border border-emerald-100 flex items-center justify-between">
-                      <span className="text-emerald-800 font-semibold">Compensation (CTC)</span>
-                      <span className="font-black text-emerald-700 text-sm">
+                    <div className="p-3 rounded-2xl bg-[#FFF5F1] border border-[#F0D9D5] flex items-center justify-between">
+                      <span className="text-[#A95763] font-semibold">Compensation (CTC)</span>
+                      <span className="font-black text-[#A95763] text-sm">
                         {drive.packageCTC || '$110,000 / yr'}
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between text-slate-600 font-medium px-1">
+                    <div className="flex items-center justify-between text-[#6F6264] font-medium px-1">
                       <span>Eligibility Cutoff:</span>
-                      <strong className="text-slate-900 font-bold">
+                      <strong className="text-[#2D2526] font-bold">
                         {drive.minCGPA ? `${drive.minCGPA} CGPA` : '7.0+ CGPA'}
                       </strong>
                     </div>
 
-                    <div className="flex items-center justify-between text-slate-600 font-medium px-1">
+                    <div className="flex items-center justify-between text-[#6F6264] font-medium px-1">
                       <span>Deadline:</span>
-                      <strong className="text-slate-900">
+                      <strong className="text-[#2D2526]">
                         {new Date(drive.applicationDeadline).toLocaleDateString()}
                       </strong>
                     </div>
                   </div>
 
-                  <p className="text-xs text-slate-500 line-clamp-2 mb-4">{drive.description}</p>
+                  <p className="text-xs text-[#6F6264] line-clamp-2 mb-4 font-medium">{drive.description}</p>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100">
+                <div className="pt-3 border-t border-[#F0D9D5]">
                   {role === 'STUDENT' ? (
                     <button
                       type="button"
                       onClick={() => handleApply(drive._id)}
-                      className="w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs shadow-md shadow-brand-600/20 transition-all flex items-center justify-center space-x-1.5"
+                      className="w-full py-2.5 rounded-xl peach-button-primary text-xs flex items-center justify-center space-x-1.5"
                     >
                       <CheckCircle2 className="w-4 h-4" />
                       <span>1-Click Apply Now</span>
@@ -248,7 +247,7 @@ export const PlacementsPage = () => {
                     <button
                       type="button"
                       onClick={() => handleViewApplicants(drive)}
-                      className="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-700 font-bold text-xs transition-all flex items-center justify-center space-x-1.5"
+                      className="w-full py-2.5 rounded-xl bg-[#FFF5F1] hover:bg-[#E27B88] hover:text-white text-[#A95763] font-bold text-xs border border-[#F0D9D5] transition-all flex items-center justify-center space-x-1.5"
                     >
                       <Users className="w-4 h-4" />
                       <span>Manage Applicants & Shortlist</span>
@@ -270,24 +269,24 @@ export const PlacementsPage = () => {
       >
         <form onSubmit={handleCreateDrive} className="space-y-4 text-xs sm:text-sm">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Drive Title *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Drive Title *</label>
             <input
               type="text"
               required
               value={newDrive.title}
               onChange={(e) => setNewDrive({ ...newDrive, title: e.target.value })}
               placeholder="e.g. Google Cloud Campus SDE Drive 2026"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Partner Company *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Partner Company *</label>
               <select
                 value={newDrive.companyId}
                 onChange={(e) => setNewDrive({ ...newDrive, companyId: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               >
                 {companies.map((c) => (
                   <option key={c._id} value={c._id}>
@@ -297,32 +296,32 @@ export const PlacementsPage = () => {
               </select>
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Role / Designation *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Role / Designation *</label>
               <input
                 type="text"
                 required
                 value={newDrive.role}
                 onChange={(e) => setNewDrive({ ...newDrive, role: e.target.value })}
                 placeholder="Software Engineer"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">CTC Package Offered *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">CTC Package Offered *</label>
               <input
                 type="text"
                 required
                 value={newDrive.packageCTC}
                 onChange={(e) => setNewDrive({ ...newDrive, packageCTC: e.target.value })}
                 placeholder="$125,000 / annum"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Minimum CGPA Cutoff</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Minimum CGPA Cutoff</label>
               <input
                 type="number"
                 step="0.1"
@@ -330,13 +329,13 @@ export const PlacementsPage = () => {
                 onChange={(e) =>
                   setNewDrive({ ...newDrive, minCGPA: Number(e.target.value) })
                 }
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               />
             </div>
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Application Deadline *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Application Deadline *</label>
             <input
               type="date"
               required
@@ -344,18 +343,18 @@ export const PlacementsPage = () => {
               onChange={(e) =>
                 setNewDrive({ ...newDrive, applicationDeadline: e.target.value })
               }
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Role Description & Requirements</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Role Description & Requirements</label>
             <textarea
               rows={3}
               value={newDrive.description}
               onChange={(e) => setNewDrive({ ...newDrive, description: e.target.value })}
               placeholder="Candidate profile requirements, tech stack (Python, React, Go), and interview stages..."
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
@@ -363,13 +362,13 @@ export const PlacementsPage = () => {
             <button
               type="button"
               onClick={() => setCreateDriveModal(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30"
+              className="peach-button-primary"
             >
               Publish Drive
             </button>
@@ -393,7 +392,7 @@ export const PlacementsPage = () => {
             description="Student submissions will appear here once candidates apply."
           />
         ) : (
-          <div className="divide-y divide-slate-100 space-y-3">
+          <div className="divide-y divide-[#F0D9D5] space-y-3">
             {applicantsList.map((app) => {
               const st = app.studentId || {};
               const u = st.userId || {};
@@ -406,14 +405,14 @@ export const PlacementsPage = () => {
                     <img
                       src={
                         u.avatar ||
-                        `https://ui-avatars.com/api/?name=${encodeURIComponent(u.name || 'Student')}&background=3b62f6&color=fff`
+                        `https://ui-avatars.com/api/?name=${encodeURIComponent(u.name || 'Student')}&background=F4A6A6&color=fff`
                       }
                       alt={u.name}
-                      className="w-10 h-10 rounded-xl object-cover ring-1 ring-slate-200"
+                      className="w-10 h-10 rounded-xl object-cover ring-2 ring-[#F0D9D5]"
                     />
                     <div>
-                      <p className="font-bold text-slate-900 text-sm">{u.name || 'Candidate'}</p>
-                      <div className="flex items-center space-x-2 text-xs text-slate-500">
+                      <p className="font-bold text-[#2D2526] text-sm">{u.name || 'Candidate'}</p>
+                      <div className="flex items-center space-x-2 text-xs text-[#6F6264]">
                         <span className="font-mono">{st.rollNumber}</span>
                         <span>•</span>
                         <span>CGPA: <strong>{st.cgpa ? Number(st.cgpa).toFixed(2) : '8.65'}</strong></span>
@@ -425,7 +424,7 @@ export const PlacementsPage = () => {
                     <select
                       value={app.status}
                       onChange={(e) => handleUpdateApplicantStatus(app._id, e.target.value)}
-                      className="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-bold text-slate-800"
+                      className="peach-input !py-1 !px-2.5 text-xs font-bold text-[#2D2526]"
                     >
                       <option value="APPLIED">Applied</option>
                       <option value="SHORTLISTED">Shortlisted</option>
@@ -439,10 +438,10 @@ export const PlacementsPage = () => {
                         app.status === 'SELECTED'
                           ? 'success'
                           : app.status === 'SHORTLISTED'
-                          ? 'purple'
+                          ? 'peach'
                           : app.status === 'REJECTED'
                           ? 'danger'
-                          : 'primary'
+                          : 'rose'
                       }
                       size="sm"
                     >

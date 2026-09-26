@@ -59,7 +59,7 @@ export const MobileBottomNav = () => {
   const tabs = getNavTabs();
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-slate-200/80 px-2 py-1.5 lg:hidden shadow-lg">
+    <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-[#F0D9D5] px-2 py-1.5 lg:hidden shadow-lg">
       <div className="grid grid-cols-5 gap-1">
         {tabs.map((tab) => {
           const Icon = tab.icon;
@@ -70,8 +70,8 @@ export const MobileBottomNav = () => {
               className={({ isActive }) =>
                 `flex flex-col items-center justify-center py-1 rounded-xl transition-all ${
                   isActive
-                    ? 'text-brand-600 font-bold'
-                    : 'text-slate-500 hover:text-slate-800'
+                    ? 'text-[#A95763] font-bold bg-[#FFF5F1]'
+                    : 'text-[#6F6264] hover:text-[#2D2526]'
                 }`
               }
             >

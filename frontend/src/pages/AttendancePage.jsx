@@ -149,11 +149,11 @@ export const AttendancePage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <CalendarCheck className="w-7 h-7 text-brand-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <CalendarCheck className="w-7 h-7 text-[#E27B88]" />
             Attendance & Biometric Registry
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5 font-medium">
             {role === 'STUDENT'
               ? 'Track your lecture attendance percentages and minimum requirement thresholds'
               : 'Digital roll call and lecture attendance register'}
@@ -181,7 +181,7 @@ export const AttendancePage = () => {
               value={`${presentClasses} / ${totalClasses}`}
               subtitle="Lectures recorded this semester"
               icon={CheckCircle}
-              color="brand"
+              color="peach"
             />
             <StatCard
               title="Absence Count"
@@ -204,19 +204,19 @@ export const AttendancePage = () => {
                 return (
                   <div
                     key={sub._id || idx}
-                    className="p-4 rounded-2xl border border-slate-200/80 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all"
+                    className="p-4 rounded-2xl border border-[#F0D9D5] bg-[#FFF5F1]/50 hover:bg-white hover:shadow-md hover:border-[#EFA7B5] transition-all"
                   >
                     <div className="flex items-start justify-between">
                       <div>
-                        <span className="font-mono text-[10px] font-bold uppercase text-brand-700 bg-brand-50 px-2 py-0.5 rounded border border-brand-200">
+                        <span className="font-mono text-[10px] font-bold uppercase text-[#A95763] bg-[#FFF5F1] px-2.5 py-1 rounded-xl border border-[#F0D9D5]">
                           {sub.code}
                         </span>
-                        <h4 className="font-bold text-slate-900 text-sm mt-1.5">{sub.name}</h4>
-                        <p className="text-xs text-slate-500">{sub.credits} Credits • Sem {sub.semester}</p>
+                        <h4 className="font-bold text-[#2D2526] text-sm mt-2">{sub.name}</h4>
+                        <p className="text-xs text-[#6F6264] font-medium">{sub.credits} Credits • Sem {sub.semester}</p>
                       </div>
                       <span
                         className={`text-lg font-black ${
-                          isSafe ? 'text-emerald-600' : 'text-rose-600'
+                          isSafe ? 'text-emerald-600' : 'text-[#D9828B]'
                         }`}
                       >
                         {subPct}%
@@ -224,15 +224,15 @@ export const AttendancePage = () => {
                     </div>
 
                     <div className="mt-4">
-                      <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                      <div className="w-full bg-[#F0D9D5]/60 h-2 rounded-full overflow-hidden">
                         <div
                           className={`h-full rounded-full ${
-                            isSafe ? 'bg-emerald-500' : 'bg-rose-500'
+                            isSafe ? 'bg-emerald-500' : 'bg-[#E27B88]'
                           }`}
                           style={{ width: `${subPct}%` }}
                         />
                       </div>
-                      <div className="flex justify-between text-[11px] text-slate-500 mt-1.5 font-medium">
+                      <div className="flex justify-between text-[11px] text-[#6F6264] mt-1.5 font-medium">
                         <span>28 Attended</span>
                         <span>32 Total</span>
                       </div>
@@ -249,16 +249,16 @@ export const AttendancePage = () => {
       {role !== 'STUDENT' && (
         <div className="space-y-6">
           {/* Controls Header */}
-          <div className="bg-white p-5 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="bg-white p-5 rounded-3xl border border-[#F0D9D5] shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
               <div className="w-full sm:w-64">
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#A95763] mb-1">
                   Select Subject / Course
                 </label>
                 <select
                   value={selectedSubject}
                   onChange={(e) => setSelectedSubject(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 focus:bg-white focus:outline-none"
+                  className="w-full peach-input text-xs sm:text-sm font-semibold text-[#2D2526]"
                 >
                   {subjects.map((sub) => (
                     <option key={sub._id} value={sub._id}>
@@ -269,14 +269,14 @@ export const AttendancePage = () => {
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#A95763] mb-1">
                   Session Date
                 </label>
                 <input
                   type="date"
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
-                  className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 focus:bg-white focus:outline-none"
+                  className="peach-input text-xs sm:text-sm font-semibold text-[#2D2526]"
                 />
               </div>
             </div>
@@ -301,7 +301,7 @@ export const AttendancePage = () => {
                 type="button"
                 disabled={submitting}
                 onClick={handleSubmitAttendance}
-                className="inline-flex items-center space-x-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-600/30 transition-all disabled:opacity-50"
+                className="peach-button-primary text-xs sm:text-sm flex items-center space-x-2 disabled:opacity-50"
               >
                 <Save className="w-4 h-4" />
                 <span>{submitting ? 'Saving...' : 'Save Register'}</span>
@@ -310,43 +310,43 @@ export const AttendancePage = () => {
           </div>
 
           {/* Student Attendance Marker Grid */}
-          <div className="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden">
-            <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
+          <div className="bg-white rounded-3xl border border-[#F0D9D5] shadow-sm overflow-hidden">
+            <div className="px-6 py-4 border-b border-[#F0D9D5] bg-[#FFF5F1] flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <Users className="w-5 h-5 text-brand-600" />
-                <h3 className="font-bold text-slate-900 text-sm sm:text-base">
+                <Users className="w-5 h-5 text-[#E27B88]" />
+                <h3 className="font-bold text-[#2D2526] text-sm sm:text-base">
                   Student Roll Call ({classStudents.length} Students)
                 </h3>
               </div>
-              <span className="text-xs text-slate-500">
-                Date: <strong className="text-slate-800">{selectedDate}</strong>
+              <span className="text-xs text-[#6F6264]">
+                Date: <strong className="text-[#2D2526]">{selectedDate}</strong>
               </span>
             </div>
 
-            <div className="divide-y divide-slate-100">
+            <div className="divide-y divide-[#F0D9D5]">
               {classStudents.map((s, idx) => {
                 const currentStatus = attendanceMap[s._id] || 'PRESENT';
                 const u = s.userId || {};
                 return (
                   <div
                     key={s._id || idx}
-                    className="p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50/70 transition-colors"
+                    className="p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#FFF5F1]/50 transition-colors"
                   >
                     <div className="flex items-center space-x-3">
-                      <span className="text-xs font-bold text-slate-400 w-6">
+                      <span className="text-xs font-bold text-[#A95763] w-6">
                         {String(idx + 1).padStart(2, '0')}
                       </span>
                       <img
                         src={
                           u.avatar ||
-                          `https://ui-avatars.com/api/?name=${encodeURIComponent(u.name || 'Student')}&background=3b62f6&color=fff`
+                          `https://ui-avatars.com/api/?name=${encodeURIComponent(u.name || 'Student')}&background=F4A6A6&color=fff`
                         }
                         alt={u.name}
-                        className="w-9 h-9 rounded-xl object-cover ring-1 ring-slate-200"
+                        className="w-9 h-9 rounded-xl object-cover ring-2 ring-[#F0D9D5]"
                       />
                       <div>
-                        <p className="font-bold text-slate-900 text-sm">{u.name || 'Alex Morgan'}</p>
-                        <p className="font-mono text-xs text-slate-500">{s.rollNumber}</p>
+                        <p className="font-bold text-[#2D2526] text-sm">{u.name || 'Alex Morgan'}</p>
+                        <p className="font-mono text-xs text-[#6F6264]">{s.rollNumber}</p>
                       </div>
                     </div>
 
@@ -358,7 +358,7 @@ export const AttendancePage = () => {
                         className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1 ${
                           currentStatus === 'PRESENT'
                             ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
-                            : 'bg-slate-100 text-slate-600 hover:bg-emerald-50 hover:text-emerald-700'
+                            : 'bg-[#FFF5F1] text-[#6F6264] hover:bg-emerald-50 hover:text-emerald-700 border border-[#F0D9D5]'
                         }`}
                       >
                         <CheckCircle className="w-3.5 h-3.5" />
@@ -371,7 +371,7 @@ export const AttendancePage = () => {
                         className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1 ${
                           currentStatus === 'LATE'
                             ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
-                            : 'bg-slate-100 text-slate-600 hover:bg-amber-50 hover:text-amber-700'
+                            : 'bg-[#FFF5F1] text-[#6F6264] hover:bg-amber-50 hover:text-amber-700 border border-[#F0D9D5]'
                         }`}
                       >
                         <Clock className="w-3.5 h-3.5" />
@@ -383,8 +383,8 @@ export const AttendancePage = () => {
                         onClick={() => handleMarkStatus(s._id, 'ABSENT')}
                         className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1 ${
                           currentStatus === 'ABSENT'
-                            ? 'bg-rose-600 text-white shadow-md shadow-rose-600/20'
-                            : 'bg-slate-100 text-slate-600 hover:bg-rose-50 hover:text-rose-700'
+                            ? 'bg-[#E27B88] text-white shadow-md shadow-[#E27B88]/20'
+                            : 'bg-[#FFF5F1] text-[#6F6264] hover:bg-[#FFF5F1] hover:text-[#A95763] border border-[#F0D9D5]'
                         }`}
                       >
                         <XCircle className="w-3.5 h-3.5" />

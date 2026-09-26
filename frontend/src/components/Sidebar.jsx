@@ -15,7 +15,6 @@ import {
   Layers,
   MessageSquareWarning,
   FileCheck2,
-  Bell,
   Megaphone,
   BarChart3,
   Clock,
@@ -114,29 +113,29 @@ export const Sidebar = ({ isOpen, onClose }) => {
       {/* Mobile Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 lg:hidden"
+          className="fixed inset-0 bg-[#2D2526]/40 backdrop-blur-sm z-40 lg:hidden"
           onClick={onClose}
         />
       )}
 
       {/* Sidebar Drawer */}
       <aside
-        className={`fixed top-0 left-0 bottom-0 w-64 bg-slate-900 text-slate-300 z-50 flex flex-col border-r border-slate-800 transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed top-0 left-0 bottom-0 w-64 bg-white/95 backdrop-blur-xl text-[#2D2526] z-50 flex flex-col border-r border-[#F0D9D5] shadow-sm transition-transform duration-300 ease-in-out lg:translate-x-0 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         {/* Brand Header */}
-        <div className="px-6 py-5 border-b border-slate-800/80 flex items-center justify-between">
+        <div className="px-6 py-5 border-b border-[#F0D9D5] flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 via-indigo-600 to-blue-500 flex items-center justify-center text-white font-extrabold shadow-lg shadow-brand-500/30 tracking-wider">
-              CF
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#E27B88] via-[#F4A6A6] to-[#D9828B] flex items-center justify-center text-white font-extrabold shadow-md shadow-[#F4A6A6]/30 tracking-wider">
+              CMS
             </div>
             <div>
-              <h1 className="font-black text-white text-sm tracking-tight leading-snug">
-                College Management System
+              <h1 className="font-extrabold text-[#2D2526] text-sm tracking-tight leading-snug">
+                College Management
               </h1>
-              <span className="text-[10px] font-semibold text-brand-400 tracking-wider uppercase">
-                Enterprise Platform
+              <span className="text-[10px] font-bold text-[#A95763] tracking-widest uppercase block mt-0.5">
+                Peach Pink Edition
               </span>
             </div>
           </div>
@@ -149,7 +148,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
               return (
                 <p
                   key={idx}
-                  className="px-3 pt-4 pb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500"
+                  className="px-3 pt-4 pb-1.5 text-[10px] font-extrabold uppercase tracking-widest text-[#A95763]"
                 >
                   {item.section}
                 </p>
@@ -164,10 +163,10 @@ export const Sidebar = ({ isOpen, onClose }) => {
                 to={item.path}
                 onClick={() => onClose && onClose()}
                 className={({ isActive }) =>
-                  `flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all ${
+                  `flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                     isActive
-                      ? 'bg-brand-600 text-white shadow-md shadow-brand-600/30 font-semibold'
-                      : 'text-slate-400 hover:text-white hover:bg-slate-800/70'
+                      ? 'bg-gradient-to-r from-[#E27B88] to-[#A95763] text-white shadow-md shadow-[#F4A6A6]/35'
+                      : 'text-[#6F6264] hover:text-[#A95763] hover:bg-[#FFF5F1]'
                   }`
                 }
               >
@@ -179,20 +178,20 @@ export const Sidebar = ({ isOpen, onClose }) => {
         </div>
 
         {/* Bottom User info & Signout */}
-        <div className="p-3 border-t border-slate-800/80 bg-slate-950/40">
-          <div className="flex items-center justify-between p-2 rounded-xl bg-slate-900/60">
+        <div className="p-3 border-t border-[#F0D9D5] bg-[#FFF5F1]/80">
+          <div className="flex items-center justify-between p-2 rounded-xl bg-white border border-[#F0D9D5]">
             <div className="flex items-center space-x-2.5 overflow-hidden">
               <img
                 src={
                   user?.avatar ||
-                  `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=3b62f6&color=fff`
+                  `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=F4A6A6&color=fff`
                 }
                 alt={user?.name}
-                className="w-8 h-8 rounded-lg object-cover ring-1 ring-slate-700"
+                className="w-8 h-8 rounded-lg object-cover ring-2 ring-[#FFD6C9]"
               />
               <div className="overflow-hidden">
-                <p className="text-xs font-bold text-white truncate">{user?.name}</p>
-                <p className="text-[10px] text-slate-400 uppercase tracking-wide">
+                <p className="text-xs font-extrabold text-[#2D2526] truncate">{user?.name}</p>
+                <p className="text-[10px] font-bold text-[#A95763] uppercase tracking-wide">
                   {user?.role?.replace('_', ' ')}
                 </p>
               </div>
@@ -200,7 +199,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
             <button
               onClick={logout}
               title="Sign Out"
-              className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
+              className="p-1.5 rounded-lg text-[#6F6264] hover:text-[#A95763] hover:bg-[#FFF5F1] transition-colors"
             >
               <LogOut className="w-4 h-4" />
             </button>

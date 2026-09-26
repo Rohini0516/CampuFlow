@@ -173,11 +173,11 @@ export const AssignmentsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <FileText className="w-7 h-7 text-brand-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <FileText className="w-7 h-7 text-[#E27B88]" />
             Course Assignments & Evaluations
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5 font-medium">
             {role === 'STUDENT'
               ? 'View project briefs, submit solutions, and track grades & faculty remarks'
               : 'Create homework prompts, view submissions, and grade coursework'}
@@ -187,7 +187,7 @@ export const AssignmentsPage = () => {
         {role !== 'STUDENT' && (
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-600/30 transition-all"
+            className="peach-button-primary text-xs sm:text-sm flex items-center space-x-2 self-start sm:self-auto"
           >
             <Plus className="w-4 h-4" />
             <span>Create Assignment</span>
@@ -210,11 +210,11 @@ export const AssignmentsPage = () => {
             return (
               <div
                 key={item._id}
-                className="bg-white rounded-3xl border border-slate-200/80 p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+                className="bg-white rounded-3xl border border-[#F0D9D5] p-5 shadow-sm hover:shadow-md hover:border-[#EFA7B5] transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="font-mono text-[11px] font-bold text-brand-700 bg-brand-50 px-2 py-0.5 rounded border border-brand-200">
+                    <span className="font-mono text-[11px] font-bold text-[#A95763] bg-[#FFF5F1] px-2.5 py-1 rounded-xl border border-[#F0D9D5]">
                       {item.subjectId?.code || 'CS-301'}
                     </span>
                     <Badge variant={isDuePassed ? 'danger' : 'success'} size="sm">
@@ -222,17 +222,17 @@ export const AssignmentsPage = () => {
                     </Badge>
                   </div>
 
-                  <h3 className="font-bold text-slate-900 text-base mb-1">{item.title}</h3>
-                  <p className="text-xs text-slate-600 line-clamp-3 mb-4">{item.description}</p>
+                  <h3 className="font-bold text-[#2D2526] text-base mb-1">{item.title}</h3>
+                  <p className="text-xs text-[#6F6264] line-clamp-3 mb-4 font-medium">{item.description}</p>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 space-y-3">
-                  <div className="flex items-center justify-between text-xs text-slate-500">
+                <div className="pt-4 border-t border-[#F0D9D5] space-y-3">
+                  <div className="flex items-center justify-between text-xs text-[#6F6264]">
                     <span className="flex items-center space-x-1">
-                      <Clock className="w-3.5 h-3.5 text-slate-400" />
+                      <Clock className="w-3.5 h-3.5 text-[#A95763]" />
                       <span>Due: {new Date(item.dueDate).toLocaleDateString()}</span>
                     </span>
-                    <span className="font-bold text-slate-700">Max: {item.maxMarks} Pts</span>
+                    <span className="font-bold text-[#2D2526]">Max: {item.maxMarks} Pts</span>
                   </div>
 
                   {role === 'STUDENT' ? (
@@ -241,7 +241,7 @@ export const AssignmentsPage = () => {
                         setSelectedAssignment(item);
                         setSubmitModalOpen(true);
                       }}
-                      className="w-full py-2 px-3 rounded-xl bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold text-xs transition-colors flex items-center justify-center space-x-1.5"
+                      className="w-full py-2 px-3 rounded-xl peach-button-primary text-xs flex items-center justify-center space-x-1.5"
                     >
                       <Send className="w-3.5 h-3.5" />
                       <span>Submit Solution</span>
@@ -249,7 +249,7 @@ export const AssignmentsPage = () => {
                   ) : (
                     <button
                       onClick={() => handleOpenSubmissions(item)}
-                      className="w-full py-2 px-3 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-xs transition-colors flex items-center justify-center space-x-1.5"
+                      className="w-full py-2 px-3 rounded-xl bg-[#FFF5F1] hover:bg-[#E27B88] hover:text-white text-[#A95763] font-bold text-xs border border-[#F0D9D5] transition-all flex items-center justify-center space-x-1.5"
                     >
                       <Award className="w-3.5 h-3.5" />
                       <span>Review Submissions</span>
@@ -271,24 +271,24 @@ export const AssignmentsPage = () => {
       >
         <form onSubmit={handleCreateAssignment} className="space-y-4 text-xs sm:text-sm">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Assignment Title *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Assignment Title *</label>
             <input
               type="text"
               required
               value={newAssignment.title}
               onChange={(e) => setNewAssignment({ ...newAssignment, title: e.target.value })}
               placeholder="e.g. Distributed Consensus Algorithm Implementation"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Subject / Course *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Subject / Course *</label>
               <select
                 value={newAssignment.subjectId}
                 onChange={(e) => setNewAssignment({ ...newAssignment, subjectId: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               >
                 {subjects.map((sub) => (
                   <option key={sub._id} value={sub._id}>
@@ -298,7 +298,7 @@ export const AssignmentsPage = () => {
               </select>
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Max Marks *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Max Marks *</label>
               <input
                 type="number"
                 required
@@ -306,30 +306,30 @@ export const AssignmentsPage = () => {
                 onChange={(e) =>
                   setNewAssignment({ ...newAssignment, maxMarks: Number(e.target.value) })
                 }
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               />
             </div>
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Submission Deadline *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Submission Deadline *</label>
             <input
               type="datetime-local"
               required
               value={newAssignment.dueDate}
               onChange={(e) => setNewAssignment({ ...newAssignment, dueDate: e.target.value })}
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Instructions & Guidelines</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Instructions & Guidelines</label>
             <textarea
               rows={3}
               value={newAssignment.description}
               onChange={(e) => setNewAssignment({ ...newAssignment, description: e.target.value })}
               placeholder="Provide prompt specifications, grading rubric, or expected deliverables..."
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
@@ -337,13 +337,13 @@ export const AssignmentsPage = () => {
             <button
               type="button"
               onClick={() => setIsCreateModalOpen(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30"
+              className="peach-button-primary"
             >
               Publish Assignment
             </button>
@@ -360,7 +360,7 @@ export const AssignmentsPage = () => {
       >
         <form onSubmit={handleStudentSubmit} className="space-y-4 text-xs sm:text-sm">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">
+            <label className="block font-bold text-[#2D2526] mb-1">
               GitHub Repository / Cloud Drive URL
             </label>
             <input
@@ -370,12 +370,12 @@ export const AssignmentsPage = () => {
                 setSubmissionPayload({ ...submissionPayload, fileUrl: e.target.value })
               }
               placeholder="https://github.com/username/project-repo"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">
+            <label className="block font-bold text-[#2D2526] mb-1">
               Submission Text / Executive Summary
             </label>
             <textarea
@@ -385,7 +385,7 @@ export const AssignmentsPage = () => {
                 setSubmissionPayload({ ...submissionPayload, content: e.target.value })
               }
               placeholder="Brief explanation of your implementation, design choices, or test results..."
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
@@ -393,13 +393,13 @@ export const AssignmentsPage = () => {
             <button
               type="button"
               onClick={() => setSubmitModalOpen(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30 flex items-center space-x-1.5"
+              className="peach-button-primary flex items-center space-x-1.5"
             >
               <Send className="w-4 h-4" />
               <span>Submit for Evaluation</span>
@@ -424,15 +424,15 @@ export const AssignmentsPage = () => {
             description="Students have not uploaded solutions for this assignment yet."
           />
         ) : (
-          <div className="divide-y divide-slate-100 space-y-3">
+          <div className="divide-y divide-[#F0D9D5] space-y-3">
             {submissionsList.map((sub) => {
               const u = sub.studentId?.userId || {};
               return (
                 <div key={sub._id} className="pt-3 first:pt-0 flex items-center justify-between gap-3">
                   <div>
                     <div className="flex items-center space-x-2">
-                      <p className="font-bold text-slate-900 text-sm">{u.name || 'Alex Rivera'}</p>
-                      <span className="font-mono text-[10px] text-slate-500">
+                      <p className="font-bold text-[#2D2526] text-sm">{u.name || 'Alex Rivera'}</p>
+                      <span className="font-mono text-[10px] text-[#6F6264]">
                         {sub.studentId?.rollNumber}
                       </span>
                     </div>
@@ -441,14 +441,14 @@ export const AssignmentsPage = () => {
                         href={sub.fileUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-xs text-brand-600 hover:underline flex items-center space-x-1 mt-0.5"
+                        className="text-xs text-[#E27B88] hover:underline flex items-center space-x-1 mt-0.5 font-semibold"
                       >
                         <ExternalLink className="w-3 h-3" />
                         <span>{sub.fileUrl}</span>
                       </a>
                     )}
                     {sub.content && (
-                      <p className="text-xs text-slate-600 mt-1 line-clamp-2">{sub.content}</p>
+                      <p className="text-xs text-[#6F6264] mt-1 line-clamp-2 font-medium">{sub.content}</p>
                     )}
                   </div>
 
@@ -471,7 +471,7 @@ export const AssignmentsPage = () => {
                           feedback: sub.feedback || '',
                         });
                       }}
-                      className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-700 font-bold text-xs transition-all"
+                      className="px-3 py-1.5 rounded-xl bg-[#FFF5F1] hover:bg-[#E27B88] hover:text-white text-[#A95763] font-bold text-xs border border-[#F0D9D5] transition-all"
                     >
                       Grade
                     </button>
@@ -492,7 +492,7 @@ export const AssignmentsPage = () => {
       >
         <form onSubmit={handleSaveGrade} className="space-y-4 text-xs sm:text-sm">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Marks Awarded *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Marks Awarded *</label>
             <input
               type="number"
               required
@@ -501,18 +501,18 @@ export const AssignmentsPage = () => {
               value={gradeInput.marks}
               onChange={(e) => setGradeInput({ ...gradeInput, marks: e.target.value })}
               placeholder="e.g. 92"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Feedback / Comments</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Feedback / Comments</label>
             <textarea
               rows={3}
               value={gradeInput.feedback}
               onChange={(e) => setGradeInput({ ...gradeInput, feedback: e.target.value })}
               placeholder="Excellent code structure and comprehensive test cases."
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
@@ -520,13 +520,13 @@ export const AssignmentsPage = () => {
             <button
               type="button"
               onClick={() => setGradeModalData(null)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/30"
+              className="peach-button-primary"
             >
               Save Marks & Feedback
             </button>

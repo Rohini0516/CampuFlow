@@ -143,11 +143,11 @@ export const ExamsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <Award className="w-7 h-7 text-indigo-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <Award className="w-7 h-7 text-[#E27B88]" />
             Examinations & Academic Grading
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5 font-medium">
             {role === 'STUDENT'
               ? 'View semester schedules, hall tickets, and cumulative grade point performance'
               : 'Examination controller, assessment schedules, and marks entry'}
@@ -157,7 +157,7 @@ export const ExamsPage = () => {
         {role === 'ADMIN' && (
           <button
             onClick={() => setScheduleModalOpen(true)}
-            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-indigo-600/30 transition-all"
+            className="peach-button-primary text-xs sm:text-sm flex items-center space-x-2 self-start sm:self-auto"
           >
             <Plus className="w-4 h-4" />
             <span>Schedule Examination</span>
@@ -181,14 +181,14 @@ export const ExamsPage = () => {
               value="8.65"
               subtitle="All 6 semesters aggregate"
               icon={TrendingUp}
-              color="brand"
+              color="peach"
             />
             <StatCard
               title="Earned Credits"
               value="128 Credits"
               subtitle="On track for graduation"
               icon={FileCheck}
-              color="purple"
+              color="rose"
             />
           </div>
 
@@ -199,24 +199,24 @@ export const ExamsPage = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="border-b border-slate-200 bg-slate-50/80">
-                    <th className="py-3 px-4 font-bold text-slate-600">Course Code</th>
-                    <th className="py-3 px-4 font-bold text-slate-600">Subject Name</th>
-                    <th className="py-3 px-4 font-bold text-slate-600">Credits</th>
-                    <th className="py-3 px-4 font-bold text-slate-600">Marks</th>
-                    <th className="py-3 px-4 font-bold text-slate-600 text-right">Grade</th>
+                  <tr className="border-b border-[#F0D9D5] bg-[#FFF5F1]">
+                    <th className="py-3 px-4 font-bold text-[#A95763]">Course Code</th>
+                    <th className="py-3 px-4 font-bold text-[#A95763]">Subject Name</th>
+                    <th className="py-3 px-4 font-bold text-[#A95763]">Credits</th>
+                    <th className="py-3 px-4 font-bold text-[#A95763]">Marks</th>
+                    <th className="py-3 px-4 font-bold text-[#A95763] text-right">Grade</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 font-medium">
+                <tbody className="divide-y divide-[#F0D9D5] font-medium">
                   {studentResults.map((row, idx) => (
-                    <tr key={idx} className="hover:bg-slate-50/60 transition-colors">
-                      <td className="py-3 px-4 font-mono font-bold text-brand-600">{row.code}</td>
-                      <td className="py-3 px-4 font-semibold text-slate-800">{row.subject}</td>
-                      <td className="py-3 px-4 text-slate-600">{row.credits}</td>
-                      <td className="py-3 px-4 text-slate-700">{row.marks} / 100</td>
+                    <tr key={idx} className="hover:bg-[#FFF5F1]/50 transition-colors">
+                      <td className="py-3 px-4 font-mono font-bold text-[#E27B88]">{row.code}</td>
+                      <td className="py-3 px-4 font-semibold text-[#2D2526]">{row.subject}</td>
+                      <td className="py-3 px-4 text-[#6F6264]">{row.credits}</td>
+                      <td className="py-3 px-4 text-[#2D2526]">{row.marks} / 100</td>
                       <td className="py-3 px-4 text-right">
                         <Badge
-                          variant={row.grade === 'A+' ? 'success' : 'primary'}
+                          variant={row.grade === 'A+' ? 'success' : 'peach'}
                           size="sm"
                         >
                           {row.grade}
@@ -233,8 +233,8 @@ export const ExamsPage = () => {
 
       {/* SCHEDULED EXAMINATIONS GRID */}
       <div>
-        <h2 className="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
-          <Calendar className="w-4 h-4 text-brand-600" />
+        <h2 className="text-base font-bold text-[#2D2526] mb-3 flex items-center gap-2">
+          <Calendar className="w-4 h-4 text-[#E27B88]" />
           Scheduled Examination Timetable
         </h2>
 
@@ -250,48 +250,48 @@ export const ExamsPage = () => {
             exams.map((exam) => (
               <div
                 key={exam._id}
-                className="p-5 rounded-3xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+                className="p-5 rounded-3xl bg-white border border-[#F0D9D5] shadow-sm hover:shadow-md hover:border-[#EFA7B5] transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="font-mono text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
+                    <span className="font-mono text-[11px] font-bold text-[#A95763] bg-[#FFF5F1] px-2.5 py-1 rounded-xl border border-[#F0D9D5]">
                       {exam.subjectId?.code || 'CS301'}
                     </span>
-                    <Badge variant="purple" size="sm">
+                    <Badge variant="peach" size="sm">
                       {exam.type || 'MID_TERM'}
                     </Badge>
                   </div>
 
-                  <h3 className="font-bold text-slate-900 text-base mb-1">{exam.name}</h3>
-                  <p className="text-xs text-slate-600 font-medium mb-3">
+                  <h3 className="font-bold text-[#2D2526] text-base mb-1">{exam.name}</h3>
+                  <p className="text-xs text-[#6F6264] font-medium mb-3">
                     {exam.subjectId?.name || 'Algorithms & Data Structures'}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 space-y-2 text-xs text-slate-500">
+                <div className="pt-3 border-t border-[#F0D9D5] space-y-2 text-xs text-[#6F6264]">
                   <div className="flex items-center justify-between">
                     <span className="flex items-center space-x-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                      <Calendar className="w-3.5 h-3.5 text-[#A95763]" />
                       <span>{new Date(exam.date).toLocaleDateString()}</span>
                     </span>
                     <span className="flex items-center space-x-1.5">
-                      <Clock className="w-3.5 h-3.5 text-slate-400" />
+                      <Clock className="w-3.5 h-3.5 text-[#A95763]" />
                       <span>{exam.startTime} - {exam.endTime}</span>
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <span className="flex items-center space-x-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                      <MapPin className="w-3.5 h-3.5 text-[#A95763]" />
                       <span>{exam.room || 'Hall A-201'}</span>
                     </span>
-                    <span className="font-bold text-slate-700">Max: {exam.totalMarks} Marks</span>
+                    <span className="font-bold text-[#2D2526]">Max: {exam.totalMarks} Marks</span>
                   </div>
 
                   {role === 'FACULTY' && (
                     <button
                       onClick={() => handleOpenMarksEntry(exam)}
-                      className="w-full mt-2 py-2 px-3 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-xs transition-colors flex items-center justify-center space-x-1.5"
+                      className="w-full mt-2 py-2 px-3 rounded-xl bg-[#FFF5F1] hover:bg-[#E27B88] hover:text-white text-[#A95763] font-bold text-xs border border-[#F0D9D5] transition-all flex items-center justify-center space-x-1.5"
                     >
                       <Award className="w-3.5 h-3.5" />
                       <span>Record Student Marks</span>
@@ -313,24 +313,24 @@ export const ExamsPage = () => {
       >
         <form onSubmit={handleScheduleExam} className="space-y-4 text-xs sm:text-sm">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Exam Title *</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Exam Title *</label>
             <input
               type="text"
               required
               value={newExam.name}
               onChange={(e) => setNewExam({ ...newExam, name: e.target.value })}
               placeholder="e.g. Mid-Semester Theory Exam 2026"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="w-full peach-input"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Subject *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Subject *</label>
               <select
                 value={newExam.subjectId}
                 onChange={(e) => setNewExam({ ...newExam, subjectId: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               >
                 {subjects.map((sub) => (
                   <option key={sub._id} value={sub._id}>
@@ -340,11 +340,11 @@ export const ExamsPage = () => {
               </select>
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Exam Category</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Exam Category</label>
               <select
                 value={newExam.type}
                 onChange={(e) => setNewExam({ ...newExam, type: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               >
                 <option value="MID_TERM">Mid-Term Assessment</option>
                 <option value="END_TERM">End-Term Final</option>
@@ -356,55 +356,55 @@ export const ExamsPage = () => {
 
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Date *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Date *</label>
               <input
                 type="date"
                 required
                 value={newExam.date}
                 onChange={(e) => setNewExam({ ...newExam, date: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Start Time</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Start Time</label>
               <input
                 type="time"
                 value={newExam.startTime}
                 onChange={(e) => setNewExam({ ...newExam, startTime: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">End Time</label>
+              <label className="block font-bold text-[#2D2526] mb-1">End Time</label>
               <input
                 type="time"
                 value={newExam.endTime}
                 onChange={(e) => setNewExam({ ...newExam, endTime: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Examination Hall</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Examination Hall</label>
               <input
                 type="text"
                 value={newExam.room}
                 onChange={(e) => setNewExam({ ...newExam, room: e.target.value })}
                 placeholder="Hall B-102"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Total Marks</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Total Marks</label>
               <input
                 type="number"
                 value={newExam.totalMarks}
                 onChange={(e) =>
                   setNewExam({ ...newExam, totalMarks: Number(e.target.value) })
                 }
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full peach-input"
               />
             </div>
           </div>
@@ -413,13 +413,13 @@ export const ExamsPage = () => {
             <button
               type="button"
               onClick={() => setScheduleModalOpen(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/30"
+              className="peach-button-primary"
             >
               Schedule Exam
             </button>
@@ -436,14 +436,14 @@ export const ExamsPage = () => {
         maxWidth="max-w-2xl"
       >
         <form onSubmit={handleSaveBatchMarks} className="space-y-4">
-          <div className="max-h-80 overflow-y-auto divide-y divide-slate-100 pr-1">
+          <div className="max-h-80 overflow-y-auto divide-y divide-[#F0D9D5] pr-1">
             {studentList.map((st) => (
               <div key={st._id} className="py-2.5 flex items-center justify-between gap-3">
                 <div>
-                  <p className="font-bold text-slate-900 text-xs sm:text-sm">
+                  <p className="font-bold text-[#2D2526] text-xs sm:text-sm">
                     {st.userId?.name || 'Alex Rivera'}
                   </p>
-                  <p className="font-mono text-[11px] text-slate-500">{st.rollNumber}</p>
+                  <p className="font-mono text-[11px] text-[#6F6264]">{st.rollNumber}</p>
                 </div>
 
                 <div className="flex items-center space-x-2">
@@ -455,9 +455,9 @@ export const ExamsPage = () => {
                     onChange={(e) =>
                       setMarksState({ ...marksState, [st._id]: e.target.value })
                     }
-                    className="w-20 px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs sm:text-sm font-bold text-right"
+                    className="w-20 peach-input !py-1 !px-2.5 text-xs sm:text-sm font-bold text-right text-[#2D2526]"
                   />
-                  <span className="text-xs text-slate-400 font-bold">
+                  <span className="text-xs text-[#A95763] font-bold">
                     / {selectedExamForMarks?.totalMarks || 100}
                   </span>
                 </div>
@@ -465,17 +465,17 @@ export const ExamsPage = () => {
             ))}
           </div>
 
-          <div className="pt-3 border-t border-slate-100 flex justify-end space-x-2">
+          <div className="pt-3 border-t border-[#F0D9D5] flex justify-end space-x-2">
             <button
               type="button"
               onClick={() => setMarkModalOpen(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50 text-xs"
+              className="peach-button-secondary text-xs"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/30 text-xs"
+              className="peach-button-primary text-xs"
             >
               Submit Final Grades
             </button>

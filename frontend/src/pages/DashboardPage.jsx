@@ -14,15 +14,11 @@ import {
   Award,
   Calendar,
   AlertCircle,
-  Megaphone,
   CheckCircle2,
   ArrowRight,
   Clock,
-  TrendingUp,
   FileText,
   Layers,
-  Sparkles,
-  ExternalLink,
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -34,9 +30,6 @@ import {
   BarChart,
   Bar,
   CartesianGrid,
-  PieChart,
-  Pie,
-  Cell,
 } from 'recharts';
 
 export const DashboardPage = () => {
@@ -76,9 +69,6 @@ export const DashboardPage = () => {
   const stats = data?.analytics?.summary || {};
   const announcements = data?.announcements || [];
 
-  // Colors for charts
-  const CHART_COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#06b6d4'];
-
   const attendanceTrendData = [
     { day: 'Mon', attendance: 92 },
     { day: 'Tue', attendance: 88 },
@@ -99,14 +89,14 @@ export const DashboardPage = () => {
   return (
     <div className="space-y-6">
       {/* Welcome Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-brand-900 via-indigo-900 to-slate-900 p-6 sm:p-8 text-white shadow-xl">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#E27B88] via-[#F4A6A6] to-[#A95763] p-6 sm:p-8 text-white shadow-xl shadow-[#F4A6A6]/25">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <div className="flex items-center space-x-2 mb-2">
-              <span className="px-3 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/15 text-white backdrop-blur-md border border-white/20">
+              <span className="px-3 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-white/20 text-white backdrop-blur-md border border-white/30">
                 {role?.replace('_', ' ')} PORTAL
               </span>
-              <span className="text-xs text-brand-200">
+              <span className="text-xs font-semibold text-white/90">
                 {new Date().toLocaleDateString('en-US', {
                   weekday: 'long',
                   year: 'numeric',
@@ -115,10 +105,10 @@ export const DashboardPage = () => {
                 })}
               </span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-black tracking-tight">
               Welcome back, {user?.name}! 👋
             </h1>
-            <p className="mt-1 text-xs sm:text-sm text-brand-200/90 max-w-xl">
+            <p className="mt-1 text-xs sm:text-sm text-white/90 max-w-xl font-medium">
               {role === 'ADMIN' &&
                 'Campus administration is operational. You have full oversight of students, faculty, academics, and drives.'}
               {role === 'FACULTY' &&
@@ -134,33 +124,33 @@ export const DashboardPage = () => {
             {role === 'STUDENT' && (
               <Link
                 to="/attendance"
-                className="px-4 py-2 bg-white text-brand-900 font-bold text-xs sm:text-sm rounded-xl shadow hover:bg-brand-50 transition-all flex items-center space-x-1.5"
+                className="px-4 py-2 bg-white text-[#A95763] font-bold text-xs sm:text-sm rounded-xl shadow hover:bg-[#FFF5F1] transition-all flex items-center space-x-1.5"
               >
-                <CalendarCheck className="w-4 h-4 text-brand-600" />
+                <CalendarCheck className="w-4 h-4 text-[#E27B88]" />
                 <span>My Attendance</span>
               </Link>
             )}
             {role === 'FACULTY' && (
               <Link
                 to="/attendance"
-                className="px-4 py-2 bg-white text-brand-900 font-bold text-xs sm:text-sm rounded-xl shadow hover:bg-brand-50 transition-all flex items-center space-x-1.5"
+                className="px-4 py-2 bg-white text-[#A95763] font-bold text-xs sm:text-sm rounded-xl shadow hover:bg-[#FFF5F1] transition-all flex items-center space-x-1.5"
               >
-                <CalendarCheck className="w-4 h-4 text-brand-600" />
+                <CalendarCheck className="w-4 h-4 text-[#E27B88]" />
                 <span>Mark Attendance</span>
               </Link>
             )}
             {(role === 'ADMIN' || role === 'PLACEMENT_OFFICER') && (
               <Link
                 to="/placements"
-                className="px-4 py-2 bg-white text-brand-900 font-bold text-xs sm:text-sm rounded-xl shadow hover:bg-brand-50 transition-all flex items-center space-x-1.5"
+                className="px-4 py-2 bg-white text-[#A95763] font-bold text-xs sm:text-sm rounded-xl shadow hover:bg-[#FFF5F1] transition-all flex items-center space-x-1.5"
               >
-                <Briefcase className="w-4 h-4 text-brand-600" />
+                <Briefcase className="w-4 h-4 text-[#E27B88]" />
                 <span>Placement Drives</span>
               </Link>
             )}
             <Link
               to="/events"
-              className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-medium text-xs sm:text-sm rounded-xl border border-white/20 backdrop-blur-md transition-all flex items-center space-x-1.5"
+              className="px-4 py-2 bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm rounded-xl border border-white/30 backdrop-blur-md transition-all flex items-center space-x-1.5"
             >
               <Calendar className="w-4 h-4" />
               <span>Campus Events</span>
@@ -169,7 +159,7 @@ export const DashboardPage = () => {
         </div>
 
         {/* Ambient decorative lighting */}
-        <div className="absolute -top-24 -right-24 w-72 h-72 bg-brand-500/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-72 h-72 bg-white/10 rounded-full blur-3xl pointer-events-none" />
       </div>
 
       {/* KPI Stats Grid */}
@@ -181,7 +171,7 @@ export const DashboardPage = () => {
               value={stats.totalStudents ?? stats.studentsCount ?? '1,248'}
               subtitle="Active across all branches"
               icon={Users}
-              color="brand"
+              color="peach"
               trend="+12% this term"
             />
             <StatCard
@@ -189,14 +179,14 @@ export const DashboardPage = () => {
               value={stats.totalFaculty ?? stats.facultyCount ?? '84'}
               subtitle="Professors & Instructors"
               icon={UserCheck}
-              color="emerald"
+              color="rose"
             />
             <StatCard
               title="Departments & Programs"
               value={stats.totalDepartments ?? stats.departmentsCount ?? '8'}
               subtitle="Active academic divisions"
               icon={Building2}
-              color="purple"
+              color="emerald"
             />
             <StatCard
               title="Active Placement Drives"
@@ -215,7 +205,7 @@ export const DashboardPage = () => {
               value="89.4%"
               subtitle="Safe (Above 75% cutoff)"
               icon={CalendarCheck}
-              color="emerald"
+              color="rose"
               trend="Good standing"
             />
             <StatCard
@@ -223,7 +213,7 @@ export const DashboardPage = () => {
               value={profile?.cgpa ? `${profile.cgpa} / 10` : '8.65 / 10'}
               subtitle="Semester 6 cumulative"
               icon={Award}
-              color="brand"
+              color="peach"
             />
             <StatCard
               title="Pending Assignments"
@@ -237,7 +227,7 @@ export const DashboardPage = () => {
               value={stats.placementDrivesCount ?? '6'}
               subtitle="Eligible to apply"
               icon={Briefcase}
-              color="purple"
+              color="indigo"
             />
           </>
         )}
@@ -249,14 +239,14 @@ export const DashboardPage = () => {
               value="4 Subjects"
               subtitle="CS301, CS304, CS402, CS405"
               icon={BookOpen}
-              color="brand"
+              color="peach"
             />
             <StatCard
               title="Average Class Attendance"
               value="91.2%"
               subtitle="Across all lecture sections"
               icon={CalendarCheck}
-              color="emerald"
+              color="rose"
             />
             <StatCard
               title="Active Assignments"
@@ -270,7 +260,7 @@ export const DashboardPage = () => {
               value="2 Scheduled"
               subtitle="Mid-Term Assessment"
               icon={Award}
-              color="purple"
+              color="indigo"
             />
           </>
         )}
@@ -282,7 +272,7 @@ export const DashboardPage = () => {
               value={stats.placementDrivesCount ?? '14'}
               subtitle="On-Campus recruitment"
               icon={Briefcase}
-              color="brand"
+              color="peach"
             />
             <StatCard
               title="Partner Companies"
@@ -296,7 +286,7 @@ export const DashboardPage = () => {
               value="214"
               subtitle="84% of eligible cohort"
               icon={UserCheck}
-              color="purple"
+              color="rose"
               trend="+18% vs last year"
             />
             <StatCard
@@ -324,16 +314,16 @@ export const DashboardPage = () => {
                 <AreaChart data={attendanceTrendData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                   <defs>
                     <linearGradient id="attendanceColor" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.4} />
-                      <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.0} />
+                      <stop offset="5%" stopColor="#F4A6A6" stopOpacity={0.4} />
+                      <stop offset="95%" stopColor="#F4A6A6" stopOpacity={0.0} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                  <XAxis dataKey="day" tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
-                  <YAxis domain={[70, 100]} tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F0D9D5" />
+                  <XAxis dataKey="day" tickLine={false} axisLine={false} tick={{ fill: '#A95763', fontSize: 12, fontWeight: 600 }} />
+                  <YAxis domain={[70, 100]} tickLine={false} axisLine={false} tick={{ fill: '#A95763', fontSize: 12, fontWeight: 600 }} />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: '#1e293b',
+                      backgroundColor: '#2D2526',
                       borderRadius: '12px',
                       color: '#fff',
                       border: 'none',
@@ -344,7 +334,7 @@ export const DashboardPage = () => {
                     type="monotone"
                     dataKey="attendance"
                     name="Attendance %"
-                    stroke="#2563eb"
+                    stroke="#E27B88"
                     strokeWidth={3}
                     fillOpacity={1}
                     fill="url(#attendanceColor)"
@@ -358,46 +348,46 @@ export const DashboardPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <Link
               to="/timetable"
-              className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:border-brand-500/40 hover:shadow-md transition-all group flex items-start space-x-3.5"
+              className="p-4 rounded-2xl bg-white border border-[#F0D9D5] shadow-sm hover:border-[#EFA7B5] hover:bg-[#FFF5F1]/50 transition-all group flex items-start space-x-3.5"
             >
-              <div className="p-2.5 rounded-xl bg-blue-50 text-blue-600 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+              <div className="p-2.5 rounded-xl bg-[#FFF5F1] text-[#A95763] border border-[#F0D9D5] group-hover:bg-[#E27B88] group-hover:text-white transition-colors">
                 <Clock className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-900 group-hover:text-brand-600 transition-colors">
+                <h4 className="text-sm font-extrabold text-[#2D2526] group-hover:text-[#A95763] transition-colors">
                   Class Timetable
                 </h4>
-                <p className="text-xs text-slate-500 mt-0.5">View today's lecture schedule & room numbers</p>
+                <p className="text-xs text-[#6F6264] mt-0.5">View today's lecture schedule & room numbers</p>
               </div>
             </Link>
 
             <Link
               to="/assignments"
-              className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:border-brand-500/40 hover:shadow-md transition-all group flex items-start space-x-3.5"
+              className="p-4 rounded-2xl bg-white border border-[#F0D9D5] shadow-sm hover:border-[#EFA7B5] hover:bg-[#FFF5F1]/50 transition-all group flex items-start space-x-3.5"
             >
-              <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+              <div className="p-2.5 rounded-xl bg-[#FFF5F1] text-[#A95763] border border-[#F0D9D5] group-hover:bg-[#E27B88] group-hover:text-white transition-colors">
                 <BookOpen className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                <h4 className="text-sm font-extrabold text-[#2D2526] group-hover:text-[#A95763] transition-colors">
                   Assignments
                 </h4>
-                <p className="text-xs text-slate-500 mt-0.5">Check deadlines, submissions & evaluation marks</p>
+                <p className="text-xs text-[#6F6264] mt-0.5">Check deadlines, submissions & evaluation marks</p>
               </div>
             </Link>
 
             <Link
               to="/exams"
-              className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:border-brand-500/40 hover:shadow-md transition-all group flex items-start space-x-3.5"
+              className="p-4 rounded-2xl bg-white border border-[#F0D9D5] shadow-sm hover:border-[#EFA7B5] hover:bg-[#FFF5F1]/50 transition-all group flex items-start space-x-3.5"
             >
-              <div className="p-2.5 rounded-xl bg-purple-50 text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+              <div className="p-2.5 rounded-xl bg-[#FFF5F1] text-[#A95763] border border-[#F0D9D5] group-hover:bg-[#E27B88] group-hover:text-white transition-colors">
                 <Award className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-900 group-hover:text-purple-600 transition-colors">
+                <h4 className="text-sm font-extrabold text-[#2D2526] group-hover:text-[#A95763] transition-colors">
                   Exams & Grades
                 </h4>
-                <p className="text-xs text-slate-500 mt-0.5">Access hall tickets, semester results & CGPA</p>
+                <p className="text-xs text-[#6F6264] mt-0.5">Access hall tickets, semester results & CGPA</p>
               </div>
             </Link>
           </div>
@@ -411,19 +401,19 @@ export const DashboardPage = () => {
               <div className="h-56 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={deptDistribution} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                    <XAxis dataKey="name" tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 11 }} />
-                    <YAxis tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F0D9D5" />
+                    <XAxis dataKey="name" tickLine={false} axisLine={false} tick={{ fill: '#A95763', fontSize: 11, fontWeight: 600 }} />
+                    <YAxis tickLine={false} axisLine={false} tick={{ fill: '#A95763', fontSize: 12, fontWeight: 600 }} />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: '#1e293b',
+                        backgroundColor: '#2D2526',
                         borderRadius: '12px',
                         color: '#fff',
                         border: 'none',
                         fontSize: '12px',
                       }}
                     />
-                    <Bar dataKey="students" name="Students" fill="#3b82f6" radius={[6, 6, 0, 0]} />
+                    <Bar dataKey="students" name="Students" fill="#E27B88" radius={[6, 6, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -440,7 +430,7 @@ export const DashboardPage = () => {
             action={
               <Link
                 to="/announcements"
-                className="text-xs font-semibold text-brand-600 hover:text-brand-700 flex items-center"
+                className="text-xs font-bold text-[#A95763] hover:text-[#7E3B46] flex items-center"
               >
                 <span>View all</span>
                 <ArrowRight className="w-3 h-3 ml-1" />
@@ -449,12 +439,12 @@ export const DashboardPage = () => {
           >
             <div className="space-y-3">
               {announcements.length === 0 ? (
-                <p className="text-xs text-slate-400 text-center py-4">No recent announcements posted</p>
+                <p className="text-xs text-[#6F6264] text-center py-4">No recent announcements posted</p>
               ) : (
                 announcements.map((item) => (
                   <div
                     key={item._id}
-                    className="p-3 rounded-xl bg-slate-50 hover:bg-slate-100/80 transition-colors border border-slate-100"
+                    className="p-3 rounded-xl bg-[#FFF5F1]/60 hover:bg-[#FFF5F1] transition-colors border border-[#F0D9D5]"
                   >
                     <div className="flex items-center justify-between mb-1">
                       <Badge
@@ -462,19 +452,19 @@ export const DashboardPage = () => {
                           item.priority === 'URGENT'
                             ? 'danger'
                             : item.category === 'ACADEMIC'
-                            ? 'primary'
+                            ? 'peach'
                             : 'default'
                         }
                         size="sm"
                       >
                         {item.category}
                       </Badge>
-                      <span className="text-[10px] text-slate-400">
+                      <span className="text-[10px] font-semibold text-[#A95763]">
                         {new Date(item.createdAt).toLocaleDateString()}
                       </span>
                     </div>
-                    <h4 className="text-xs font-bold text-slate-900 line-clamp-1">{item.title}</h4>
-                    <p className="text-xs text-slate-600 mt-1 line-clamp-2">{item.content}</p>
+                    <h4 className="text-xs font-extrabold text-[#2D2526] line-clamp-1">{item.title}</h4>
+                    <p className="text-xs text-[#6F6264] mt-1 line-clamp-2 font-medium">{item.content}</p>
                   </div>
                 ))
               )}
@@ -486,50 +476,50 @@ export const DashboardPage = () => {
             <div className="space-y-2 text-xs">
               <Link
                 to="/certificates"
-                className="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
+                className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#FFF5F1] transition-colors group border border-transparent hover:border-[#F0D9D5]"
               >
                 <div className="flex items-center space-x-2.5">
-                  <div className="p-2 rounded-lg bg-indigo-50 text-indigo-600">
+                  <div className="p-2 rounded-lg bg-[#FFF5F1] text-[#A95763] border border-[#F0D9D5]">
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="font-bold text-slate-800 group-hover:text-brand-600">Request Certificate</p>
-                    <p className="text-[11px] text-slate-400">Bonafide, LOR, Transcripts</p>
+                    <p className="font-extrabold text-[#2D2526] group-hover:text-[#A95763]">Request Certificate</p>
+                    <p className="text-[11px] text-[#6F6264]">Bonafide, LOR, Transcripts</p>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-brand-600 group-hover:translate-x-0.5 transition-all" />
+                <ArrowRight className="w-4 h-4 text-[#A95763] group-hover:translate-x-0.5 transition-all" />
               </Link>
 
               <Link
                 to="/complaints"
-                className="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
+                className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#FFF5F1] transition-colors group border border-transparent hover:border-[#F0D9D5]"
               >
                 <div className="flex items-center space-x-2.5">
-                  <div className="p-2 rounded-lg bg-amber-50 text-amber-600">
+                  <div className="p-2 rounded-lg bg-[#FFF5F1] text-[#A95763] border border-[#F0D9D5]">
                     <AlertCircle className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="font-bold text-slate-800 group-hover:text-amber-600">Grievance Redressal</p>
-                    <p className="text-[11px] text-slate-400">Submit ticket & track resolution</p>
+                    <p className="font-extrabold text-[#2D2526] group-hover:text-[#A95763]">Grievance Redressal</p>
+                    <p className="text-[11px] text-[#6F6264]">Submit ticket & track resolution</p>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 group-hover:translate-x-0.5 transition-all" />
+                <ArrowRight className="w-4 h-4 text-[#A95763] group-hover:translate-x-0.5 transition-all" />
               </Link>
 
               <Link
                 to="/internships"
-                className="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
+                className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#FFF5F1] transition-colors group border border-transparent hover:border-[#F0D9D5]"
               >
                 <div className="flex items-center space-x-2.5">
-                  <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600">
+                  <div className="p-2 rounded-lg bg-[#FFF5F1] text-[#A95763] border border-[#F0D9D5]">
                     <Layers className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="font-bold text-slate-800 group-hover:text-emerald-600">Internship Portal</p>
-                    <p className="text-[11px] text-slate-400">Summer & winter industry roles</p>
+                    <p className="font-extrabold text-[#2D2526] group-hover:text-[#A95763]">Internship Portal</p>
+                    <p className="text-[11px] text-[#6F6264]">Summer & winter industry roles</p>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-0.5 transition-all" />
+                <ArrowRight className="w-4 h-4 text-[#A95763] group-hover:translate-x-0.5 transition-all" />
               </Link>
             </div>
           </DashboardCard>

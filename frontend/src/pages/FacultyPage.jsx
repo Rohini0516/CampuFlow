@@ -195,11 +195,11 @@ export const FacultyPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <UserCheck className="w-7 h-7 text-indigo-600" />
+          <h1 className="text-2xl font-black text-[#2D2526] tracking-tight flex items-center gap-2">
+            <UserCheck className="w-7 h-7 text-[#A95763]" />
             Faculty & Professorial Directory
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#6F6264] mt-0.5">
             Teaching staff, departmental appointments, and academic credentials
           </p>
         </div>
@@ -212,7 +212,7 @@ export const FacultyPage = () => {
               }
               setIsAddModalOpen(true);
             }}
-            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-indigo-600/30 transition-all"
+            className="peach-button-primary space-x-2"
           >
             <UserPlus className="w-4 h-4" />
             <span>Add Faculty Member</span>
@@ -221,22 +221,22 @@ export const FacultyPage = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center gap-3">
+      <div className="bg-white p-4 rounded-2xl border border-[#F0D9D5] shadow-sm flex flex-col sm:flex-row items-center gap-3">
         <div className="relative flex-1 w-full">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-[#A95763]/60 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by faculty name, designation, or employee code..."
-            className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+            className="peach-input pl-9"
           />
         </div>
 
         <select
           value={selectedDept}
           onChange={(e) => setSelectedDept(e.target.value)}
-          className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:outline-none text-slate-700 w-full sm:w-56"
+          className="peach-input w-full sm:w-56"
         >
           <option value="">All Departments</option>
           {departments.map((d) => (
@@ -264,23 +264,23 @@ export const FacultyPage = () => {
       >
         {viewFaculty && (
           <div className="space-y-6">
-            <div className="flex items-center space-x-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+            <div className="flex items-center space-x-4 p-4 rounded-2xl bg-[#FFF5F1] border border-[#F0D9D5]">
               <img
                 src={
                   viewFaculty.userId?.avatar ||
-                  `https://ui-avatars.com/api/?name=${encodeURIComponent(viewFaculty.userId?.name || 'Prof')}&background=10b981&color=fff`
+                  `https://ui-avatars.com/api/?name=${encodeURIComponent(viewFaculty.userId?.name || 'Prof')}&background=F4A6A6&color=fff`
                 }
                 alt={viewFaculty.userId?.name}
-                className="w-16 h-16 rounded-2xl object-cover ring-2 ring-indigo-500/20"
+                className="w-16 h-16 rounded-2xl object-cover ring-2 ring-[#FFD6C9]"
               />
               <div>
-                <h3 className="text-lg font-bold text-slate-900">{viewFaculty.userId?.name}</h3>
-                <p className="text-xs text-slate-500">{viewFaculty.userId?.email}</p>
+                <h3 className="text-lg font-bold text-[#2D2526]">{viewFaculty.userId?.name}</h3>
+                <p className="text-xs text-[#6F6264]">{viewFaculty.userId?.email}</p>
                 <div className="flex items-center space-x-2 mt-2">
-                  <span className="font-mono text-xs font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
+                  <span className="font-mono text-xs font-bold text-[#A95763] bg-white px-2 py-0.5 rounded border border-[#F0D9D5]">
                     {viewFaculty.employeeId}
                   </span>
-                  <Badge variant="purple" size="sm">
+                  <Badge variant="peach" size="sm">
                     {viewFaculty.designation}
                   </Badge>
                 </div>
@@ -288,27 +288,27 @@ export const FacultyPage = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4 text-xs">
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-                <p className="text-slate-400 font-semibold mb-1">Department</p>
-                <p className="font-bold text-slate-800 text-sm">
+              <div className="p-3.5 rounded-xl bg-[#FFF5F1] border border-[#F0D9D5]">
+                <p className="text-[#6F6264] font-semibold mb-1">Department</p>
+                <p className="font-bold text-[#2D2526] text-sm">
                   {viewFaculty.departmentId?.name || 'Computer Science & Engineering'}
                 </p>
               </div>
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-                <p className="text-slate-400 font-semibold mb-1">Qualifications</p>
-                <p className="font-bold text-slate-800 text-sm">
+              <div className="p-3.5 rounded-xl bg-[#FFF5F1] border border-[#F0D9D5]">
+                <p className="text-[#6F6264] font-semibold mb-1">Qualifications</p>
+                <p className="font-bold text-[#2D2526] text-sm">
                   {viewFaculty.qualification || 'Ph.D in Engineering, M.Tech'}
                 </p>
               </div>
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-                <p className="text-slate-400 font-semibold mb-1">Teaching Experience</p>
-                <p className="font-bold text-indigo-600 text-sm">
+              <div className="p-3.5 rounded-xl bg-[#FFF5F1] border border-[#F0D9D5]">
+                <p className="text-[#6F6264] font-semibold mb-1">Teaching Experience</p>
+                <p className="font-bold text-[#A95763] text-sm">
                   {viewFaculty.experienceYears ?? 8} Years
                 </p>
               </div>
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-                <p className="text-slate-400 font-semibold mb-1">Contact Phone</p>
-                <p className="font-bold text-slate-800 text-sm">
+              <div className="p-3.5 rounded-xl bg-[#FFF5F1] border border-[#F0D9D5]">
+                <p className="text-[#6F6264] font-semibold mb-1">Contact Phone</p>
+                <p className="font-bold text-[#2D2526] text-sm">
                   {viewFaculty.userId?.phone || '+1 (555) 018-9432'}
                 </p>
               </div>
@@ -327,48 +327,48 @@ export const FacultyPage = () => {
         <form onSubmit={handleCreateFaculty} className="space-y-4 text-xs sm:text-sm">
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Full Name *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Full Name *</label>
               <input
                 type="text"
                 required
                 value={newFaculty.name}
                 onChange={(e) => setNewFaculty({ ...newFaculty, name: e.target.value })}
                 placeholder="Dr. Eleanor Vance"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Email Address *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Email Address *</label>
               <input
                 type="email"
                 required
                 value={newFaculty.email}
                 onChange={(e) => setNewFaculty({ ...newFaculty, email: e.target.value })}
                 placeholder="eleanor@campusflow.edu"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Employee ID *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Employee ID *</label>
               <input
                 type="text"
                 required
                 value={newFaculty.employeeId}
                 onChange={(e) => setNewFaculty({ ...newFaculty, employeeId: e.target.value })}
                 placeholder="FAC-301"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Department *</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Department *</label>
               <select
                 required
                 value={newFaculty.departmentId}
                 onChange={(e) => setNewFaculty({ ...newFaculty, departmentId: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               >
                 {departments.map((d) => (
                   <option key={d._id} value={d._id}>
@@ -381,36 +381,36 @@ export const FacultyPage = () => {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Designation</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Designation</label>
               <input
                 type="text"
                 value={newFaculty.designation}
                 onChange={(e) => setNewFaculty({ ...newFaculty, designation: e.target.value })}
                 placeholder="Associate Professor"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Experience (Years)</label>
+              <label className="block font-bold text-[#2D2526] mb-1">Experience (Years)</label>
               <input
                 type="number"
                 value={newFaculty.experienceYears}
                 onChange={(e) =>
                   setNewFaculty({ ...newFaculty, experienceYears: Number(e.target.value) })
                 }
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="peach-input"
               />
             </div>
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Highest Qualification</label>
+            <label className="block font-bold text-[#2D2526] mb-1">Highest Qualification</label>
             <input
               type="text"
               value={newFaculty.qualification}
               onChange={(e) => setNewFaculty({ ...newFaculty, qualification: e.target.value })}
               placeholder="Ph.D. in Computer Science & AI"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+              className="peach-input"
             />
           </div>
 
@@ -418,14 +418,14 @@ export const FacultyPage = () => {
             <button
               type="button"
               onClick={() => setIsAddModalOpen(false)}
-              className="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50"
+              className="peach-button-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/30"
+              className="peach-button-primary"
             >
               {submitting ? 'Creating...' : 'Appoint Faculty'}
             </button>
